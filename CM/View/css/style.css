@@ -1,0 +1,740 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap');
+
+/* Configuraciones CSS Generales del Formulario */
+:root{
+    --color-bc: #020F86;
+    --color-bc2: #4b518b;
+    --orange-etb: #F36F31;
+    --blue-os-etb: #008AA6;
+    --gray-etb: #707070;
+    --withe-etb: #fff;
+    --bc-etb: #000;
+    --yellow-bc: #8B8D1A;
+    --green-bc: #02861F;
+    --red-bc: #960000;
+    --cof-bc: #d37f00;
+}
+body{
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.container-general{
+    border: solid 2px red;
+    position: relative;
+    bottom: 1021px;
+    left: 522px;
+    width: 1398px;
+    max-width: 1398px;
+    height: 886px;
+    max-height: 889px;
+}
+/* Configuraciones CSS Generales del Formulario */
+
+
+/* Busquedda Rapida */
+/* Configuraciones CSS del DIV General del Formulario */
+form{
+    display: flex;
+    padding: 25px 0 0 25px;
+}
+.sea{
+    margin-left: 50px;
+}
+p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--orange-etb);
+    padding-right: 20px;
+}
+.ini-b{
+    position: relative;
+    left: 440px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.btn-prima{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: var(--orange-etb);
+    border: none;
+    border-radius: 15px;
+    width: 140px;
+    height: 50px;
+    color: var(--withe-etb);
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    right: 350px;
+}
+.btn-second{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: var(--blue-os-etb);
+    border: none;
+    border-radius: 15px;
+    width: 140px;
+    height: 50px;
+    color: var(--withe-etb);
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    left: 457px;
+    bottom: 50px;
+}
+.btn-second:hover{
+    background-color: var(--color-bc);
+}
+.btn-prima:hover{
+  background-color: var(--color-bc);
+}
+.btn-three{
+    width: 49px;
+    height: 40px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: var(--yellow-bc);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    bottom: 20px;
+}
+.btn-three img{
+    width: 32px;
+    height: 32px;
+    padding-top: 2px;
+}
+.btn-four{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: var(--red-bc);
+    border: none;
+    border-radius: 15px;
+    width: 162px;
+    height: 70px;
+    color: var(--withe-etb);
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    bottom: 20px;
+}
+.btn-five{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: var(--green-bc);
+    border: none;
+    border-radius: 15px;
+    width: 162px;
+    height: 70px;
+    color: var(--withe-etb);
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.btn-five2{
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  background-color: var(--green-bc);
+  border: none;
+  border-radius: 15px;
+  width: 132px;
+  height: 50px;
+  color: var(--withe-etb);
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: 200px;
+}
+.btn-six{
+  bottom: 42px;
+  left: 305px;
+  width: 49px;
+  height: 40px;
+  box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+  background-color: var(--cof-bc);
+  border: none;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+}
+#cod2{
+    top: 400px;
+    left: 253px;
+}
+#cod3{
+  top: 210px;
+}
+.btn-six img{
+  width: 42px;
+  height: 42px;
+  position: relative;
+  right: 2px;
+  bottom: 1px;
+}
+input{
+    width: 300px;
+    height: 50px;
+    border: solid 2px var(--color-bc);
+    border-radius: 25px;
+    font-weight: 300;
+}
+select{
+  width: 300px;
+  height: 50px;
+  border: solid 2px var(--color-bc);
+  border-radius: 25px;
+  font-weight: 300;
+}
+.dat{
+    text-align: center;
+}
+.ini-b3{
+    position: relative;
+    right: 1148px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    top: 280px;
+}
+.ini-b3 .btn-three{
+    position: relative;
+    left: 175px;
+    bottom: 80px;
+}
+.label1{
+  margin-left: 40px;
+}
+.label1-3{
+    display: flex;
+    padding: 45px 0 0 25px;
+}
+#modal-vista .modal-title{
+    font-size: 25px;
+    color: var(--color-bc);
+    font-weight: bold;
+}
+#modal-vista-agen .modal-title{
+  font-size: 25px;
+  color: var(--color-bc);
+  font-weight: bold;
+}
+#modal-agen .modal-title{
+  font-size: 25px;
+  color: var(--color-bc);
+  font-weight: bold;
+}
+.acti button{
+  width: 80px;
+  border: none;
+  background-color: #14C1EA;
+  border-radius: 15px;
+  color: #fff;
+  position: relative;
+  left: 70px;
+  top: 75px;
+}
+.con-table{
+    width: 100%;
+    overflow-x: auto;
+    /* display: none; */
+    max-width: 100%;
+    min-height: 100px;
+  }
+  .con-table .table-general{
+    min-width: 900px;
+    width: 100%;
+  }
+  .table-general {
+    width: 100%; /* O usa un valor fijo, como '1000px' si es necesario */
+    table-layout: auto; /* Permitir que el navegador ajuste automáticamente el ancho de las columnas */
+  }
+  .table-general tr th{
+    background: var(--color-bc);
+    color: var(--withe-etb);
+    height: 50px;
+    text-align: center;
+    border: 2px solid var(--gray-etb);
+  }
+
+  .table-general tbody tr td{
+    min-height: 50px;
+    border: 2px solid var(--gray-etb);
+    padding-left: 20px;
+  }
+
+  .con-table2{
+    width: 100%;
+    overflow-x: auto;
+    /* display: none; */
+    max-width: 100%;
+    min-height: 100px;
+  }
+  .con-table2 .table-genera{
+    min-width: 900px;
+    width: 100%;
+  }
+  .table-general tbody tr td{
+    min-height: 50px;
+    border: 2px solid var(--yellow-bc);
+    padding-left: 20px;
+  }
+.icons2{
+    width: 70px;
+    height: 70px;
+    position: relative;
+    left: 12px;
+    cursor: pointer;
+}
+.codigos {
+  display: none;
+  position: absolute;
+  top: 7%;
+  right: 45.1%;
+  background-color: var(--color-bc);
+  border: 2px solid var(--orange-etb);
+  border-radius: 15px;
+  padding: 5px 0;
+  z-index: 1;
+}
+.codigos ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: var(--withe-etb);
+  font-size: 12px;
+}
+.codigos ul li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.codigos ul li:hover {
+  background-color: var(--red-bc);
+}
+.codigos2 {
+  display: none;
+  position: absolute;
+  bottom: 22%;
+  left: 32.2%;
+  background-color: var(--color-bc);
+  border: 2px solid var(--orange-etb);
+  border-radius: 15px;
+  padding: 5px 0;
+  z-index: 1;
+}
+.codigos2 ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: var(--withe-etb);
+  font-size: 12px;
+}
+.codigos2 ul li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.codigos2 ul li:hover {
+  background-color: var(--red-bc);
+}
+.codigos3 {
+  display: none;
+  position: absolute;
+  bottom: 22%;
+  left: 34%;
+  background-color: var(--color-bc);
+  border: 2px solid var(--orange-etb);
+  border-radius: 15px;
+  padding: 5px 0;
+  z-index: 1;
+}
+.codigos3 ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: var(--withe-etb);
+  font-size: 12px;
+}
+.codigos3 ul li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.codigos3 ul li:hover {
+  background-color: var(--red-bc);
+}
+/* Configuraciones CSS del DIV General del Formulario */
+/* Busquedda Rapida */
+
+
+/* Configuraciones CSS del DIV General del Formulario */
+/* Añadir Nuevo Rapida */
+.connew{
+    border: none;
+    border-radius: 15px;
+    margin: 85px 0 0 60px;
+    width: 1260px;
+    height: 700px;
+    box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Evita que los elementos desborden el contenedor */
+}
+.connew-2{
+    border: none;
+    border-radius: 15px;
+    margin: 85px 0 0 60px;
+    width: 1260px;
+    height: 700px;
+    box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Evita que los elementos desborden el contenedor */
+}
+.label1-2{
+    display: flex;
+    padding: 45px 0 0 25px;
+}
+.dat2{
+    width: 212px;  
+    text-align: center;
+}
+.dat3{
+  width: 212px;  
+  text-align: center;
+  position: relative;
+  left: 250px;
+}
+.item-1 input{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+    gap: 20px; /* espacio entre las celdas */
+    margin: 0 0 0 90px;
+    position: relative;
+    right: 10px; 
+    font-size: 16px; 
+}
+.item-1 select{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+  gap: 20px; /* espacio entre las celdas */
+  margin: 0 0 0 90px;
+  position: relative;
+  right: 10px; 
+  font-size: 16px; 
+}
+.item-2 input{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+    gap: 20px; /* espacio entre las celdas */
+    margin: 0 0 0 90px;
+    position: relative;
+    right: 10px;  
+    font-size: 16px;
+}
+.item-2 select{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+  gap: 20px; /* espacio entre las celdas */
+  margin: 0 0 0 90px;
+  position: relative;
+  right: 10px; 
+  font-size: 16px; 
+}
+.item-3 input{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+    gap: 20px; /* espacio entre las celdas */
+    margin: 0 0 0 90px;
+    position: relative;
+    right: 10px;  
+    font-size: 16px;
+}
+.item-3 select{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+  gap: 20px; /* espacio entre las celdas */
+  margin: 0 0 0 90px;
+  position: relative;
+  right: 10px; 
+  font-size: 16px; 
+}
+.item-4 input{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+    gap: 20px; /* espacio entre las celdas */
+    margin: 0 0 0 90px;
+    position: relative;
+    right: 1240px;  
+    top: 250px;
+    font-size: 16px;
+}
+.item-4 select{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+  gap: 20px; /* espacio entre las celdas */
+  margin: 0 0 0 90px;
+  position: relative;
+  right: 10px; 
+  font-size: 16px; 
+}
+.item-5 input{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+    gap: 20px; /* espacio entre las celdas */
+    margin: 0 0 0 90px;
+    position: relative;
+    right: 1240px;  
+    top: 250px;
+    font-size: 16px;
+}
+.item-5 select{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+  gap: 20px; /* espacio entre las celdas */
+  margin: 0 0 0 90px;
+  position: relative;
+  right: 10px; 
+  font-size: 16px; 
+}
+.item-6 input{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+    gap: 20px; /* espacio entre las celdas */
+    margin: 0 0 0 90px;
+    position: relative;
+    right: 1240px;  
+    top: 250px;
+    font-size: 16px;
+}
+.item-6 select{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+  gap: 20px; /* espacio entre las celdas */
+  margin: 0 0 0 90px;
+  position: relative;
+  right: 10px; 
+  font-size: 16px; 
+}
+.item-7 input{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+  gap: 20px; /* espacio entre las celdas */
+  margin: 0 0 0 90px;
+  position: relative;
+  right: 1240px;  
+  top: 250px;
+  font-size: 16px;
+}
+.item-7 select{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+  gap: 20px; /* espacio entre las celdas */
+  margin: 0 0 0 90px;
+  position: relative;
+  right: 10px; 
+  font-size: 16px; 
+}
+.label1-2 .lp1{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+    gap: 20px; /* espacio entre las celdas */
+    margin: 0 0 0 90px;
+    position: relative;
+    top: 125px;
+}
+.label1-2 .lp2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ajusta automáticamente el número de columnas según el ancho del contenedor */
+    gap: 20px; /* espacio entre las celdas */
+    margin: 0 0 0 90px;
+    position: relative; 
+    top: 370px;
+}
+.ini-b2{
+    position: relative;
+    right: 1938px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    top: 480px;
+}
+.ini-b2 .btn-three{
+    position: relative;
+    left: 175px;
+    bottom: 60px;
+}
+/* Añadir Nuevo Rapida */
+
+/* Interface Inicial Eliminar/Crear Administrador */
+.delete{
+    background-color: var(--color-bc);;
+    border-radius: 35px;
+    width: 95%;
+    height: 29%;
+    cursor: pointer;
+    margin: 35px 0 0 30px;
+}
+.inf{
+    display: flex;
+    padding-top: 45px;
+}
+.delete img{
+    width: 105px;
+    height: 105px;
+    margin-left: 55px;
+}
+.delete p{
+    margin-left: 55px;
+    position: relative;
+    bottom: 30px;
+    color: #fff;
+}
+/* Interface Inicial Eliminar/Crear Administrador */
+
+/* CSS de los Modales y sus Animaciones */
+.modal .modal-title{
+    width: 100%;
+    text-align: center;
+    color: var(--color-bc);
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.modal-loading{
+    z-index: 893748;
+}
+.modal-susc .modal-dialog, .modal-loading .modal-dialog{
+    display: flex;
+    justify-content: center;
+}
+.modal-susc .modal-content{
+    width: 320px;
+}
+.modal-susc .modal-title, .modal-loading .modal-title{
+    width: 100%;
+    text-align: center;
+    color: #1285B6;
+}
+.modal-susc .modal-footer{
+    border: 0px solid;
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+}
+.modal-susc .confirmacion p{
+    color: #46b8da;
+    font-size: 15px;
+    text-align: center;
+}
+.modal-susc .modal-footer button{
+    background: #f26821;
+    color: white;
+    border: none;
+}
+.modal-loading .modal-header{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.modal-loading .modal-title{
+    font-size: 20px;
+    color: var(--color-bc);
+    font-weight: bold;
+}
+.modal-loading .modal-content{
+    width: 375px;
+}
+.modal-loading .modal-body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;;
+}
+.text-spiner p{
+    color: var(--color-bc);
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+}
+.lds-spinner {
+    color: official;
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-spinner div {
+    transform-origin: 40px 40px;
+    animation: lds-spinner 1.2s linear infinite;
+  }
+  .lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 37px;
+    width: 6px;
+    height: 18px;
+    border-radius: 20%;
+    background: var(--color-bc);
+  }
+  .lds-spinner div:nth-child(1) {
+    transform: rotate(0deg);
+    animation-delay: -1.1s;
+  }
+  .lds-spinner div:nth-child(2) {
+    transform: rotate(30deg);
+    animation-delay: -1s;
+  }
+  .lds-spinner div:nth-child(3) {
+    transform: rotate(60deg);
+    animation-delay: -0.9s;
+  }
+  .lds-spinner div:nth-child(4) {
+    transform: rotate(90deg);
+    animation-delay: -0.8s;
+  }
+  .lds-spinner div:nth-child(5) {
+    transform: rotate(120deg);
+    animation-delay: -0.7s;
+  }
+  .lds-spinner div:nth-child(6) {
+    transform: rotate(150deg);
+    animation-delay: -0.6s;
+  }
+  .lds-spinner div:nth-child(7) {
+    transform: rotate(180deg);
+    animation-delay: -0.5s;
+  }
+  .lds-spinner div:nth-child(8) {
+    transform: rotate(210deg);
+    animation-delay: -0.4s;
+  }
+  .lds-spinner div:nth-child(9) {
+    transform: rotate(240deg);
+    animation-delay: -0.3s;
+  }
+  .lds-spinner div:nth-child(10) {
+    transform: rotate(270deg);
+    animation-delay: -0.2s;
+  }
+  .lds-spinner div:nth-child(11) {
+    transform: rotate(300deg);
+    animation-delay: -0.1s;
+  }
+  .lds-spinner div:nth-child(12) {
+    transform: rotate(330deg);
+    animation-delay: 0s;
+  }
+  @keyframes lds-spinner {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+/* CSS de los Modales y sus Animaciones */
