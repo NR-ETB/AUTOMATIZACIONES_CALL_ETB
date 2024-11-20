@@ -1,0 +1,130 @@
+/* Fuente Personalizada */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap');
+
+/* Variables de Colores */
+:root{
+    --orange-etb: #F36F31;
+    --bgray-etb: #d8dde6;
+    --b3gray-etb: #E4E8F0;
+    --gray-etb: #f4f6f9;
+    --withe-etb: #fff;
+    --bblue-etb: #214780;
+    --pblue-etb: #54698d;
+    --black-etb: #333333;
+    --b2gray-etb: #969492;
+}
+/* Generalidades del Cuerpo */
+
+/* Configuraciones Iniciales del Cuerpo */
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    background-image: url('../images/6076688.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    overflow: hidden;
+    font-family: 'Poppins';
+}
+/* Configuraciones Iniciales del Cuerpo */
+
+/* Configuraciones de la Interface del Login */
+.general-login{
+    width: 210vh;
+    height: 120vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    right: 8px;
+    bottom: 8px;
+}
+.card-login{
+    background-color: var(--withe-etb);
+    width: 1536px;
+    height: 756px;
+    border-radius: 25px;
+    margin: 0 0 182px 192px;
+    
+}
+#inip{
+    position: fixed;
+    margin: 100px 0 0 240px;
+    font-size: 64px;
+    color: var(--bblue-etb);
+}
+.casi{
+    display: flex;
+}
+.casi input{
+    width: 500px;
+    height: 70px;
+    margin: 25px 0 0 175px;
+    position: relative;
+    top: 340px;
+    border: none;
+    background-color: var(--b3gray-etb);
+    padding-left: 100px;
+    font-family: 'Poppins';
+    color: var(--black-etb);
+    font-size: 20px;
+}
+#secon-btn{
+    border: 2px solid var(--bblue-etb);
+    border-radius: 45px;
+    color: var(--bblue-etb);
+    width: 332px;
+    height: 96px;
+    background-color: var(--withe-etb);
+    font-family: 'Poppins';
+    font-weight: 800;
+    font-size: 32px;
+    margin: 400px 590px 0 0;
+    cursor: pointer;
+}
+.casi img{
+    width: 45px;
+    height: 45px;
+    position: relative;
+    left: 255px;
+    top: 377px;
+    z-index: 1;
+}
+.card-sing{
+    background-color: var(--orange-etb);
+    width: 614px;
+    height: 756px;
+    position: relative;
+    right: 0;
+    border-radius: 0 25px 25px 0;
+    left: 923px;
+    bottom: 686px;
+    padding-top: 10px;
+}
+h1{
+    margin-top: 200px;
+    font-size: 64px;
+}
+p{
+    font-size: 24px;
+}
+#primary-btn{
+    border: 2px solid var(--withe-etb);
+    border-radius: 45px;
+    color: var(--withe-etb);
+    width: 332px;
+    height: 96px;
+    background-color: transparent;
+    font-family: 'Poppins';
+    font-weight: 800;
+    font-size: 32px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+#primary-btn:hover{
+    background-color: var(--bblue-etb);
+}
+/* Configuraciones de la Interface del Login */

@@ -1,0 +1,231 @@
+/* Fuente Personalizada */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap');
+
+/* Variables de Colores */
+:root{
+    --orange-etb: #F36F31;
+    --bgray-etb: #d8dde6;
+    --gray-etb: #f4f6f9;
+    --withe-etb: #fff;
+    --bblue-etb: #0070d2;
+    --pblue-etb: #54698d;
+    --black-etb: #000;
+    --b2gray-etb: #969492;
+}
+/* Generalidades del Cuerpo */
+
+/* Configuraciones Iniciales del Cuerpo */
+* {
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    background-color: #AAB8D0;
+    font-family: 'Poppins';
+}
+/* Configuraciones Iniciales del Cuerpo */
+
+/* Configuraciones de la Interface del Dashboard */
+.general-container{
+    border-radius: 85px;
+    background-color: #fff;
+    align-items: center;
+    margin: 90px 0 0 155px;
+    width: 1600px;
+    height: 772px;
+    display: flex;
+}
+.log img{
+    width: 380px;
+    height: 220px;
+    border-radius: 85px 0 0 0;
+    position: relative;
+    bottom: 273px;
+}
+.cards{
+    width: 700px;
+    height: 100%;
+    background-color: #F36F31;
+    color: #fff;
+    position: relative;
+    left: 535px;
+    bottom: 785px;
+    z-index: 1;
+}
+h1{
+    margin-left: 35px;
+    padding-top: 10px;
+}
+.container-menu{
+    display: flex;
+    margin-top: 15px;
+    padding-top: 35px;
+    margin-left: 40px;
+}
+.menu{
+    border: 2px solid var(--withe-etb);
+    border-radius: 25px;
+    background-color: var(--bblue-etb);
+    width: 250px;
+    height: 250px;
+    margin-left: 35px;
+    cursor: pointer;
+    z-index: 1;
+}
+.menu img{
+    height: 145px;
+    width: 145px;
+    margin-left: 53px;
+    margin-top: 10px;
+}
+.menu p{
+    text-align: center;
+}
+#au{
+    font-size: 13px;
+}
+#cod{
+    font-size: 23px;
+}
+#cod2{
+    margin-top: 35px;
+    font-size: 33px;
+}
+#cod3{
+    font-size: 18px;
+}
+#acti{
+    height: 25px;
+    position: relative;
+    left: 120px;
+    cursor: pointer;
+}
+.body-card{
+    border: 1px solid #fff;
+    height: 130px;
+}
+#great{
+    height: 380px;
+}
+.great2{
+    height: 310px;
+}
+.question_1, .question_2, .question_3, .question_4, .question_5{
+    margin-left: 35px;
+    margin-top: 50px;
+    font-size: 15px;
+}
+.bot{
+    display: flex;
+    position: relative;
+    right: 60px;
+    margin-top: 5px;
+}
+button{
+    position: relative;
+    left: 285px;
+    cursor: pointer;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins';
+    font-weight: 900;
+    font-size: 18px;
+    margin-top: 2px;
+    z-index: 1;
+}
+button:hover{
+    color: var(--bblue-etb);
+}
+#que{
+    position: relative;
+    cursor: text;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins';
+    width: 620px;
+    resize: none;
+}
+#que2{
+    position: relative;
+    bottom: 17px;
+    cursor: text;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins';
+    width: 620px;
+    font-size: 20px;
+    font-weight: 600;
+    resize: none;
+}
+select{
+    cursor: pointer;
+    color: var(--bblue-etb);
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins';
+    font-weight: 900;
+    font-size: 18px;
+    width: 620px;
+}
+.cards_2{
+    width: 700px;
+    height: 100%;
+    background-color: #F36F31;
+    color: #fff;
+}
+.cards_22{
+    width: 700px;
+    height: 100%;
+    background-color: var(--b2gray-etb);
+    color: #fff;
+}
+.cards_2 h1{
+    font-size: 24px;
+}
+.bio2{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    bottom: 1250px;
+}
+.data{
+    display: grid;
+    position: relative;
+    bottom: 290px;
+    left: 895px;
+}
+.data2{
+    display: grid;
+    position: relative;
+    bottom: 290px;
+    left: 205px;
+}
+input{
+    border: none;
+    background-color: #E4E8F0;
+    width: 190px;
+    height: 35px;
+    font-family: 'Poppins';
+}
+.txt{
+    right: 0;
+    position: absolute;    
+}
+.txt textarea{
+    text-align: justify;
+    position: relative;
+    width: 443px;
+    height: 470px;
+    right: 165px;
+    bottom: 100px;
+    border: none;
+    background-color: #E4E8F0;
+    font-family: 'Poppins';
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+/* Configuraciones de la Interface del Dashboard */
