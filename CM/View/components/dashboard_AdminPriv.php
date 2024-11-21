@@ -18,8 +18,8 @@
 
                 <div class="item">
                     <img class="icons" src="../../images/icons/edit.png" alt="">
-                    <h3 style="left: 60px;">Editar Ahora</h3>
-                    <button style="right: 265px;" class="hov" id="hov3" onclick="btn_edit2();"></button>
+                    <h3 style="left: 60px;">Gestionar Ahora</h3>
+                    <button style="right: 310px;" class="hov" id="hov3" onclick="btn_edit2();"></button>
                 </div>
 
                 <div class="item">
@@ -31,7 +31,7 @@
                 <div class="item">
                     <img class="icons" src="../../images/icons/history.png" alt="">
                     <h3 style="left: 60px;">Resumen</h3>
-                    <button style="right: 215px;" class="hov" id="hov4" onclick="btn_history2();"></button>
+                    <button style="right: 310px;" class="hov" id="hov4" onclick="btn_history2();"></button>
                 </div>
 
                 <br>

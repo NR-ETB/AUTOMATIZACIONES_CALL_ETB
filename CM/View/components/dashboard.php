@@ -18,8 +18,8 @@
 
                 <div class="item">
                     <img class="icons" src="../images/icons/edit.png" alt="">
-                    <h3 style="left: 60px;">Editar Ahora</h3>
-                    <button style="right: 265px;" class="hov" id="hov3" onclick="btn_edit();"></button>
+                    <h3 style="left: 60px;">Gestionar Ahora</h3>
+                    <button style="right: 310px;" class="hov" id="hov3" onclick="btn_edit();"></button>
                 </div>
 
                 <div class="item">

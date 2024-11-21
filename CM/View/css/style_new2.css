@@ -849,6 +849,16 @@ textarea{
     left: 175px;
     bottom: 60px;
 }
+.acti button {
+  width: 80px;
+  border: none;
+  background-color: #14C1EA;
+  border-radius: 15px;
+  color: #fff;
+  position: relative;
+  left: 70px;
+  top: 75px;
+}
 /* Añadir Nuevo Rapida */
 
 

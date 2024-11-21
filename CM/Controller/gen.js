@@ -30,6 +30,10 @@ function redit() {
     window.location.href = './editMon.php';
 }
 
+function redit2() {
+    window.location.href = './editMon2.php';
+}
+
 function rnew() {
     window.location.href = './newMon.php';
 }
