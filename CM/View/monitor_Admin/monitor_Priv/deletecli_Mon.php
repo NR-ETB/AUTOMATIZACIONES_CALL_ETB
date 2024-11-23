@@ -184,7 +184,7 @@ if (isset($_GET['delete_id'])) {
                                 echo "<td>
                                     <form action='' method='GET'>
                                         <input type='hidden' name='delete_id' value='" . $fila['id_Cli'] . "' />
-                                        <button type='submit' class='btn-prima' style='right: 0px; bottom: 12px;' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este cliente?\");'>Eliminar</button>
+                                        <button type='submit' class='btn-prima' style='right: 15px; bottom: 12px;' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este cliente?\");'>Eliminar</button>
                                     </form>
                                   </td>";
                                 echo "</tr>"; 

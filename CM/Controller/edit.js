@@ -41,3 +41,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+
+function btn_edi2() {
+    window.location.href = './editMon2.php';
+}
+
+function btn_edi3() {
+    window.location.href = './editMon3.php';
+}

@@ -1,3 +1,73 @@
+<?php
+include('../../Model/conexion.php');
+
+$conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+
+// Verificar conexión
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
+
+// ID del registro a actualizar (suponiendo que se obtiene de un formulario)
+$ontCli = $_GET['ont_Cli'] ?? null; // Aquí capturamos el ont_Cli
+
+// Arreglo para almacenar la consulta SQL y los parámetros
+$setClauses = [];
+$params = [];
+$paramTypes = '';
+
+// Lista de campos que se pueden actualizar
+$updatableFields = [
+    'id_Est', 'id_Seg', 'id_Ges', 
+    'id_Mon', 'id_Med', 'id_Com', 
+    'id_Sub', 'id_Con', 'id_Estf', 
+    'id_Sop', 'id_Niv', 'id_Inte', 
+    'id_Dia', 'id_Rea', 'id_Ubi', 
+    'id_Sum', 'id_Sol', 
+    'slot_Cli', 'cst_Cli', 
+    'pqr_Cli', 'obs_Cli', 'inte_cli',
+    'fechyhorini_Cli', 'fechyhorfin_Cli'
+];
+
+// Verificar qué parámetros están presentes y construir la consulta
+foreach ($updatableFields as $field) {
+    if (isset($_GET[$field]) && !empty($_GET[$field])) {
+        $setClauses[] = "$field = ?";
+        $params[] = $_GET[$field];
+        $paramTypes .= 's'; // Asumimos que todos son strings; ajusta según tus necesidades
+    }
+}
+
+if (!empty($setClauses)) {
+    // Crear la consulta SQL
+    $sql = "UPDATE cliente SET " . implode(", ", $setClauses) . " WHERE ont_Cli = ?";
+    $params[] = $ontCli; // Agregar el ontCli como parámetro para el WHERE
+    $paramTypes .= 's'; // Agregar tipo de dato para el ontCli
+
+    // Preparar la declaración
+    $stmt = $conexion->prepare($sql);
+    if (!$stmt) {
+        die("Error en la preparación de la consulta: " . $conexion->error);
+    }
+
+    // Bindear parámetros
+    $stmt->bind_param($paramTypes, ...$params);
+
+    // Ejecutar la declaración
+    if ($stmt->execute()) {
+        echo "Cliente actualizado exitosamente.";
+    } else {
+        echo "Error al actualizar cliente: " . $stmt->error;
+    }
+
+    // Cerrar la declaración
+    $stmt->close();
+}
+
+// Cerrar la conexión
+$conexion->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,202 +88,31 @@
 <div class="container-general">
 
     <div class="label1">
-        <form action="editMon2.php" method="POST">
-            <div>
-                <?php
-                    include('../../Model/conexion.php');
-
-                    // Consulta para obtener las ubicaciones
-                    $sql = "SELECT id_Ubi, equi_Ubi FROM ubicacion";
-                    $result = $conn->query($sql);
-                ?>
-
+        <form action="editMon2.php" method="POST"> <!-- Cambiado a POST -->
                 <div>
-                    <p>UBICACION</p>
-                    <select name="id_Ubi" id="ubicacion" class="dat2" style="width: 302px;" required>
-                        <option value="">Selecciona...</option>
-                        <?php
-                        if ($result->num_rows > 0) {
-                            // Generar las opciones dinámicamente
-                            while ($row = $result->fetch_assoc()) {
-                                echo '<option value="' . $row['id_Ubi'] . '">' . $row['equi_Ubi'] . '</option>';
-                            }
-                        } else {
-                            echo '<option value="">No hay ubicaciones disponibles</option>';
-                        }
-                        ?>
-                    </select>
+                    <p>ID ONT:</p>
+                    <input id="telefonoInput" class="dat" type="tel" name="ont" placeholder="Ingresa la ID ONT aqui">
                 </div>
 
-                <?php
-                // Cerrar la conexión
-                $conn->close();
-                ?>
-            </div>
-
-            <div class="ini-b" style="right: 600px;">
-                <button class="btn-prima" style="margin-left: 160px;" type="submit">BUSCAR</button>
-            </div>
+                <div class="ini-b">
+                    <button class="btn-prima" type="submit" onclick="searchcli();">BUSCAR</button>
+                </div>
         </form>
     </div>
 
-    <button class="btn-second" type="button" onclick="redit2();">LIMPIAR</button>
+    <button class="btn-second" type="button" onclick="rsearch();">LIMPIAR</button>
 
-    <div style="position: relative; bottom: 100px; display:;">
-        <div class="acti">
-            <button id="downloadPdf" style="display: none;">PDF</button>
-            <button id="exportButton">CVS</button>
-        </div>
-
-        <?php
-            include('../../Model/conexion.php');
-
-            $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
-
-            // Manejo de errores de conexión
-            if ($conexion->connect_error) {
-                die("Error de conexión: " . $conexion->connect_error);
-            }
-
-            // Comprobamos si se ha enviado el formulario con una ubicación seleccionada
-            if (isset($_POST['id_Ubi']) && !empty($_POST['id_Ubi'])) {
-                $id_ubicacion = $_POST['id_Ubi'];
-
-                // Modificamos la consulta para filtrar por la ubicación seleccionada
-                $consulta = "SELECT 
-                    cli.id_Cli,
-                    cli.ont_Cli AS ID_ONT, 
-                    cli.slot_Cli AS SLOT_PUERTO, 
-                    cli.cst_Cli AS CS_TEL, 
-                    ges.nom_Ges AS TIPO_DE_GESTION, 
-                    est.nom_Est AS ESTADO,
-                    dia.nom_Dia AS DIAGNOSTICO,
-                    sop.tip_Sop AS SOPORTE_PREVENTIVO,
-                    sol.tip_Sol AS SOLUCION,
-                    niv.tip_Niv AS NIVEL,
-                    cli.pqr_Cli AS PQR, 
-                    seg.tip_Seg AS SEGUIMIENTO,
-                    rea.tip_Rea AS REAPROVISIONAMIENTO
-                    FROM 
-                        cliente cli
-                    INNER JOIN 
-                        rol ON cli.id_Rol = rol.id_Rol
-                    INNER JOIN 
-                        estado est ON cli.id_Est = est.id_Est
-                    INNER JOIN 
-                        gestion ges ON cli.id_Ges = ges.id_Ges
-                    INNER JOIN 
-                        diagnostico dia ON cli.id_Dia = dia.id_Dia
-                    INNER JOIN 
-                        soporte sop ON cli.id_Sop = sop.id_Sop
-                    INNER JOIN 
-                        solucion sol ON cli.id_Sol = sol.id_Sol
-                    INNER JOIN 
-                        nivel niv ON cli.id_Niv = niv.id_Niv
-                    INNER JOIN 
-                        seguimiento seg ON cli.id_Seg = seg.id_Seg
-                    INNER JOIN 
-                        reaprovisionamiento rea ON cli.id_Rea = rea.id_Rea
-                    WHERE 
-                        cli.id_Ubi = $id_ubicacion"; // Filtrar por la ubicación seleccionada
-
-            } else {
-                // Si no se ha seleccionado ninguna ubicación, obtener todos los clientes
-                $consulta = "SELECT 
-                    cli.id_Cli,
-                    cli.ont_Cli AS ID_ONT, 
-                    cli.slot_Cli AS SLOT_PUERTO, 
-                    cli.cst_Cli AS CS_TEL, 
-                    ges.nom_Ges AS TIPO_DE_GESTION, 
-                    est.nom_Est AS ESTADO,
-                    dia.nom_Dia AS DIAGNOSTICO,
-                    sop.tip_Sop AS SOPORTE_PREVENTIVO,
-                    sol.tip_Sol AS SOLUCION,
-                    niv.tip_Niv AS NIVEL,
-                    cli.pqr_Cli AS PQR, 
-                    seg.tip_Seg AS SEGUIMIENTO,
-                    rea.tip_Rea AS REAPROVISIONAMIENTO
-                    FROM 
-                        cliente cli
-                    INNER JOIN 
-                        rol ON cli.id_Rol = rol.id_Rol
-                    INNER JOIN 
-                        estado est ON cli.id_Est = est.id_Est
-                    INNER JOIN 
-                        gestion ges ON cli.id_Ges = ges.id_Ges
-                    INNER JOIN 
-                        diagnostico dia ON cli.id_Dia = dia.id_Dia
-                    INNER JOIN 
-                        soporte sop ON cli.id_Sop = sop.id_Sop
-                    INNER JOIN 
-                        solucion sol ON cli.id_Sol = sol.id_Sol
-                    INNER JOIN 
-                        nivel niv ON cli.id_Niv = niv.id_Niv
-                    INNER JOIN 
-                        seguimiento seg ON cli.id_Seg = seg.id_Seg
-                    INNER JOIN 
-                        reaprovisionamiento rea ON cli.id_Rea = rea.id_Rea";
-            }
-
-            $result = $conexion->query($consulta);
-
-            // Cerrar la conexión
-            $conexion->close();
-        ?>
-
-        <div class="connew-2" id="connew2-2" style="height: 580px; overflow-y: scroll;">
-            <div class="table-product" id="con-sopo-inter">
-                <div class="con-table2">
-                    <table class="table-general table-sopor table-produc" id="dataTable">
-                        <tr>
-                            <th>SELECCION</th>
-                            <th>ID_ONT</th>
-                            <th>SLOT_PUERTO</th>
-                            <th>CS_TEL</th>
-                            <th>TIPO_DE_GESTION</th>
-                            <th>ESTADO</th>
-                            <th>REAPROVISIONAMIENTO</th>
-                            <th>DIAGNOSTICO</th>
-                            <th>SOPORTE_PREVENTIVO</th>
-                            <th>SOLUCION</th>
-                            <th>NIVEL</th>
-                            <th>PQR</th>
-                            <th>SEGUIMIENTO</th>
-                        </tr>
-                        <tbody>
-                            <?php
-                            // Iterar sobre los resultados y mostrar cada fila en la tabla
-                            if ($result->num_rows > 0) {
-                                while ($fila = $result->fetch_assoc()) {
-                                    echo "<tr>"; 
-                                    echo "<td style='padding-left: 35px; padding-top: 5px;'><input type='checkbox' style='width: 20px; height: 20px;' name='seleccionados[]'></td>";  
-                                    echo "<td>" . htmlspecialchars($fila['ID_ONT']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['SLOT_PUERTO']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['CS_TEL']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['TIPO_DE_GESTION']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['ESTADO']) . "</td>"; 
-                                    echo "<td style='width: 200px; min-width: 200px;'>" . htmlspecialchars($fila['REAPROVISIONAMIENTO']) . "</td>"; 
-                                    echo "<td style='width: 200px; min-width: 200px;'>" . htmlspecialchars($fila['DIAGNOSTICO']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['SOPORTE_PREVENTIVO']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['SOLUCION']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['NIVEL']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['PQR']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['SEGUIMIENTO']) . "</td>"; 
-                                    echo "</tr>";                                 
-                                }
-                            } else {
-                                echo "<tr><td colspan='13'>No se encontraron resultados para la búsqueda.</td></tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    <!-- Vinculacion con el JavaScript del Proyecto -->
+    <div>
+        <script src="../bootstrap/jquery.js"></script>
+        <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+        <script src="../../Controller/edit.js"></script>    
+        <script src="../../Controller/gen.js"></script> 
     </div>
 
     <div>
-        <form action="editMon.php" class="label1-2" method="GET">
+
+        <form action="editMon2.php" class="label1-2" method="GET">
 
             <?php
             include('../../Model/conexion.php');
@@ -1393,22 +1292,21 @@
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ont'])) {
                 $ontCli = $_POST['ont']; // Obtener el valor de ont desde el formulario
 
-                // Consulta para obtener el id_Usu actual del cliente
-                $sqlCliente = "SELECT id_Usu FROM cliente WHERE ont_Cli = ?";
+                // Consulta para obtener el valor de inte_Cli del cliente
+                $sqlCliente = "SELECT inte_Cli FROM cliente WHERE ont_Cli = ?";
                 $stmtCliente = $conn->prepare($sqlCliente);
                 $stmtCliente->bind_param("s", $ontCli);
                 $stmtCliente->execute();
                 $resultCliente = $stmtCliente->get_result();
 
-                $idUsuActual = null;
+                $inteValor = '';  // Variable para la cantidad de intentos
+
                 if ($resultCliente->num_rows > 0) {
                     $rowCliente = $resultCliente->fetch_assoc();
-                    $idUsuActual = $rowCliente['id_Usu'];
+                    $inteValor = $rowCliente['inte_Cli']; // Guardar el valor de la cantidad de intentos
                 }
 
-                // Consulta para obtener todos los usuarios
-                $sql = "SELECT id_Usu, nom_Usu FROM usuario";
-                $result = $conn->query($sql);
+                // Aquí puedes agregar otras consultas para obtener datos adicionales según sea necesario
             } else {
                 // Manejo de error si no se envía el formulario
                 exit;
@@ -1416,22 +1314,8 @@
             ?>
 
             <div class="item-25" style="right: 1230px; position: relative; top: 190px;">
-                <p class="lp2" style="right: 8800px; top: 1000px;">ASESOR CREADOR</p>
-                <select name="id_Usu" id="usu" class="dat2">
-                    <option value="">Selecciona...</option>
-                    <?php
-                    if ($result->num_rows > 0) {
-                        // Generar las opciones dinámicamente
-                        while ($row = $result->fetch_assoc()) {
-                            // Marcar la opción como seleccionada si coincide con el id_Usu actual
-                            $selected = ($row['id_Usu'] == $idUsuActual) ? 'selected' : '';
-                            echo '<option value="' . $row['id_Usu'] . '" ' . $selected . '>' . $row['nom_Usu'] . '</option>';
-                        }
-                    } else {
-                        echo '<option value="">No hay opciones disponibles</option>';
-                    }
-                    ?>
-                </select>
+                <p class="lp2" style="right: 8780px; top: 1000px;">CANTIDAD REAL DE INTENTOS</p>
+                <input name="inte_Cli" id="inte" class="dat2" value="<?php echo htmlspecialchars($inteValor); ?>">
             </div>
 
             <?php
@@ -1440,13 +1324,9 @@
             $conn->close();
             ?>
 
-        </form>
-    </div>
+            </form>
 
-    <script src="../bootstrap/jquery.js"></script>
-    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../../Controller/edit.js"></script>    
-    <script src="../../Controller/gen.js"></script> 
+    </div>
 
 </div>
 

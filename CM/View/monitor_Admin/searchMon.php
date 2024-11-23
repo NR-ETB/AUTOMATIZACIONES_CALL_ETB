@@ -127,7 +127,6 @@
 // Verificar si se ha enviado una ont para la búsqueda
 if (isset($_GET['ont'])) {
     $ont = filter_var($_GET['ont'], FILTER_SANITIZE_STRING);
-    echo "ONT recibido: " . htmlspecialchars($ont); // Mensaje de depuración
 
     include('../../Model/conexion.php');
 

@@ -31,7 +31,7 @@
                 <div class="item">
                     <img class="icons" src="../../images/icons/history.png" alt="">
                     <h3 style="left: 60px;">Resumen</h3>
-                    <button style="right: 310px;" class="hov" id="hov4" onclick="btn_history2();"></button>
+                    <button style="right: 215px;" class="hov" id="hov4" onclick="btn_history2();"></button>
                 </div>
 
                 <br>
