@@ -112,7 +112,8 @@
                         niv.tip_Niv AS NIVEL,
                         cli.pqr_Cli AS PQR, 
                         seg.tip_Seg AS SEGUIMIENTO,
-                        rea.tip_Rea AS REAPROVISIONAMIENTO
+                        rea.tip_Rea AS REAPROVISIONAMIENTO,
+                        cli.fechyhorini_Cli AS FECH_Y_HORA_INICIO 
                     FROM 
                         cliente cli
                     INNER JOIN 
@@ -141,11 +142,11 @@
             $consulta .= " WHERE cli.slot_Cli = '$slot_seleccionado'";
         }
 
-                        // Filtrar por Ubicación si se ha seleccionado
-                        if (isset($_POST['id_Ubi']) && !empty($_POST['id_Ubi'])) {
-                            $id_ubicacion = $_POST['id_Ubi'];
-                            $consulta .= " WHERE cli.id_Ubi = $id_ubicacion";
-                        }
+        // Filtrar por Ubicación si se ha seleccionado
+        if (isset($_POST['id_Ubi']) && !empty($_POST['id_Ubi'])) {
+            $id_ubicacion = $_POST['id_Ubi'];
+            $consulta .= " WHERE cli.id_Ubi = $id_ubicacion";
+        }
 
         // Ejecutar la consulta
         $result = $conexion->query($consulta);
@@ -173,6 +174,7 @@
                             <th>NIVEL</th>
                             <th>PQR</th>
                             <th>SEGUIMIENTO</th>
+                            <th>FECH_Y_HORA_INICIO</th>
                         </tr>
                         <tbody>
                         <?php
@@ -196,6 +198,7 @@
                                     echo "<td>" . htmlspecialchars($fila['NIVEL']) . "</td>"; 
                                     echo "<td>" . htmlspecialchars($fila['PQR']) . "</td>"; 
                                     echo "<td>" . htmlspecialchars($fila['SEGUIMIENTO']) . "</td>"; 
+                                    echo "<td>" . htmlspecialchars($fila['FECH_Y_HORA_INICIO']) . "</td>";
                                     echo "</tr>";                                 
                                 }
                             } else {
@@ -208,7 +211,7 @@
             </div>
         </div>
 
-    <div class="label1-2">
+    <div class="label1-2" style="height: 690px;">
 
         <?php
             include('../../Model/conexion.php');
@@ -252,19 +255,7 @@
         ?>
 
         <?php
-        include('../../Model/conexion.php');
-
-        // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados']) && isset($_POST['id_Est'])) {
-            // Obtener el nuevo estado y los clientes seleccionados
-            $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
-            $nuevoEstado = $_POST['id_Est']; // ID del nuevo estado
-
-            // Verificar si el nuevo estado está vacío
-            if (empty($nuevoEstado)) {
-                echo "Por favor, selecciona un estado.";
-                exit();
-            }
+            include('../../Model/conexion.php');
 
             // Establecer conexión con la base de datos
             $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
@@ -272,28 +263,45 @@
                 die("Conexión fallida: " . $conexion->connect_error);
             }
 
-            // Actualizar el estado de los clientes seleccionados
-            $sqlUpdate = "UPDATE cliente SET id_Est = ? WHERE id_Cli = ?";
-            $stmtUpdate = $conexion->prepare($sqlUpdate);
+            // Verificar si el formulario fue enviado
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados'])) {
+                $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
 
-            if ($stmtUpdate) {
-                // Iterar sobre los clientes seleccionados y actualizar su estado
-                foreach ($clientesSeleccionados as $idCliente) {
-                    $stmtUpdate->bind_param("is", $nuevoEstado, $idCliente); // 'i' para integer, 's' para string
-                    $stmtUpdate->execute();
-                }
+                // Verificar si se seleccionó un nuevo estado
+                if (isset($_POST['id_Est']) && !empty($_POST['id_Est'])) {
+                    $nuevoEstado = $_POST['id_Est']; // ID del nuevo estado
 
-                // Verificar si la actualización fue exitosa
-                if ($stmtUpdate->affected_rows > 0) {
-                
+                    // Verificar si el nuevo estado existe en la tabla 'estado'
+                    $sqlEstado = "SELECT id_Est FROM estado WHERE id_Est = ?";
+                    $stmtEstado = $conexion->prepare($sqlEstado);
+                    $stmtEstado->bind_param("i", $nuevoEstado); // 'i' para integer
+                    $stmtEstado->execute();
+                    $resultEstado = $stmtEstado->get_result();
+
+                    // Si el estado no existe, mostramos un mensaje de error y no hacemos el update
+                    if ($resultEstado->num_rows == 0) {
+                        echo "El nuevo estado seleccionado no existe. Por favor, selecciona un estado válido.";
+                        exit; // Detenemos la ejecución del script
+                    }
+
+                    // Actualizar el estado de los clientes seleccionados solo si el estado existe
+                    $sqlUpdate = "UPDATE cliente SET id_Est = ? WHERE id_Cli = ?";
+                    $stmtUpdate = $conexion->prepare($sqlUpdate);
+
+                    if ($stmtUpdate) {
+                        foreach ($clientesSeleccionados as $idCliente) {
+                            $stmtUpdate->bind_param("ii", $nuevoEstado, $idCliente); // 'ii' para integer
+                            $stmtUpdate->execute();
+                        }
+
+                        $stmtUpdate->close();
+                    }
+
+                    $stmtEstado->close();
                 } else {
-        
+                    // echo "No se seleccionó un nuevo estado.";
                 }
-
-                $stmtUpdate->close();
             }
-            
-        }
         ?>
 
             <div class="item-1">
@@ -369,40 +377,51 @@
         ?>
 
         <?php
-        // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados']) && isset($_POST['id_Seg'])) {
-            // Obtener el nuevo seguimiento y los clientes seleccionados
-            $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
-            $nuevoSeguimiento = $_POST['id_Seg']; // ID del nuevo seguimiento
-
-            // Verificar si el nuevo seguimiento está vacío
-            if (empty($nuevoSeguimiento)) {
-                echo "Por favor, selecciona un seguimiento.";
-                exit();
+            // Establecer conexión con la base de datos
+            $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+            if ($conexion->connect_error) {
+                die("Conexión fallida: " . $conexion->connect_error);
             }
 
-            // Actualizar el seguimiento de los clientes seleccionados
-            $sqlUpdate = "UPDATE cliente SET id_Seg = ? WHERE id_Cli = ?";
-            $stmtUpdate = $conexion->prepare($sqlUpdate);
+            // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados'])) {
+                $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
 
-            if ($stmtUpdate) {
-                // Iterar sobre los clientes seleccionados y actualizar su seguimiento
-                foreach ($clientesSeleccionados as $idCliente) {
-                    $stmtUpdate->bind_param("is", $nuevoSeguimiento, $idCliente); // 'i' para integer, 's' para string
-                    $stmtUpdate->execute();
-                }
+                // Verificar si se seleccionó un nuevo seguimiento
+                if (isset($_POST['id_Seg']) && !empty($_POST['id_Seg'])) {
+                    $nuevoSeguimiento = $_POST['id_Seg']; // ID del nuevo seguimiento
 
-                // Verificar si la actualización fue exitosa
-                if ($stmtUpdate->affected_rows > 0) {
+                    // Verificar si el nuevo seguimiento existe en la tabla 'seguimiento'
+                    $sqlSeguimiento = "SELECT id_Seg FROM seguimiento WHERE id_Seg = ?";
+                    $stmtSeguimiento = $conexion->prepare($sqlSeguimiento);
+                    $stmtSeguimiento->bind_param("i", $nuevoSeguimiento); // 'i' para integer
+                    $stmtSeguimiento->execute();
+                    $resultSeguimiento = $stmtSeguimiento->get_result();
 
+                    // Si el seguimiento no existe, mostramos un mensaje de error y no hacemos el update
+                    if ($resultSeguimiento->num_rows == 0) {
+                        echo "El nuevo seguimiento seleccionado no existe. Por favor, selecciona un seguimiento válido.";
+                        exit; // Detenemos la ejecución del script
+                    }
+
+                    // Actualizar el seguimiento de los clientes seleccionados solo si el seguimiento existe
+                    $sqlUpdate = "UPDATE cliente SET id_Seg = ? WHERE id_Cli = ?";
+                    $stmtUpdate = $conexion->prepare($sqlUpdate);
+
+                    if ($stmtUpdate) {
+                        foreach ($clientesSeleccionados as $idCliente) {
+                            $stmtUpdate->bind_param("ii", $nuevoSeguimiento, $idCliente); // 'ii' para integer
+                            $stmtUpdate->execute();
+                        }
+
+                        $stmtUpdate->close();
+                    }
+
+                    $stmtSeguimiento->close();
                 } else {
-
+                    // echo "No se seleccionó un nuevo seguimiento.";
                 }
-
-                $stmtUpdate->close();
             }
-
-        }
         ?>
 
         <!-- Formulario de selección de Seguimiento -->
@@ -478,40 +497,51 @@
         ?>
 
         <?php
-        // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados']) && isset($_POST['id_Ges'])) {
-            // Obtener la nueva gestión y los clientes seleccionados
-            $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
-            $nuevaGestion = $_POST['id_Ges']; // ID de la nueva gestión
-
-            // Verificar si la nueva gestión está vacía
-            if (empty($nuevaGestion)) {
-                echo "Por favor, selecciona una gestión.";
-                exit();
+            // Establecer conexión con la base de datos
+            $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+            if ($conexion->connect_error) {
+                die("Conexión fallida: " . $conexion->connect_error);
             }
 
-            // Actualizar la gestión de los clientes seleccionados
-            $sqlUpdate = "UPDATE cliente SET id_Ges = ? WHERE id_Cli = ?";
-            $stmtUpdate = $conexion->prepare($sqlUpdate);
+            // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados'])) {
+                $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
 
-            if ($stmtUpdate) {
-                // Iterar sobre los clientes seleccionados y actualizar su gestión
-                foreach ($clientesSeleccionados as $idCliente) {
-                    $stmtUpdate->bind_param("is", $nuevaGestion, $idCliente); // 'i' para integer, 's' para string
-                    $stmtUpdate->execute();
-                }
+                // Verificar si se seleccionó una nueva gestión
+                if (isset($_POST['id_Ges']) && !empty($_POST['id_Ges'])) {
+                    $nuevaGestion = $_POST['id_Ges']; // ID de la nueva gestión
 
-                // Verificar si la actualización fue exitosa
-                if ($stmtUpdate->affected_rows > 0) {
+                    // Verificar si la gestión seleccionada existe en la tabla 'gestion'
+                    $sqlGestion = "SELECT id_Ges FROM gestion WHERE id_Ges = ?";
+                    $stmtGestion = $conexion->prepare($sqlGestion);
+                    $stmtGestion->bind_param("i", $nuevaGestion); // 'i' para integer
+                    $stmtGestion->execute();
+                    $resultGestion = $stmtGestion->get_result();
 
+                    // Si la gestión no existe, mostramos un mensaje de error y no hacemos el update
+                    if ($resultGestion->num_rows == 0) {
+                        echo "La gestión seleccionada no existe. Por favor, selecciona una gestión válida.";
+                        exit; // Detenemos la ejecución del script
+                    }
+
+                    // Actualizar la gestión de los clientes seleccionados solo si la gestión existe
+                    $sqlUpdate = "UPDATE cliente SET id_Ges = ? WHERE id_Cli = ?";
+                    $stmtUpdate = $conexion->prepare($sqlUpdate);
+
+                    if ($stmtUpdate) {
+                        foreach ($clientesSeleccionados as $idCliente) {
+                            $stmtUpdate->bind_param("ii", $nuevaGestion, $idCliente); // 'ii' para integer
+                            $stmtUpdate->execute();
+                        }
+
+                        $stmtUpdate->close();
+                    }
+
+                    $stmtGestion->close();
                 } else {
-
+                    // echo "No se seleccionó una nueva gestión.";
                 }
-
-                $stmtUpdate->close();
             }
-
-        }
         ?>
 
         <!-- Formulario de selección de Gestión -->
@@ -583,52 +613,48 @@
             $stmtPqr->close();
         }
 
-        // Consulta para obtener todos los estados disponibles
-        $sql = "SELECT id_Est, nom_Est FROM estado";
-        $result = $conexion->query($sql);
-
         ?>
 
         <?php
-        // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pqr_Cli']) && isset($_POST['seleccionados'])) {
-            // Obtener el nuevo valor de pqr_Cli y los clientes seleccionados
-            $nuevoPqr = $_POST['pqr_Cli']; // Nuevo valor de pqr_Cli
-            $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
+            // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pqr_Cli']) && isset($_POST['seleccionados'])) {
+                // Obtener el nuevo valor de pqr_Cli y los clientes seleccionados
+                $nuevoPqr = $_POST['pqr_Cli']; // Nuevo valor de pqr_Cli
+                $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
 
-            // Verificar si el campo pqr_Cli no está vacío
-            if (empty($nuevoPqr)) {
-                echo "Por favor, ingresa un PQR.";
-                exit();
-            }
-
-            // Establecer conexión con la base de datos
-            $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
-            if ($conexion->connect_error) {
-                die("Conexión fallida: " . $conexion->connect_error);
-            }
-
-            // Actualizar el valor de pqr_Cli para los clientes seleccionados
-            $sqlUpdatePqr = "UPDATE cliente SET pqr_Cli = ? WHERE id_Cli = ?";
-            $stmtUpdatePqr = $conexion->prepare($sqlUpdatePqr);
-
-            if ($stmtUpdatePqr) {
-                foreach ($clientesSeleccionados as $idCliente) {
-                    $stmtUpdatePqr->bind_param("ss", $nuevoPqr, $idCliente); // 'ss' para string
-                    $stmtUpdatePqr->execute();
+                // Establecer conexión con la base de datos
+                $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+                
+                // Verificar la conexión
+                if ($conexion->connect_error) {
+                    die("Conexión fallida: " . $conexion->connect_error);
                 }
 
-                // Verificar si la actualización fue exitosa
-                if ($stmtUpdatePqr->affected_rows > 0) {
+                // Verificar si el nuevo valor de pqr_Cli existe en la tabla correspondiente
+                $sqlPqr = "SELECT pqr_Cli FROM cliente WHERE id_Cli = ?";
+                $stmtPqr = $conexion->prepare($sqlPqr);
+                $stmtPqr->bind_param("i", $nuevoPqr); // 'i' para integer
+                $stmtPqr->execute();
+                $resultPqr = $stmtPqr->get_result();
 
+                // Crear una consulta para actualizar el valor de pqr_Cli para todos los clientes seleccionados
+                $sqlUpdatePqr = "UPDATE cliente SET pqr_Cli = ? WHERE id_Cli = ?";
+
+                if ($stmtUpdatePqr = $conexion->prepare($sqlUpdatePqr)) {
+                    // Iterar sobre los clientes seleccionados y actualizar su pqr_Cli
+                    foreach ($clientesSeleccionados as $idCliente) {
+                        // Asegurarse de que $idCliente es un entero, y $nuevoPqr es una cadena
+                        $stmtUpdatePqr->bind_param("si", $nuevoPqr, $idCliente); // 's' para string, 'i' para integer
+                        $stmtUpdatePqr->execute();
+                    }
+
+                    // Cerrar la declaración
+                    $stmtUpdatePqr->close();
                 } else {
-
+                    // En caso de error en la preparación de la consulta
+                    // echo "Error al preparar la consulta: " . $conexion->error;
                 }
-
-                $stmtUpdatePqr->close();
             }
-
-        }
         ?>
 
         <div class="item-4">
@@ -685,40 +711,57 @@
         ?>
 
         <?php
-        // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados']) && isset($_POST['id_Niv'])) {
-            // Obtener el nuevo nivel y los clientes seleccionados
-            $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
-            $nuevoNivel = $_POST['id_Niv']; // ID del nuevo nivel
+        include('../../Model/conexion.php');
 
-            // Verificar si el nuevo nivel está vacío
-            if (empty($nuevoNivel)) {
-                echo "Por favor, selecciona un nivel.";
-                exit();
-            }
-
-            // Actualizar el nivel de los clientes seleccionados
-            $sqlUpdate = "UPDATE cliente SET id_Niv = ? WHERE id_Cli = ?";
-            $stmtUpdate = $conexion->prepare($sqlUpdate);
-
-            if ($stmtUpdate) {
-                // Iterar sobre los clientes seleccionados y actualizar su nivel
-                foreach ($clientesSeleccionados as $idCliente) {
-                    $stmtUpdate->bind_param("is", $nuevoNivel, $idCliente); // 'i' para integer, 's' para string
-                    $stmtUpdate->execute();
-                }
-
-                // Verificar si la actualización fue exitosa
-                if ($stmtUpdate->affected_rows > 0) {
-
-                } else {
-
-                }
-
-                $stmtUpdate->close();
-            }
-
+        // Establecer conexión con la base de datos
+        $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+        if ($conexion->connect_error) {
+            die("Conexión fallida: " . $conexion->connect_error);
         }
+
+        // Verificar si el formulario fue enviado
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados'])) {
+            $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
+
+            // Verificar si se seleccionó un nuevo nivel
+            if (isset($_POST['id_Niv']) && !empty($_POST['id_Niv'])) {
+                $nuevoNivel = $_POST['id_Niv']; // ID del nuevo nivel
+
+                // Verificar si el nuevo nivel existe en la tabla 'nivel'
+                $sqlNivel = "SELECT id_Niv FROM nivel WHERE id_Niv = ?";
+                $stmtNivel = $conexion->prepare($sqlNivel);
+                $stmtNivel->bind_param("i", $nuevoNivel); // 'i' para integer
+                $stmtNivel->execute();
+                $resultNivel = $stmtNivel->get_result();
+
+                // Si el nivel existe, actualizamos el nivel de los clientes seleccionados
+                $clientesSeleccionados = implode(',', array_map('intval', $clientesSeleccionados)); // Asegura que todos los IDs sean enteros
+                $sqlUpdate = "UPDATE cliente SET id_Niv = ? WHERE id_Cli IN ($clientesSeleccionados)";
+                $stmtUpdate = $conexion->prepare($sqlUpdate);
+
+                if ($stmtUpdate) {
+                    $stmtUpdate->bind_param("i", $nuevoNivel);
+                    $stmtUpdate->execute();
+
+                    if ($stmtUpdate->affected_rows > 0) {
+                        // echo "Se han actualizado los niveles de " . $stmtUpdate->affected_rows . " clientes.";
+                    } else {
+                        // echo "No se realizaron cambios en los clientes seleccionados.";
+                    }
+
+                    $stmtUpdate->close();
+                } else {
+                    // echo "Error al preparar la consulta de actualización.";
+                }
+
+                $stmtNivel->close();
+            } else {
+            // echo "No se seleccionó un nuevo nivel.";
+            }
+        } else {
+            // echo "No se seleccionaron clientes.";
+        }
+
         ?>
 
         <!-- Formulario de selección de Nivel -->
@@ -793,39 +836,55 @@
         ?>
 
         <?php
-        // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados']) && isset($_POST['id_Dia'])) {
-            // Obtener el nuevo diagnóstico y los clientes seleccionados
+        include('../../Model/conexion.php');
+
+        // Establecer conexión con la base de datos
+        $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+        if ($conexion->connect_error) {
+            die("Conexión fallida: " . $conexion->connect_error);
+        }
+
+        // Verificar si el formulario fue enviado
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados'])) {
             $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
-            $nuevoDiagnostico = $_POST['id_Dia']; // ID del nuevo diagnóstico
 
-            // Verificar si el nuevo diagnóstico está vacío
-            if (empty($nuevoDiagnostico)) {
-                echo "Por favor, selecciona un diagnóstico.";
-                exit();
-            }
+            // Verificar si se seleccionó un nuevo diagnóstico
+            if (isset($_POST['id_Dia']) && !empty($_POST['id_Dia'])) {
+                $nuevoDiagnostico = $_POST['id_Dia']; // ID del nuevo diagnóstico
 
-            // Actualizar el diagnóstico de los clientes seleccionados
-            $sqlUpdate = "UPDATE cliente SET id_Dia = ? WHERE id_Cli = ?";
-            $stmtUpdate = $conexion->prepare($sqlUpdate);
+                // Verificar si el nuevo diagnóstico existe en la tabla 'diagnostico'
+                $sqlDiagnostico = "SELECT id_Dia FROM diagnostico WHERE id_Dia = ?";
+                $stmtDiagnostico = $conexion->prepare($sqlDiagnostico);
+                $stmtDiagnostico->bind_param("i", $nuevoDiagnostico); // 'i' para integer
+                $stmtDiagnostico->execute();
+                $resultDiagnostico = $stmtDiagnostico->get_result();
 
-            if ($stmtUpdate) {
-                // Iterar sobre los clientes seleccionados y actualizar su diagnóstico
-                foreach ($clientesSeleccionados as $idCliente) {
-                    $stmtUpdate->bind_param("is", $nuevoDiagnostico, $idCliente); // 'i' para integer, 's' para string
+                // Si el diagnóstico existe, actualizamos el diagnóstico de los clientes seleccionados
+                $clientesSeleccionados = implode(',', array_map('intval', $clientesSeleccionados)); // Asegura que todos los IDs sean enteros
+                $sqlUpdate = "UPDATE cliente SET id_Dia = ? WHERE id_Cli IN ($clientesSeleccionados)";
+                $stmtUpdate = $conexion->prepare($sqlUpdate);
+
+                if ($stmtUpdate) {
+                    $stmtUpdate->bind_param("i", $nuevoDiagnostico);
                     $stmtUpdate->execute();
-                }
 
-                // Verificar si la actualización fue exitosa
-                if ($stmtUpdate->affected_rows > 0) {
+                    if ($stmtUpdate->affected_rows > 0) {
+                        // echo "Se han actualizado los diagnósticos de " . $stmtUpdate->affected_rows . " clientes.";
+                    } else {
+                        // echo "No se realizaron cambios en los clientes seleccionados.";
+                    }
 
+                    $stmtUpdate->close();
                 } else {
-
+                    // echo "Error al preparar la consulta de actualización.";
                 }
 
-                $stmtUpdate->close();
+                $stmtDiagnostico->close();
+            } else {
+                // echo "No se seleccionó un nuevo diagnóstico.";
             }
-
+        } else {
+            // echo "No se seleccionaron clientes.";
         }
         ?>
 
@@ -902,40 +961,57 @@
         ?>
 
         <?php
-        // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados']) && isset($_POST['id_Rea'])) {
-            // Obtener el nuevo reaprovisionamiento y los clientes seleccionados
-            $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
-            $nuevoReaprovisionamiento = $_POST['id_Rea']; // ID del nuevo reaprovisionamiento
+        include('../../Model/conexion.php');
 
-            // Verificar si el nuevo reaprovisionamiento está vacío
-            if (empty($nuevoReaprovisionamiento)) {
-                echo "Por favor, selecciona un reaprovisionamiento.";
-                exit();
-            }
-
-            // Actualizar el reaprovisionamiento de los clientes seleccionados
-            $sqlUpdate = "UPDATE cliente SET id_Rea = ? WHERE id_Cli = ?";
-            $stmtUpdate = $conexion->prepare($sqlUpdate);
-
-            if ($stmtUpdate) {
-                // Iterar sobre los clientes seleccionados y actualizar su reaprovisionamiento
-                foreach ($clientesSeleccionados as $idCliente) {
-                    $stmtUpdate->bind_param("is", $nuevoReaprovisionamiento, $idCliente); // 'i' para integer, 's' para string
-                    $stmtUpdate->execute();
-                }
-
-                // Verificar si la actualización fue exitosa
-                if ($stmtUpdate->affected_rows > 0) {
-
-                } else {
-
-                }
-
-                $stmtUpdate->close();
-            }
-
+        // Establecer conexión con la base de datos
+        $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+        if ($conexion->connect_error) {
+            die("Conexión fallida: " . $conexion->connect_error);
         }
+
+        // Verificar si el formulario fue enviado
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados'])) {
+            $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
+
+            // Verificar si se seleccionó un nuevo reaprovisionamiento
+            if (isset($_POST['id_Rea']) && !empty($_POST['id_Rea'])) {
+                $nuevoReaprovisionamiento = $_POST['id_Rea']; // ID del nuevo reaprovisionamiento
+
+                // Verificar si el nuevo reaprovisionamiento existe en la tabla 'reaprovisionamiento'
+                $sqlReaprovisionamiento = "SELECT id_Rea FROM reaprovisionamiento WHERE id_Rea = ?";
+                $stmtReaprovisionamiento = $conexion->prepare($sqlReaprovisionamiento);
+                $stmtReaprovisionamiento->bind_param("i", $nuevoReaprovisionamiento); // 'i' para integer
+                $stmtReaprovisionamiento->execute();
+                $resultReaprovisionamiento = $stmtReaprovisionamiento->get_result();
+
+                // Si el reaprovisionamiento existe, actualizamos el reaprovisionamiento de los clientes seleccionados
+                $clientesSeleccionados = implode(',', array_map('intval', $clientesSeleccionados)); // Asegura que todos los IDs sean enteros
+                $sqlUpdate = "UPDATE cliente SET id_Rea = ? WHERE id_Cli IN ($clientesSeleccionados)";
+                $stmtUpdate = $conexion->prepare($sqlUpdate);
+
+                if ($stmtUpdate) {
+                    $stmtUpdate->bind_param("i", $nuevoReaprovisionamiento);
+                    $stmtUpdate->execute();
+
+                    if ($stmtUpdate->affected_rows > 0) {
+                        // echo "Se han actualizado los reaprovisionamientos de " . $stmtUpdate->affected_rows . " clientes.";
+                    } else {
+                        // echo "No se realizaron cambios en los clientes seleccionados.";
+                    }
+
+                    $stmtUpdate->close();
+                } else {
+                    // echo "Error al preparar la consulta de actualización.";
+                }
+
+                $stmtReaprovisionamiento->close();
+            } else {
+                // echo "No se seleccionó un nuevo reaprovisionamiento.";
+            }
+        } else {
+            // echo "No se seleccionaron clientes.";
+        }
+
         ?>
 
         <!-- Formulario de selección de Reaprovisionamiento -->
@@ -1010,39 +1086,46 @@
         ?>
 
         <?php
-        // Verificar si se ha enviado el formulario y si los campos necesarios están presentes
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados']) && isset($_POST['id_Sol'])) {
-            // Obtener la nueva solución y los clientes seleccionados
+        include('../../Model/conexion.php');
+
+        // Establecer conexión con la base de datos
+        $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+        if ($conexion->connect_error) {
+            die("Conexión fallida: " . $conexion->connect_error);
+        }
+
+        // Verificar si el formulario fue enviado y si se seleccionaron clientes
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados'])) {
             $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
-            $nuevaSolucion = $_POST['id_Sol']; // ID de la nueva solución
 
-            // Verificar si la nueva solución está vacía
-            if (empty($nuevaSolucion)) {
-                echo "Por favor, selecciona una solución.";
-                exit();
-            }
+            // Verificar si se seleccionó una nueva solución
+            if (isset($_POST['id_Sol']) && !empty($_POST['id_Sol'])) {
+                $nuevaSolucion = $_POST['id_Sol']; // ID de la nueva solución
 
-            // Actualizar la solución de los clientes seleccionados
-            $sqlUpdate = "UPDATE cliente SET id_Sol = ? WHERE id_Cli = ?";
-            $stmtUpdate = $conexion->prepare($sqlUpdate);
+                // Verificar si la nueva solución existe en la tabla 'solucion'
+                $sqlSolucion = "SELECT id_Sol FROM solucion WHERE id_Sol = ?";
+                $stmtSolucion = $conexion->prepare($sqlSolucion);
+                $stmtSolucion->bind_param("i", $nuevaSolucion); // 'i' para integer
+                $stmtSolucion->execute();
+                $resultSolucion = $stmtSolucion->get_result();
 
-            if ($stmtUpdate) {
-                // Iterar sobre los clientes seleccionados y actualizar su solución
-                foreach ($clientesSeleccionados as $idCliente) {
-                    $stmtUpdate->bind_param("is", $nuevaSolucion, $idCliente); // 'i' para integer, 's' para string
-                    $stmtUpdate->execute();
+                // Actualizar la solución de los clientes seleccionados solo si la solución existe
+                $sqlUpdate = "UPDATE cliente SET id_Sol = ? WHERE id_Cli = ?";
+                $stmtUpdate = $conexion->prepare($sqlUpdate);
+
+                if ($stmtUpdate) {
+                    foreach ($clientesSeleccionados as $idCliente) {
+                        $stmtUpdate->bind_param("ii", $nuevaSolucion, $idCliente); // 'ii' para integer
+                        $stmtUpdate->execute();
+                    }
+
+                    $stmtUpdate->close();
                 }
 
-                // Verificar si la actualización fue exitosa
-                if ($stmtUpdate->affected_rows > 0) {
-
-                } else {
-
-                }
-
-                $stmtUpdate->close();
+                $stmtSolucion->close();
+            } else {
+                // echo "No se seleccionó una solución válida.";
             }
-
         }
         ?>
 
@@ -1077,7 +1160,75 @@
         $conexion->close();
         ?>
 
-        <button class="btn-five2" type="submit" style="margin-top: 850px; margin-left: 40px; width: 1245px; position: absolute;">EDITAR</button>
+        <?php
+        // Incluir la conexión a la base de datos
+        include('../../Model/conexion.php');
+
+        // Establecer conexión con la base de datos
+        $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+        if ($conexion->connect_error) {
+            die("Conexión fallida: " . $conexion->connect_error);
+        }
+
+        // Verificar si el formulario fue enviado y si se seleccionaron clientes
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['seleccionados'])) {
+            $clientesSeleccionados = $_POST['seleccionados']; // Array de ids de clientes
+
+            // Verificar que al menos un cliente ha sido seleccionado
+            if (!empty($clientesSeleccionados)) {
+
+                // Sentencia SQL para actualizar la fecha y hora de inicio para todos los clientes seleccionados
+                $sqlUpdate = "UPDATE cliente SET fechyhorini_Cli = NOW() WHERE id_Cli = ?";
+
+                // Preparar la consulta
+                $stmtUpdate = $conexion->prepare($sqlUpdate);
+                if ($stmtUpdate) {
+                    // Iterar sobre los clientes seleccionados y actualizar la fecha y hora
+                    foreach ($clientesSeleccionados as $idCliente) {
+                        // Vinculamos el parámetro 'i' para el idCliente
+                        $stmtUpdate->bind_param("i", $idCliente);  // Solo se pasa el idCliente, ya que NOW() es gestionado por MySQL
+
+                        // Ejecutamos la consulta para cada cliente
+                        if ($stmtUpdate->execute()) {
+                            // echo "La fecha y hora de inicio se ha registrado correctamente para el cliente con id: $idCliente.<br>";
+                        } else {
+                            // echo "Error al registrar la fecha y hora para el cliente con id: $idCliente. " . $stmtUpdate->error . "<br>";
+                        }
+                    }
+
+                    // Cerrar la declaración
+                    $stmtUpdate->close();
+                } else {
+                    echo "Error al preparar la consulta: " . $conexion->error;
+                }
+            } else {
+                // echo "No se han seleccionado clientes.";
+            }
+        } else {
+            // echo "No se recibieron datos del formulario.";
+        }
+
+        ?>
+
+        <div class="item-9" style="right: 1230px; position: relative; top: 160px;">
+            <p class="lp2" style="right: 2055px; top: 180px;">OBSERVACIONES</p>
+            <textarea class="dat2" name="obs_Cli" id="observaciones" placeholder="Escribe tus observaciones aquí..."></textarea>
+        </div>
+
+        <?php
+        // Cerrar la declaración y la conexión
+        if (isset($stmtCliente)) {
+            $stmtCliente->close();
+        }
+        $conexion->close();
+        ?>
+
+        <div class="item-92" style="right: 1230px; position: relative; top: 190px;">
+            <p class="lp2" style="right: 2055px; top: 150px;">FECHA Y HORA INICIO</p>
+            <input class="dat2" type="datetime-local" name="fechyhorini_Cli" id="fecha_hora_inicio">
+        </div>
+
+        <button class="btn-five2" type="submit" style="margin-top: 1270px; margin-left: 40px; width: 1245px; position: absolute;">EDITAR</button>
 
     </div>
 

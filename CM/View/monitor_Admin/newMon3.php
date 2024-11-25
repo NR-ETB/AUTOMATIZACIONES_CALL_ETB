@@ -18,7 +18,8 @@
 <div class="container-general">
 
     <div>
-        
+        <img src="../" alt="">
+        <p></p>
     </div>
 
 </div>

@@ -49,3 +49,27 @@ function btn_edi2() {
 function btn_edi3() {
     window.location.href = './editMon3.php';
 }
+
+// Función para formatear la fecha y hora en el formato adecuado (yyyy-MM-ddThh:mm)
+function setFechaHoraActual() {
+  // Obtener la fecha y hora actuales
+  var fechaActual = new Date();
+
+  // Obtener el año, mes, día, horas y minutos
+  var year = fechaActual.getFullYear();
+  var month = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript son 0-indexados
+  var day = String(fechaActual.getDate()).padStart(2, '0');
+  var hour = String(fechaActual.getHours()).padStart(2, '0');
+  var minute = String(fechaActual.getMinutes()).padStart(2, '0');
+
+  // Formatear la fecha y hora como yyyy-MM-ddThh:mm
+  var fechaHoraFormateada = year + '-' + month + '-' + day + 'T' + hour + ':' + minute;
+
+  // Asignar el valor al campo datetime-local
+  document.getElementById('fecha_hora_inicio').value = fechaHoraFormateada;
+}
+
+// Llamar a la función cuando la página cargue
+window.onload = function() {
+  setFechaHoraActual();
+};
