@@ -59,7 +59,7 @@ function btn_ne2() {
 }
 
 function btn_ne3() {
-    window.location.href = './newMon3.php';
+    window.location.href = './monitor_Priv/newdb_Mon.php';
 }
 
 // Función para formatear la fecha y hora en el formato adecuado (yyyy-MM-ddThh:mm)

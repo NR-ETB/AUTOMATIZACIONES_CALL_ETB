@@ -331,21 +331,21 @@ INSERT INTO cliente (
     id_Rol, id_Est, id_Seg, id_Ges,
     id_Mon, id_Med, id_Com, id_Sub, id_Con, id_Estf,
     id_Sop, id_Niv, id_Inte, id_Dia, id_Rea, id_Ubi,
-    id_Sum, id_Sol, ont_Cli, slot_Cli, cst_Cli, pqr_Cli, obs_Cli,
+    id_Sum, id_Sol, ont_Cli, slot_Cli, cst_Cli, pqr_Cli, inte_Cli, obs_Cli,
     fechyhorini_Cli, fechyhorfin_Cli
 ) VALUES
 (
     4, 20001, 30001, 40001,
     50001, 60001, 70001, 80001, 90001, 100001,
     110001, 120001, 130001, 140001, 150001, 160001,
-    170002, 180003, 'ZTEGCF51ADFC','slot_001', 'cst_001', 'pqr_001', 'Observaciones del cliente 1',
+    170002, 180003, 'ZTEGCF51ADFC','slot_001', 'cst_001', 'pqr_001', 6, 'Observaciones del cliente 1',
     NOW(), DATE_ADD(NOW(), INTERVAL 1 HOUR)
 ),
 (
     4, 20001, 30001, 40001,
     50001, 60001, 70001, 80001, 90001, 100001,
     110001, 120001, 130001, 140001, 150001, 160001,
-    170002, 180003, 'ZTEGD1B361C9','slot_002', 'cst_002', 'pqr_002', 'Observaciones del cliente 2',
+    170002, 180003, 'ZTEGD1B361C9','slot_002', 'cst_002', 'pqr_002', 7, 'Observaciones del cliente 2',
     NOW(), DATE_ADD(NOW(), INTERVAL 1 HOUR)
 );
                 

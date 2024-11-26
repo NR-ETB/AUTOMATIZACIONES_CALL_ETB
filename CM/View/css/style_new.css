@@ -1123,3 +1123,15 @@ textarea{
   width: 87.5%;
 }
 /* CSS del calendario del Modal de Agendar */
+
+/* CSS del Modulo para Insersion de DB (Administrador) */
+.uplo{
+  text-align: center;
+  margin-top: 275px;
+}
+.uplo img{
+  height: 250px;
+  width: 250px;
+  cursor: pointer;
+}
+/* CSS del Modulo para Insersion de DB (Administrador) */
