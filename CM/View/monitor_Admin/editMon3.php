@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/comp2.css">
     <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
     <link rel="shortcut icon" href="">
-    <title>Editar Ahora</title>
+    <title>Gestionar Ahora (MASIVO)</title>
 </head>
 <body>
 
@@ -135,17 +135,21 @@
                     INNER JOIN 
                         reaprovisionamiento rea ON cli.id_Rea = rea.id_Rea";
 
+        $checked = '';
+
         // Filtrar por Slot si se ha seleccionado
         if (isset($_POST['id_Slot']) && !empty($_POST['id_Slot'])) {
             $slot_seleccionado = $_POST['id_Slot'];
             // Filtramos por el slot seleccionado
             $consulta .= " WHERE cli.slot_Cli = '$slot_seleccionado'";
+            $checked = 'checked';      
         }
 
         // Filtrar por Ubicación si se ha seleccionado
         if (isset($_POST['id_Ubi']) && !empty($_POST['id_Ubi'])) {
             $id_ubicacion = $_POST['id_Ubi'];
             $consulta .= " WHERE cli.id_Ubi = $id_ubicacion";
+            $checked = 'checked';          
         }
 
         // Ejecutar la consulta
@@ -156,60 +160,59 @@
         ?>
 
 <form id="form_no" method="POST" action="editMon3.php">
-        <div class="connew-2" id="connew2-2" style="height: 580px; overflow-y: scroll;">
-            <div class="table-product" id="con-sopo-inter">
-                <div class="con-table2">
-                    <table class="table-general table-sopor table-produc" id="dataTable">
-                        <tr>
-                            <th>SELECCION</th>
-                            <th>ID_ONT</th>
-                            <th>SLOT_PUERTO</th>
-                            <th>CS_TEL</th>
-                            <th>TIPO_DE_GESTION</th>
-                            <th>ESTADO</th>
-                            <th>REAPROVISIONAMIENTO</th>
-                            <th>DIAGNOSTICO</th>
-                            <th>SOPORTE_PREVENTIVO</th>
-                            <th>SOLUCION</th>
-                            <th>NIVEL</th>
-                            <th>PQR</th>
-                            <th>SEGUIMIENTO</th>
-                            <th>FECH_Y_HORA_INICIO</th>
-                        </tr>
-                        <tbody>
-                        <?php
-                            // Asumiendo que $result contiene los clientes
-                            if ($result->num_rows > 0) {
-                                while ($fila = $result->fetch_assoc()) {
-                                    echo "<tr>"; 
-                                    // Checkbox para cada cliente, asignamos el id_Cli como valor
-                                    echo "<td style='padding-left: 35px; padding-top: 5px;'>
-                                        <input checked type='checkbox' style='height: 25px; width: 25px;' name='seleccionados[]' value='" . $fila['id_Cli'] . "'>
-                                    </td>";  
-                                    echo "<td>" . htmlspecialchars($fila['ID_ONT']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['SLOT_PUERTO']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['CS_TEL']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['TIPO_DE_GESTION']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['ESTADO']) . "</td>"; 
-                                    echo "<td style='width: 200px; min-width: 200px;'>" . htmlspecialchars($fila['REAPROVISIONAMIENTO']) . "</td>"; 
-                                    echo "<td style='width: 200px; min-width: 200px;'>" . htmlspecialchars($fila['DIAGNOSTICO']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['SOPORTE_PREVENTIVO']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['SOLUCION']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['NIVEL']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['PQR']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['SEGUIMIENTO']) . "</td>"; 
-                                    echo "<td>" . htmlspecialchars($fila['FECH_Y_HORA_INICIO']) . "</td>";
-                                    echo "</tr>";                                 
-                                }
-                            } else {
-                                echo "<tr><td colspan='13'>No se encontraron resultados para la búsqueda.</td></tr>";
+    <div class="connew-2" id="connew2-2" style="height: 580px; overflow-y: scroll;">
+        <div class="table-product" id="con-sopo-inter">
+            <div class="con-table2">
+                <table class="table-general table-sopor table-produc" id="dataTable">
+                    <tr>
+                        <th>SELECCION</th>
+                        <th>ID_ONT</th>
+                        <th>SLOT_PUERTO</th>
+                        <th>CS_TEL</th>
+                        <th>TIPO_DE_GESTION</th>
+                        <th>ESTADO</th>
+                        <th>REAPROVISIONAMIENTO</th>
+                        <th>DIAGNOSTICO</th>
+                        <th>SOPORTE_PREVENTIVO</th>
+                        <th>SOLUCION</th>
+                        <th>NIVEL</th>
+                        <th>PQR</th>
+                        <th>SEGUIMIENTO</th>
+                        <th>FECH_Y_HORA_INICIO</th>
+                    </tr>
+                    <tbody>
+                    <?php
+                        // Asumiendo que $result contiene los clientes
+                        if ($result->num_rows > 0) {
+                            while ($fila = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td style='padding-left: 35px; padding-top: 5px;'>
+                                    <input type='checkbox' style='height: 25px; width: 25px;' name='seleccionados[]' value='" . $fila['id_Cli'] . "' $checked>
+                                </td>";
+                                echo "<td>" . htmlspecialchars($fila['ID_ONT']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['SLOT_PUERTO']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['CS_TEL']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['TIPO_DE_GESTION']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['ESTADO']) . "</td>";
+                                echo "<td style='width: 200px; min-width: 200px;'>" . htmlspecialchars($fila['REAPROVISIONAMIENTO']) . "</td>";
+                                echo "<td style='width: 200px; min-width: 200px;'>" . htmlspecialchars($fila['DIAGNOSTICO']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['SOPORTE_PREVENTIVO']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['SOLUCION']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['NIVEL']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['PQR']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['SEGUIMIENTO']) . "</td>";
+                                echo "<td>" . htmlspecialchars($fila['FECH_Y_HORA_INICIO']) . "</td>";
+                                echo "</tr>";
                             }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
+                        } else {
+                            echo "<tr><td colspan='13'>No se encontraron resultados para la búsqueda.</td></tr>";
+                        }
+                    ?>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
 
     <div class="label1-2" style="height: 690px;">
 

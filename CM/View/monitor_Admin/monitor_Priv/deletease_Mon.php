@@ -1,25 +1,27 @@
 <?php
 include('../../../Model/conexion.php');
 
+// Conexión a la base de datos
 $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
 
-// Manejo de errores de conexión
+// Verificar conexión
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
 // Consulta SQL para obtener todos los usuarios
-$consulta = "SELECT
-            usu.id_Usu,
-            r.cat_Rol AS ROL, 
-            usu.nom_Usu AS NOMBRE_COMPLETO, 
-            usu.ema_Usu AS EMAIL, 
-            usu.tel_Usu AS TELEFONO,
-            usu.usu_Usu AS USUARIO_MONITOREO 
-            FROM 
-                usuario usu
-            INNER JOIN 
-            rol r ON usu.id_Rol = r.id_Rol";
+$consulta = "
+    SELECT
+        usu.id_Usu,
+        r.cat_Rol AS ROL, 
+        usu.nom_Usu AS NOMBRE_COMPLETO, 
+        usu.ema_Usu AS EMAIL, 
+        usu.tel_Usu AS TELEFONO,
+        usu.usu_Usu AS USUARIO_MONITOREO 
+    FROM 
+        usuario usu
+    INNER JOIN 
+        rol r ON usu.id_Rol = r.id_Rol";
 
 $result = $conexion->query($consulta);
 
@@ -27,18 +29,23 @@ $result = $conexion->query($consulta);
 if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
 
-    // Consulta DELETE para eliminar al usuario con el ID proporcionado
+    // Preparar la consulta DELETE
     $delete_query = "DELETE FROM usuario WHERE id_Usu = ?";
     $stmt = $conexion->prepare($delete_query);
     $stmt->bind_param("i", $delete_id);
 
+    // Ejecutar y manejar errores
     if ($stmt->execute()) {
-        // Redireccionar o mostrar mensaje de éxito
-        header("Location: " . $_SERVER['PHP_SELF']);
+        // Mostrar mensaje de éxito o redirigir
+        echo "<script>
+                alert('Usuario eliminado correctamente.');
+                window.location.href = '" . $_SERVER['PHP_SELF'] . "';
+              </script>";
         exit();
     } else {
-        
+        echo "<script>alert('Error al eliminar el usuario.');</script>";
     }
+
     $stmt->close();
 }
 ?>
@@ -60,31 +67,72 @@ if (isset($_GET['delete_id'])) {
 
 <div class="container-general">
     <div class="label1">
-        <form action="historyMon.php" method="GET">
+        <form action="deletease_Mon.php" method="GET">
             <div>
-                <p>ID ONT:</p>
-                <input id="telefonoInput" class="dat" type="text" name="ont" placeholder="Ingresa la ID ONT aqui">
+                <p>Numero de Telefono:</p>
+                <input id="telefonoInput" class="dat" type="text" name="tele" placeholder="Ingresa el Numero de Telefono aqui">
             </div>
 
             <div class="ini-b">
-                <button class="btn-prima" type="submit" onclick="tabhys();">BUSCAR</button>
-                <script>
-                    function tabhys() {
-                        $('#modal-loading').modal('toggle');
-                        setTimeout(function() {
-                            $('#modal-loading').modal('hide');
-                            $('#modal_vista').modal('show');
-                        }, 2000);
-                    }
-                </script>
+                <button class="btn-prima" type="submit">BUSCAR</button>
             </div>
         </form>
     </div>
+
+    <button class="btn-second" type="button" onclick="rdase();">LIMPIAR</button>
 
     <div class="acti">
         <button id="downloadPdf" style="display: none;">PDF</button>
         <button id="exportButton">CVS</button>
     </div>
+
+    <?php
+    // Conexión a la base de datos
+    $conexion = new mysqli('localhost', 'root', '', 'monitoreo');
+
+    // Verificar la conexión
+    if ($conexion->connect_error) {
+        die("Error de conexión: " . $conexion->connect_error);
+    }
+
+    // Consulta base
+    $consulta = "
+        SELECT 
+            usu.id_Usu,
+            rol.cat_Rol AS ROL, 
+            usu.nom_Usu AS NOMBRE_COMPLETO,
+            usu.ema_Usu AS EMAIL, 
+            usu.tel_Usu AS TELEFONO, 
+            usu.usu_Usu AS USUARIO_MONITOREO
+        FROM 
+            usuario usu
+        INNER JOIN 
+            rol ON usu.id_Rol = rol.id_Rol";
+
+    // Verificar si se envió el parámetro 'tele'
+    if (isset($_GET['tele']) && !empty($_GET['tele'])) {
+        $telefono = $_GET['tele'];
+        $consulta .= " WHERE usu.tel_Usu = ?";
+        $stmt = $conexion->prepare($consulta);
+
+        if ($stmt === false) {
+            die("Error al preparar la consulta: " . $conexion->error);
+        }
+
+        // Enlazar el parámetro y ejecutar la consulta
+        $stmt->bind_param("s", $telefono);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    } else {
+        $result = $conexion->query($consulta);
+    }
+
+    // Cerrar la conexión
+    if (isset($stmt)) {
+        $stmt->close();
+    }
+    $conexion->close();
+    ?>
 
     <div class="connew-2" id="connew2-2" style="height: 580px; overflow-y: scroll;">
         <div class="table-product" id="con-sopo-inter">
@@ -112,11 +160,10 @@ if (isset($_GET['delete_id'])) {
                                 // Agregar un formulario para cada fila con el ID de usuario
                                 echo "<td>
                                     <form action='' method='GET'>
-                                        <input type='hidden' name='delete_id' value='" . $fila['id_Usu'] . "' />
+                                        <input type='hidden' name='delete_id' value='" . htmlspecialchars($fila['id_Usu']) . "'>
                                         <button type='submit' class='btn-prima' style='right: 0px; bottom: 12px;' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este usuario?\");'>Eliminar</button>
                                     </form>
-                                  </td>";
-                                echo "</tr>"; 
+                                </td>";                            
                             }
                         } else {
                             echo "<tr><td colspan='6'>No se encontraron resultados para la búsqueda.</td></tr>";

@@ -6,5 +6,15 @@ $( document ).ready(function(){
     $('#hov5').css('opacity', '0');
 });
 
+function tabhys() {
+    $('#modal-loading').modal('toggle');
+    setTimeout(function() {
+        $('#modal-loading').modal('hide');
+        $('#modal_vista').modal('show');
+    }, 2000);
+}
+
+
+
 
 

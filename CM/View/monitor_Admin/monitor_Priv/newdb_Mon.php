@@ -24,7 +24,7 @@ $dbname = "monitoreo"; // Nombre de tu base de datos
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
-
+ 
 // Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
@@ -66,8 +66,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['csvFile'])) {
             $pqr_Cli = $conn->real_escape_string($data[21]);
             $inte_Cli = $conn->real_escape_string($data[22]);
             $obs_Cli = $conn->real_escape_string($data[23]);
-            $fechyhorini_Cli = date('Y-m-d H:i:s', strtotime($data[24]));
-            $fechyhorfin_Cli = date('Y-m-d H:i:s', strtotime($data[25]));            
+            // Convertir fechyhorini_Cli
+            $fechyhorini = DateTime::createFromFormat('d/m/Y H:i:s', $data[24]);
+            $fechyhorini_Cli = $fechyhorini ? $fechyhorini->format('Y-m-d H:i:s') : null;
+
+            // Convertir fechyhorfin_Cli
+            $fechyhorfin = DateTime::createFromFormat('d/m/Y H:i:s', $data[25]);
+            $fechyhorfin_Cli = $fechyhorfin ? $fechyhorfin->format('Y-m-d H:i:s') : null;
+       
 
             // Comprobar si las claves foráneas existen
             $sql_check_rol = "SELECT id_Rol FROM rol WHERE id_Rol = '$id_Rol'";

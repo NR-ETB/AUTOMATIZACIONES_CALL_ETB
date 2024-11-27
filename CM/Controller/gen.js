@@ -30,6 +30,18 @@ function redit() {
     window.location.href = './editMon.php';
 }
 
+function rhys() {
+    window.location.href = './historyMon.php';
+}
+
+function rdcli() {
+    window.location.href = './deletecli_Mon.php';
+}
+
+function rdase() {
+    window.location.href = './deletease_Mon.php';
+}
+
 function btn_search2() {
     window.location.href = '../searchMon.php';
 }

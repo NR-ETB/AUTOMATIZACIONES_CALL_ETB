@@ -8,8 +8,8 @@ if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
 
-// ID del registro a actualizar (suponiendo que se obtiene de un formulario)
-$ontCli = $_GET['ont_Cli'] ?? null; // Aquí capturamos el ont_Cli
+// ID del registro a actualizar
+$ontCli = $_GET['ont_Cli'] ?? null;
 
 // Arreglo para almacenar la consulta SQL y los parámetros
 $setClauses = [];
@@ -29,20 +29,53 @@ $updatableFields = [
     'fechyhorini_Cli', 'fechyhorfin_Cli'
 ];
 
+// Convertir las fechas si están presentes
+$fechyhorini_Cli = null;
+$fechyhorfin_Cli = null;
+
+// Si la fecha de inicio está presente, la convertimos
+if (isset($_GET['fechyhorini_Cli']) && !empty($_GET['fechyhorini_Cli'])) {
+    // Fecha en formato Y-m-d\TH:i
+    $fechyhorini = DateTime::createFromFormat('Y-m-d\TH:i', $_GET['fechyhorini_Cli']);
+    if ($fechyhorini) {
+        $fechyhorini_Cli = $fechyhorini->format('Y-m-d H:i:s');  // Convertirla al formato que necesites
+    } else {
+        die("Formato de fecha 'fechyhorini_Cli' incorrecto");
+    }
+}
+
+// Si la fecha de fin está presente, la convertimos
+if (isset($_GET['fechyhorfin_Cli']) && !empty($_GET['fechyhorfin_Cli'])) {
+    // Fecha en formato Y-m-d\TH:i
+    $fechyhorfin = DateTime::createFromFormat('Y-m-d\TH:i', $_GET['fechyhorfin_Cli']);
+    if ($fechyhorfin) {
+        $fechyhorfin_Cli = $fechyhorfin->format('Y-m-d H:i:s');  // Convertirla al formato que necesites
+    } else {
+        die("Formato de fecha 'fechyhorfin_Cli' incorrecto");
+    }
+}
+
 // Verificar qué parámetros están presentes y construir la consulta
 foreach ($updatableFields as $field) {
     if (isset($_GET[$field]) && !empty($_GET[$field])) {
+        // Asegúrate de manejar los valores de fechas correctamente
+        if ($field == 'fechyhorini_Cli') {
+            $params[] = $fechyhorini_Cli;
+        } elseif ($field == 'fechyhorfin_Cli') {
+            $params[] = $fechyhorfin_Cli;
+        } else {
+            $params[] = $_GET[$field];
+        }
         $setClauses[] = "$field = ?";
-        $params[] = $_GET[$field];
-        $paramTypes .= 's'; // Asumimos que todos son strings; ajusta según tus necesidades
+        $paramTypes .= 's'; // Asumimos que todos son strings
     }
 }
 
 if (!empty($setClauses)) {
     // Crear la consulta SQL
     $sql = "UPDATE cliente SET " . implode(", ", $setClauses) . " WHERE ont_Cli = ?";
-    $params[] = $ontCli; // Agregar el ontCli como parámetro para el WHERE
-    $paramTypes .= 's'; // Agregar tipo de dato para el ontCli
+    $params[] = $ontCli; // Para el parámetro ont_Cli
+    $paramTypes .= 's'; // Para el parámetro ont_Cli
 
     // Preparar la declaración
     $stmt = $conexion->prepare($sql);
@@ -55,9 +88,9 @@ if (!empty($setClauses)) {
 
     // Ejecutar la declaración
     if ($stmt->execute()) {
-        echo "Cliente actualizado exitosamente.";
+        // echo "Cliente actualizado exitosamente.";
     } else {
-        echo "Error al actualizar cliente: " . $stmt->error;
+        // echo "Error al actualizar cliente: " . $stmt->error;
     }
 
     // Cerrar la declaración
@@ -77,7 +110,7 @@ $conexion->close();
     <link rel="stylesheet" href="../css/comp2.css">
     <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
     <link rel="shortcut icon" href="">
-    <title>Editar Ahora</title>
+    <title>Gestionar Ahora (INDIVIDUAL)</title>
 </head>
 <body>
 
@@ -1228,6 +1261,12 @@ $conexion->close();
             }
             ?>
 
+            <?php
+            // Suponiendo que ya tienes $fechaHoraInicio y $fechaHoraFin en el formato correcto
+            $fechaHoraInicio = date("Y-m-d\TH:i", strtotime($fechaHoraInicio));
+            $fechaHoraFin = date("Y-m-d\TH:i", strtotime($fechaHoraFin));
+            ?>
+
             <div class="item-22" style="right: 1230px; position: relative; top: 190px;">    
                 <p class="lp2" style="right: 7080px; top: 700px;">FECHA Y HORA INICIO</p>
                 <input class="dat2" type="datetime-local" name="fechyhorini_Cli" id="fecha_hora_inicio" value="<?php echo htmlspecialchars($fechaHoraInicio); ?>">
@@ -1235,7 +1274,7 @@ $conexion->close();
 
             <div class="item-23" style="right: 1230px; position: relative; top: 190px;">
                 <p class="lp2" style="right: 7080px; top: 700px;">FECHA Y HORA FIN</p>
-                <input class="dat2" type="datetime-local" name="fechyhorfin_Cli" id="fecha_hora_fin" value="<?php echo htmlspecialchars($fechaHoraInicio); ?>">
+                <input class="dat2" type="datetime-local" name="fechyhorfin_Cli" id="fecha_hora_fin" value="<?php echo htmlspecialchars($fechaHoraFin); ?>">
             </div>
 
             <?php
