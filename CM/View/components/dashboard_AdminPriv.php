@@ -43,8 +43,7 @@
     </div>
 
     <div class="topbar-container">
-        <div>
-            <h1>Bienvenido al Centro de Monitoreo</h1>
-        </div>
+        <h1>Bienvenido al Centro de Monitoreo</h1>
+        <img onclick="log_outP();" src="../../images/icons/exit.png" alt="">
     </div>
     

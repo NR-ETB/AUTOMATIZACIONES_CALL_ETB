@@ -20,7 +20,7 @@ body{
     overflow-x: hidden;
 }
 .container-general{
-    border: solid 2px red;
+    /* border: solid 2px red; */
     position: relative;
     bottom: 1021px;
     left: 522px;
@@ -237,7 +237,7 @@ select{
   color: #fff;
   position: relative;
   left: 70px;
-  top: 75px;
+  top: 55px;
 }
 .con-table{
     width: 100%;
@@ -375,16 +375,16 @@ select{
 .connew{
     border: none;
     border-radius: 15px;
-    margin: 85px 0 0 60px;
+    margin: 65px 0 0 60px;
     width: 1260px;
     height: 700px;
     box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.2);
-    overflow: hidden; /* Evita que los elementos desborden el contenedor */
+    overflow: hidden;
 }
 .connew-2{
     border: none;
     border-radius: 15px;
-    margin: 85px 0 0 60px;
+    margin: 65px 0 0 60px;
     width: 1260px;
     height: 700px;
     box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.2);

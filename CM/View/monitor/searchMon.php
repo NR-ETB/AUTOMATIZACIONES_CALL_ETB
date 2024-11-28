@@ -56,8 +56,6 @@
                 FROM 
                     cliente cli
                 INNER JOIN 
-                    usuario usu ON cli.id_Usu = usu.id_Usu
-                INNER JOIN 
                     ubicacion ubi ON cli.id_Ubi = ubi.id_Ubi
                 WHERE cli.ont_Cli = ?;";
 
@@ -156,8 +154,6 @@
             cli.obs_Cli AS OBSERVACIONES
             FROM 
                 cliente cli
-            INNER JOIN 
-                usuario usu ON cli.id_Usu = usu.id_Usu
             INNER JOIN 
                 rol ON cli.id_Rol = rol.id_Rol
             INNER JOIN 
@@ -290,6 +286,8 @@
             $conn->close();
         }
         ?>
+    </div>
+    
 
     <!-- Modal Loading -->
     <div class="modal fade modal-loading" tabindex="-1" id="modal-loading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

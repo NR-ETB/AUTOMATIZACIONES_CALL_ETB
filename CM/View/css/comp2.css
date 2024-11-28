@@ -91,8 +91,9 @@ h4{
     left: 522px;
     width: 1400px;
     max-width: 1400px;
-    height: 80px;
-    max-height: 100px;
+    height: 120px;
+    max-height: 150px;
+    display: flex;
 }
 h1{
     font-family: 'Poppins', sans-serif;
@@ -102,7 +103,15 @@ h1{
     color: var(--withe-etb);
     margin-left: 25px;
     position: relative;
-    top: 15px;
+    top: 10px;
+}
+.topbar-container img{
+    width: 55px;
+    height: 55px;
+    position: relative;
+    top: 55px;
+    margin-left: 370px;
+    cursor: pointer;
 }
 /* Configuraciones CSS del topbar del formulario */
 

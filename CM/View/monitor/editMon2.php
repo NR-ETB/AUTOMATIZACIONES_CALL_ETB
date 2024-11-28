@@ -8,8 +8,8 @@ if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
 
-// ID del registro a actualizar (suponiendo que se obtiene de un formulario)
-$ontCli = $_GET['ont_Cli'] ?? null; // Aquí capturamos el ont_Cli
+// ID del registro a actualizar
+$ontCli = $_GET['ont_Cli'] ?? null;
 
 // Arreglo para almacenar la consulta SQL y los parámetros
 $setClauses = [];
@@ -25,24 +25,57 @@ $updatableFields = [
     'id_Dia', 'id_Rea', 'id_Ubi', 
     'id_Sum', 'id_Sol', 
     'slot_Cli', 'cst_Cli', 
-    'pqr_Cli', 'obs_Cli', 
+    'pqr_Cli', 'obs_Cli', 'inte_cli',
     'fechyhorini_Cli', 'fechyhorfin_Cli'
 ];
+
+// Convertir las fechas si están presentes
+$fechyhorini_Cli = null;
+$fechyhorfin_Cli = null;
+
+// Si la fecha de inicio está presente, la convertimos
+if (isset($_GET['fechyhorini_Cli']) && !empty($_GET['fechyhorini_Cli'])) {
+    // Fecha en formato Y-m-d\TH:i
+    $fechyhorini = DateTime::createFromFormat('Y-m-d\TH:i', $_GET['fechyhorini_Cli']);
+    if ($fechyhorini) {
+        $fechyhorini_Cli = $fechyhorini->format('Y-m-d H:i:s');  // Convertirla al formato que necesites
+    } else {
+        die("Formato de fecha 'fechyhorini_Cli' incorrecto");
+    }
+}
+
+// Si la fecha de fin está presente, la convertimos
+if (isset($_GET['fechyhorfin_Cli']) && !empty($_GET['fechyhorfin_Cli'])) {
+    // Fecha en formato Y-m-d\TH:i
+    $fechyhorfin = DateTime::createFromFormat('Y-m-d\TH:i', $_GET['fechyhorfin_Cli']);
+    if ($fechyhorfin) {
+        $fechyhorfin_Cli = $fechyhorfin->format('Y-m-d H:i:s');  // Convertirla al formato que necesites
+    } else {
+        die("Formato de fecha 'fechyhorfin_Cli' incorrecto");
+    }
+}
 
 // Verificar qué parámetros están presentes y construir la consulta
 foreach ($updatableFields as $field) {
     if (isset($_GET[$field]) && !empty($_GET[$field])) {
+        // Asegúrate de manejar los valores de fechas correctamente
+        if ($field == 'fechyhorini_Cli') {
+            $params[] = $fechyhorini_Cli;
+        } elseif ($field == 'fechyhorfin_Cli') {
+            $params[] = $fechyhorfin_Cli;
+        } else {
+            $params[] = $_GET[$field];
+        }
         $setClauses[] = "$field = ?";
-        $params[] = $_GET[$field];
-        $paramTypes .= 's'; // Asumimos que todos son strings; ajusta según tus necesidades
+        $paramTypes .= 's'; // Asumimos que todos son strings
     }
 }
 
 if (!empty($setClauses)) {
     // Crear la consulta SQL
     $sql = "UPDATE cliente SET " . implode(", ", $setClauses) . " WHERE ont_Cli = ?";
-    $params[] = $ontCli; // Agregar el ontCli como parámetro para el WHERE
-    $paramTypes .= 's'; // Agregar tipo de dato para el ontCli
+    $params[] = $ontCli; // Para el parámetro ont_Cli
+    $paramTypes .= 's'; // Para el parámetro ont_Cli
 
     // Preparar la declaración
     $stmt = $conexion->prepare($sql);
@@ -55,9 +88,9 @@ if (!empty($setClauses)) {
 
     // Ejecutar la declaración
     if ($stmt->execute()) {
-        echo "Cliente actualizado exitosamente.";
+        // echo "Cliente actualizado exitosamente.";
     } else {
-        echo "Error al actualizar cliente: " . $stmt->error;
+        // echo "Error al actualizar cliente: " . $stmt->error;
     }
 
     // Cerrar la declaración
@@ -77,7 +110,7 @@ $conexion->close();
     <link rel="stylesheet" href="../css/comp.css">
     <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
     <link rel="shortcut icon" href="">
-    <title>Editar Ahora</title>
+    <title>Gestionar Ahora (INDIVIDUAL)</title>
 </head>
 <body>
 
@@ -88,7 +121,7 @@ $conexion->close();
 <div class="container-general">
 
     <div class="label1">
-        <form action="editMon.php" method="POST"> <!-- Cambiado a POST -->
+        <form action="editMon2.php" method="POST"> <!-- Cambiado a POST -->
                 <div>
                     <p>ID ONT:</p>
                     <input id="telefonoInput" class="dat" type="tel" name="ont" placeholder="Ingresa la ID ONT aqui">
@@ -112,7 +145,7 @@ $conexion->close();
 
     <div>
 
-        <form action="editMon.php" class="label1-2" method="GET">
+        <form action="editMon2.php" class="label1-2" method="GET">
 
             <?php
             include('../../Model/conexion.php');
@@ -1228,6 +1261,12 @@ $conexion->close();
             }
             ?>
 
+            <?php
+            // Suponiendo que ya tienes $fechaHoraInicio y $fechaHoraFin en el formato correcto
+            $fechaHoraInicio = date("Y-m-d\TH:i", strtotime($fechaHoraInicio));
+            $fechaHoraFin = date("Y-m-d\TH:i", strtotime($fechaHoraFin));
+            ?>
+
             <div class="item-22" style="right: 1230px; position: relative; top: 190px;">    
                 <p class="lp2" style="right: 7080px; top: 700px;">FECHA Y HORA INICIO</p>
                 <input class="dat2" type="datetime-local" name="fechyhorini_Cli" id="fecha_hora_inicio" value="<?php echo htmlspecialchars($fechaHoraInicio); ?>">
@@ -1235,7 +1274,7 @@ $conexion->close();
 
             <div class="item-23" style="right: 1230px; position: relative; top: 190px;">
                 <p class="lp2" style="right: 7080px; top: 700px;">FECHA Y HORA FIN</p>
-                <input class="dat2" type="datetime-local" name="fechyhorfin_Cli" id="fecha_hora_fin" value="<?php echo htmlspecialchars($fechaHoraInicio); ?>">
+                <input class="dat2" type="datetime-local" name="fechyhorfin_Cli" id="fecha_hora_fin" value="<?php echo htmlspecialchars($fechaHoraFin); ?>">
             </div>
 
             <?php
@@ -1292,22 +1331,21 @@ $conexion->close();
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ont'])) {
                 $ontCli = $_POST['ont']; // Obtener el valor de ont desde el formulario
 
-                // Consulta para obtener el id_Usu actual del cliente
-                $sqlCliente = "SELECT id_Usu FROM cliente WHERE ont_Cli = ?";
+                // Consulta para obtener el valor de inte_Cli del cliente
+                $sqlCliente = "SELECT inte_Cli FROM cliente WHERE ont_Cli = ?";
                 $stmtCliente = $conn->prepare($sqlCliente);
                 $stmtCliente->bind_param("s", $ontCli);
                 $stmtCliente->execute();
                 $resultCliente = $stmtCliente->get_result();
 
-                $idUsuActual = null;
+                $inteValor = '';  // Variable para la cantidad de intentos
+
                 if ($resultCliente->num_rows > 0) {
                     $rowCliente = $resultCliente->fetch_assoc();
-                    $idUsuActual = $rowCliente['id_Usu'];
+                    $inteValor = $rowCliente['inte_Cli']; // Guardar el valor de la cantidad de intentos
                 }
 
-                // Consulta para obtener todos los usuarios
-                $sql = "SELECT id_Usu, nom_Usu FROM usuario";
-                $result = $conn->query($sql);
+                // Aquí puedes agregar otras consultas para obtener datos adicionales según sea necesario
             } else {
                 // Manejo de error si no se envía el formulario
                 exit;
@@ -1315,22 +1353,8 @@ $conexion->close();
             ?>
 
             <div class="item-25" style="right: 1230px; position: relative; top: 190px;">
-                <p class="lp2" style="right: 8800px; top: 1000px;">ASESOR CREADOR</p>
-                <select name="id_Usu" id="usu" class="dat2">
-                    <option value="">Selecciona...</option>
-                    <?php
-                    if ($result->num_rows > 0) {
-                        // Generar las opciones dinámicamente
-                        while ($row = $result->fetch_assoc()) {
-                            // Marcar la opción como seleccionada si coincide con el id_Usu actual
-                            $selected = ($row['id_Usu'] == $idUsuActual) ? 'selected' : '';
-                            echo '<option value="' . $row['id_Usu'] . '" ' . $selected . '>' . $row['nom_Usu'] . '</option>';
-                        }
-                    } else {
-                        echo '<option value="">No hay opciones disponibles</option>';
-                    }
-                    ?>
-                </select>
+                <p class="lp2" style="right: 8780px; top: 1000px;">CANTIDAD REAL DE INTENTOS</p>
+                <input name="inte_Cli" id="inte" class="dat2" value="<?php echo htmlspecialchars($inteValor); ?>">
             </div>
 
             <?php

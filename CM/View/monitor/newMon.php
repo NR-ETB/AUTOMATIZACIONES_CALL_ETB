@@ -23,14 +23,13 @@ $params = [
     'id_Ubi', 'id_Sum', 
     'id_Sol', 'ont_Cli', 
     'slot_Cli', 'cst_Cli', 
-    'pqr_Cli', 'obs_Cli', 
-    'fechyhorini_Cli', 'fechyhorfin_Cli'
+    'pqr_Cli', 'obs_Cli', 'inte_Cli'
 ];
 
 // Comprobar si todos los parámetros están presentes
 $missingParams = [];
 foreach ($params as $param) {
-    if (!isset($_GET[$param])) {
+    if (!isset($_GET[$param]) || empty($_GET[$param])) {
         $missingParams[] = $param;
     }
 }
@@ -59,21 +58,27 @@ if (empty($missingParams)) {
     $cstCli = $_GET['cst_Cli']; // Asumido como string
     $pqrCli = $_GET['pqr_Cli']; // Asumido como string
     $obsCli = $_GET['obs_Cli']; // Asumido como string
-    $inteCli = $_GET['inte_Cli']; // Asumido como string
-    $fechyhoriniCli = $_GET['fechyhorini_Cli']; // Asumido como string
-    $fechyhorfinCli = $_GET['fechyhorfin_Cli']; // Asumido como string
+    $inteCli = $_GET['inte_Cli']; // Asumido como string o entero
 
     // Asignar valores fijos para rol
     $idRol = 4;  // Valor fijo para rol
+
+    // Verificar si inte_Cli es un número entero
+    if (!is_numeric($inteCli)) {
+        // Si inte_Cli no es un número, se puede asignar como nulo o un valor predeterminado.
+        $inteCli = null; // O el valor predeterminado que desees.
+    }
+
+    // Obtener la fecha y hora actual en formato 'Y-m-d H:i:s' (Ejemplo: 2024-11-23 14:25:00)
+    $fechyhoriniCli = date('Y-m-d H:i:s');
 
     // Preparar la consulta SQL para insertar un nuevo cliente
     $sql = "INSERT INTO cliente (
         id_Rol, id_Est, id_Seg, id_Ges,
         id_Mon, id_Med, id_Com, id_Sub, id_Con, id_Estf,
         id_Sop, id_Niv, id_Inte, id_Dia, id_Rea, id_Ubi,
-        id_Sum, id_Sol, ont_Cli, slot_Cli, cst_Cli, pqr_Cli, obs_Cli, inte_cli,
-        fechyhorini_Cli, fechyhorfin_Cli
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        id_Sum, id_Sol, ont_Cli, slot_Cli, cst_Cli, pqr_Cli, obs_Cli, inte_Cli, fechyhorini_Cli
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Preparar la declaración
     $stmt = $conexion->prepare($sql);
@@ -81,39 +86,72 @@ if (empty($missingParams)) {
         die("Error en la preparación de la consulta: " . $conexion->error);
     }
 
-    $stmt->bind_param("issssssssssssssssssssssiss", 
-        $idRol,  
-        $idEst, 
-        $idSeg, 
-        $idGes, 
-        $idMon, 
-        $idMed, 
-        $idCom, 
-        $idSub, 
-        $idCon, 
-        $idEstf, 
-        $idSop, 
-        $idNiv, 
-        $idInte, 
-        $idDia, 
-        $idRea, 
-        $idUbi, 
-        $idSum, 
-        $idSol, 
-        $ontCli, 
-        $slotCli, 
-        $cstCli, 
-        $pqrCli, 
-        $obsCli, 
-        $inteCli,
-        $fechyhoriniCli, 
-        $fechyhorfinCli
-    );
+    // Ajustamos bind_param dependiendo del tipo de datos de inte_Cli
+    if (is_numeric($inteCli)) {
+        // Si inte_Cli es un número (int)
+        $stmt->bind_param("issssssssssssssssssssssis", 
+            $idRol,  
+            $idEst, 
+            $idSeg, 
+            $idGes, 
+            $idMon, 
+            $idMed, 
+            $idCom, 
+            $idSub, 
+            $idCon, 
+            $idEstf, 
+            $idSop, 
+            $idNiv, 
+            $idInte, 
+            $idDia, 
+            $idRea, 
+            $idUbi, 
+            $idSum, 
+            $idSol, 
+            $ontCli, 
+            $slotCli, 
+            $cstCli, 
+            $pqrCli, 
+            $obsCli, 
+            $inteCli,
+            $fechyhoriniCli // Asignar la hora actual
+        );
+    } else {
+        // Si inte_Cli no es un número (string o nulo)
+        $stmt->bind_param("isssssssssssssssssssssss", 
+            $idRol,  
+            $idEst, 
+            $idSeg, 
+            $idGes, 
+            $idMon, 
+            $idMed, 
+            $idCom, 
+            $idSub, 
+            $idCon, 
+            $idEstf, 
+            $idSop, 
+            $idNiv, 
+            $idInte, 
+            $idDia, 
+            $idRea, 
+            $idUbi, 
+            $idSum, 
+            $idSol, 
+            $ontCli, 
+            $slotCli, 
+            $cstCli, 
+            $pqrCli, 
+            $obsCli, 
+            $inteCli,
+            $fechyhoriniCli // Asignar la hora actual
+        );
+    }
+
     // Ejecutar la declaración
     if ($stmt->execute()) {
         // echo "Nuevo cliente agregado exitosamente.";
     } else {
-       // echo "Error al agregar cliente: " . $stmt->error;
+        // echo "Error al agregar cliente: " . $stmt->error;
     }
 
     // Cerrar la declaración
@@ -124,7 +162,9 @@ if (empty($missingParams)) {
 
 // Cerrar la conexión
 $conexion->close();
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -147,7 +187,7 @@ $conexion->close();
 
 <div>
 
-    <form action="newMon.php" class="label1-2" method="GET">
+    <form action="newMon2.php" class="label1-2" method="GET">
 
         <?php
         include('../../Model/conexion.php');
@@ -701,12 +741,12 @@ $conexion->close();
 
         <div class="item-22" style="right: 1230px; position: relative; top: 190px;">
             <p class="lp2" style="right: 7080px; top: 700px;">FECHA Y HORA INICIO</p>
-            <input class="dat2" type="datetime-local" name="fechyhorini_Cli" id="fecha_hora_inicio" required>
+            <input class="dat2" type="datetime-local" name="fechyhorini_Cli" id="fecha_hora_inicio" disabled>
         </div>
 
         <div class="item-23" style="right: 1230px; position: relative; top: 190px;">
             <p class="lp2" style="right: 7080px; top: 700px;">FECHA Y HORA FIN</p>
-            <input class="dat2" type="datetime-local" name="fechyhorfin_Cli" id="fecha_hora_fin">
+            <input class="dat2" type="datetime-local" name="fechyhorfin_Cli" id="fecha_hora_fin" disabled>
         </div>
 
         <div class="item-24" style="right: 1230px; position: relative; top: 190px;">
@@ -718,23 +758,10 @@ $conexion->close();
             <button class="btn-five2" type="submit" style="right: 8220px; top: 920px;">AÑADIR</button>
         </div>
 
-        <?php
-        include('../../Model/conexion.php');
-
-        // Consulta para obtener los códigos de validación (ajusta la tabla y columnas según corresponda)
-        $sql = "SELECT id_Usu, nom_Usu FROM usuario"; // Cambia esto a la tabla y columnas correctas
-        $result = $conn->query($sql);
-        ?>
-
         <div class="item-25" style="right: 1230px; position: relative; top: 190px;">
             <p class="lp2" style="right: 8780px; top: 1000px;">CANTIDAD REAL DE INTENTOS</p>
             <input name="inte_Cli" id="inte" class="dat2" placeholder="Ingresa la Cantidad de Intentos">
         </div>
-
-        <?php
-        // Cerrar la conexión
-        $conn->close();
-        ?>
 
     </form>
 

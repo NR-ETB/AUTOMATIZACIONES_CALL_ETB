@@ -58,6 +58,14 @@ function btn_history2() {
     window.location.href = '../historyMon.php';
 }
 
+function log_out() {
+    window.location.href = '../../index.php';
+}
+
+function log_outP() {
+    window.location.href = '../../../index.php';
+}
+
 document.getElementById('downloadPdf').addEventListener('click', function() {
     const { jsPDF } = window.jspdf;
 
