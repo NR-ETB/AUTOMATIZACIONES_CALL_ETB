@@ -9,26 +9,25 @@
 </head>
 <body>
 
-<?php include('../components/dashboard_gen.php'); ?>
+    <?php include('../components/dashboard_gen.php'); ?>
 
-    <!-- PREGUNTA SESIS -->
-    <div class="cards" id="quest2">
+    <!-- PREGUNTA DECIMA -->
+    <div class="cards" id="quest3">
 
-        <h1 id="cod">CODIGOS DE ERROR MAS COMUNES DE UN DECODIFICADOR <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">PROCESO SUSCRIBER ID <img id="acti" src="../images/touch.png" alt=""></h1>
 
-        <div class="body-card">
-            <div class="question_1">
-                <textarea id="que2" disabled>El cable que se parece al de la línea telefónica que puede ser de color gris o amarillo ¿está en buen estado?</textarea>
+        <div class='body-card'>
+            <div class='question_1'>
+                <textarea id='que2' disabled>Señor@ xxxxx ¿te aparece un código de usuario y contraseña en el televisor?</textarea>
             </div>
         </div>
 
         <!-- HTML para el formulario -->
             <div class="body-card">
                 <div class="question_2">
-                    <select name="respuesta" id="respuesta" onchange="actualizarTexto()"> <!-- Manejo con JavaScript -->
+                    <select name="respuesta" id="respuesta" onchange="actualizarTexto()"> <!-- Al cambiar, el formulario se enviará -->
                         <option value="0">Selecciona una Opción...</option> <!-- Opción vacía por defecto -->
                         <option value="1">SI</option>
-                        <option value="2">NO</option>
                     </select>
                 </div>
             </div>
@@ -52,7 +51,8 @@
 
         <!-- Aquí cargamos el mensaje en el textarea -->
         <div class="txt">
-            <textarea name="respuestaTexto" id="respuestaTexto" disabled></textarea>
+            <textarea name="respuestaTexto" id="respuestaTexto" disabled>
+            </textarea>
         </div>
     </div>
 
@@ -60,7 +60,7 @@
 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../Controller/tv2.js"></script>   
+<script src="../../Controller/tv5.js"></script>   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>

@@ -1,26 +1,7 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
     $('#bio2').css('bottom','1205px');
-    $('#respuesta').change(function() {
-        var respuestaId = $(this).val(); // Obtener el valor seleccionado
-
-        if (respuestaId) {
-            // Enviar solicitud AJAX al servidor
-            $.ajax({
-                url: '', // La misma página
-                type: 'GET',
-                data: { respuesta: respuestaId }, // Enviar el parámetro 'respuesta'
-                success: function(data) {
-                    // Procesar la respuesta del servidor
-                    var respuestaTexto = $(data).find('#respuestaTexto').val(); // Buscar el nuevo texto
-                    $('#respuestaTexto').val(respuestaTexto); // Mostrarlo en el textarea
-                },
-                error: function() {
-                    alert("Ocurrió un error al procesar la solicitud.");
-                }
-            });
-        }
-    });
+    $('#respuesta')
 });
 
 function ques() {
@@ -98,13 +79,6 @@ function ques66() {
 function empty() {
     $('#respuestaTexto').val('');
     console.log("El textarea ha sido vaciado.");
-    
-    // Restablecer todos los selectores a su primer valor (por ejemplo, el valor vacío o predeterminado)
-    $('select').each(function() {
-        $(this).prop('selectedIndex', 0); // Establece el índice del select a 0 (la opción predeterminada)
-    });
-
-    console.log("Todos los selects han sido reiniciados.");
 }
 
 function one_ini() {
@@ -125,4 +99,49 @@ function three() {
 
 function four() {
     location.href='./gestv_Adc4.php';
+}
+
+function actualizarTexto() {
+    const selectRespuesta = document.getElementById("respuesta");
+    const textarea = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Guion de finalización de chat",
+        "2": "Continuar con el soporte",
+    };
+
+    const opcionSeleccionada = selectRespuesta.value;
+    textarea.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea.value);
+}
+
+function actualizarTexto2() {
+    const selectRespuesta2 = document.getElementById("respuesta2");
+    const textarea2 = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Por favor conecta el nuevo cable o decodificador señor@ xxxxx para validar la conexión",
+        "2": "Verificar en suma el estado de los semáforos y validar con el cliente el cable HDMI o cable AV (Asesor)\n\nNOTA: Si aun el cliente no cuenta con servicio continuar con el soporte\n\nPara ambos casos\n\nVas a identificar el cable HDMI que está entre el televisor y el decodificador vas a intercambiar las puntas por favor, la punta que está conectada en el decodificador la pones en el televisor y la del televisor en el decodificador, luego en la parte trasera del decodificador hay un botón de encendido y apagado lo vas a apagar lo vuelves a encender y válidas 🔌📺 😀\n\nLuego vas a ubicar en el control del televisor el botón denominado input vas a oprimirlo, este te va a mostrar varias opciones, ahí vas a seleccionar el puerto de HDMI en el cual anteriormente hayas conectado el cable🔌📺\n\n",
+    };
+
+    const opcionSeleccionada = selectRespuesta2.value;
+    textarea2.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea2.value);
+}
+
+function actualizarTexto3() {
+    const selectRespuesta3 = document.getElementById("respuesta3");
+    const textarea3 = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Guion de finalización de chat",
+        "2": "Enviar visita técnica",
+    };
+
+    const opcionSeleccionada = selectRespuesta3.value;
+    textarea3.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea3.value);
 }

@@ -1,26 +1,8 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
     $('#bio2').css('bottom','875px');
-    $('#respuesta').change(function() {
-        var respuestaId = $(this).val(); // Obtener el valor seleccionado
+    $('#respuesta')
 
-        if (respuestaId) {
-            // Enviar solicitud AJAX al servidor
-            $.ajax({
-                url: '', // La misma página
-                type: 'GET',
-                data: { respuesta: respuestaId }, // Enviar el parámetro 'respuesta'
-                success: function(data) {
-                    // Procesar la respuesta del servidor
-                    var respuestaTexto = $(data).find('#respuestaTexto').val(); // Buscar el nuevo texto
-                    $('#respuestaTexto').val(respuestaTexto); // Mostrarlo en el textarea
-                },
-                error: function() {
-                    alert("Ocurrió un error al procesar la solicitud.");
-                }
-            });
-        }
-    });
 });
 
 function ques() {
@@ -96,13 +78,6 @@ function ques66() {
 function empty() {
     $('#respuestaTexto').val('');
     console.log("El textarea ha sido vaciado.");
-    
-    // Restablecer todos los selectores a su primer valor (por ejemplo, el valor vacío o predeterminado)
-    $('select').each(function() {
-        $(this).prop('selectedIndex', 0); // Establece el índice del select a 0 (la opción predeterminada)
-    });
-
-    console.log("Todos los selects han sido reiniciados.");
 }
 
 function one_ini() {
@@ -124,3 +99,19 @@ function three() {
 function four() {
     location.href='./gestv_Adc4.php';
 }
+
+function actualizarTexto() {
+    const selectRespuesta = document.getElementById("respuesta");
+    const textarea = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Continua con el soporte\n\nAcércate a la parte trasera del decodificador allí vas a identificar un cable que se parece al de la línea telefónica puede ser de color gris o amarillo lo desconectas por 10 segundos lo conectas nuevamente y luego verificas que la otra punta de ese mismo cable este en el modem en el puerto de IPTV1 o IPTV2, asegúrate de que las dos puntas estén bien conectadas 📺🔌\n\nFiltros en plataforma\n\n•	Reiniciar los decodificadores y la ONT\n•	Verificar plan tv comercial\n•	Normalizar plataformas\n•	Validar si la potencia en la ONT es menor a -27 dBm",
+        "2": "Envía visita técnica",
+    };
+
+    const opcionSeleccionada = selectRespuesta.value;
+    textarea.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea.value);
+}
+

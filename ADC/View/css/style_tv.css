@@ -108,7 +108,7 @@ h1{
     height: 380px;
 }
 .great2{
-    height: 310px;
+    height: 350px;
 }
 .question_1, .question_2, .question_3, .question_4, .question_5{
     margin-left: 35px;
@@ -146,6 +146,7 @@ button:hover{
     font-family: 'Poppins';
     width: 620px;
     resize: none;
+    text-align: justify;
 }
 #que2{
     position: relative;
@@ -159,6 +160,7 @@ button:hover{
     font-size: 20px;
     font-weight: 600;
     resize: none;
+    text-align: justify;
 }
 select{
     cursor: pointer;

@@ -27,7 +27,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style_tv.css">
     <link rel="stylesheet" href="../css/comp.css">
-    <title>Gestion TV - ADC</title>
+    <title>Gestion Linea Fija - ADC</title>
 </head>
 <body>
 
@@ -40,31 +40,31 @@ $conn->close();
 
         <div class="body-card">
             <div class="question_1">
-                <textarea name="" id="que">¿Cuántos decodificadores manejas? 📺 (Validar inventario de decos)</textarea>
+                <textarea name="" id="que"></textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_2">
-                <textarea name="" id="que">¿Desde cuándo se presenta la falla y cuantos decodificadores están en falla? 📺❌</textarea>
+                <textarea name="" id="que"></textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_3">
-                <textarea name="" id="que">Envíame foto del o los decodificadores que presenten falla por favor 📷📺</textarea>
+                <textarea name="" id="que"></textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_4">
-                <textarea name="" id="que">Envíame una foto de la parte trasera del modem y decodificador, en la parte de las conexiones 📸🔌</textarea>
+                <textarea name="" id="que"></textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_5">
-                <textarea name="" id="que">¿Te aparece algún código de error en el televisor? 📺</textarea>
+                <textarea name="" id="que"></textarea>
             </div>
         </div>
 
