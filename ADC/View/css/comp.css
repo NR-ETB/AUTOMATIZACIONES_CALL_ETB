@@ -55,6 +55,12 @@ body{
 }
 .sid-t{
     margin-top: 150px;
+    cursor: pointer;
+    z-index: 1;
+}
+.sid-t2{
+    cursor: pointer; 
+    z-index: 1;   
 }
 .side-bar p{
     text-align: center;

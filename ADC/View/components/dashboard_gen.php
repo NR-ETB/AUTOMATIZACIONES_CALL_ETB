@@ -9,22 +9,22 @@
                 <label for="">Inicio</label>
             </div>
 
-            <div>
+            <div class="sid-t2" onclick="tv();">
                 <img src="../images/tv.png" alt="">
                 <label for="">Gestion TV</label>
             </div>
 
-            <div>
-                <img src="../images/inc.png" alt="">
+            <div class="sid-t2" onclick="phone();">
+                <img src="../images/pline.png" alt="">
                 <label for="">Gestion Telefonica</label>
             </div>
 
-            <div>
+            <div class="sid-t2">
                 <img src="../images/inc.png" alt="">
                 <label for="">Gestion Internet</label>
             </div>
 
-            <div>
+            <div class="sid-t2">
                 <img src="../images/inc.png" alt="">
                 <label for="">Gestion OTT</label>
             </div>  

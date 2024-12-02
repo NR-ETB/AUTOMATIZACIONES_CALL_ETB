@@ -1,25 +1,3 @@
-<?php
-// Incluir la conexión a la base de datos
-include('../../Model/conexion.php');
-
-// Consulta SQL para obtener las primeras 5 preguntas de la tabla TELEVISION
-$sql = "SELECT meg_Tv FROM TELEVISION LIMIT 5";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-
-    $questions = [];
-    while($row = $result->fetch_assoc()) {
-        $questions[] = $row['meg_Tv'];
-    }
-} else {
-    $questions = []; 
-}
-
-// Cerrar la conexión
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,31 +18,31 @@ $conn->close();
 
         <div class="body-card">
             <div class="question_1">
-                <textarea name="" id="que">¿Cuántos decodificadores manejas? 📺 (Validar inventario de decos)</textarea>
+                <textarea name="" id="que" disabled>¿Cuántos decodificadores manejas? 📺 (Validar inventario de decos)</textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_2">
-                <textarea name="" id="que">¿Desde cuándo se presenta la falla y cuantos decodificadores están en falla? 📺❌</textarea>
+                <textarea name="" id="que" disabled>¿Desde cuándo se presenta la falla y cuantos decodificadores están en falla? 📺❌</textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_3">
-                <textarea name="" id="que">Envíame foto del o los decodificadores que presenten falla por favor 📷📺</textarea>
+                <textarea name="" id="que" disabled>Envíame foto del o los decodificadores que presenten falla por favor 📷📺</textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_4">
-                <textarea name="" id="que">Envíame una foto de la parte trasera del modem y decodificador, en la parte de las conexiones 📸🔌</textarea>
+                <textarea name="" id="que" disabled>Envíame una foto de la parte trasera del modem y decodificador, en la parte de las conexiones 📸🔌</textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_5">
-                <textarea name="" id="que">¿Te aparece algún código de error en el televisor? 📺</textarea>
+                <textarea name="" id="que" disabled>¿Te aparece algún código de error en el televisor? 📺</textarea>
             </div>
         </div>
 
