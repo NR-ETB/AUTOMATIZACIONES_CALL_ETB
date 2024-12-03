@@ -20,7 +20,7 @@
             </div>
 
             <div class="sid-t2">
-                <img src="../images/inc.png" alt="">
+                <img src="../images/net.png" alt="">
                 <label for="">Gestion Internet</label>
             </div>
 
