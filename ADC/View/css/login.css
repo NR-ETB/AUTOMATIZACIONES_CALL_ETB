@@ -52,8 +52,8 @@ body{
 }
 #inip{
     position: fixed;
-    margin: 100px 0 0 240px;
-    font-size: 64px;
+    margin: 210px 0 0 80px;
+    font-size: 60px;
     color: var(--bblue-etb);
 }
 .casi{
@@ -82,7 +82,7 @@ body{
     font-family: 'Poppins';
     font-weight: 800;
     font-size: 32px;
-    margin: 400px 590px 0 0;
+    margin: 450px 600px 0 0;
     cursor: pointer;
 }
 .casi img{
@@ -101,11 +101,11 @@ body{
     right: 0;
     border-radius: 0 25px 25px 0;
     left: 923px;
-    bottom: 686px;
+    bottom: 546px;
     padding-top: 10px;
 }
 h1{
-    margin-top: 200px;
+    margin-top: 250px;
     font-size: 64px;
 }
 p{

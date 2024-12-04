@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
-    $('#bio2').css('bottom','1240px');
+    $('#bio2').css('bottom','875px');
     $('#respuesta')
 
 });
@@ -28,8 +28,6 @@ function ques11() {
 function ques2() {
     $('#quest2').css('display','none');
     $('#quest3').css('display','block');
-    $('#bio2').css('bottom','970px');
-    $('#que2').css('bottom','1px');
 }
 
 function ques22() {
@@ -40,7 +38,6 @@ function ques22() {
 function ques3() {
     $('#quest3').css('display','none');
     $('#quest4').css('display','block');
-    $('#bio2').css('bottom','1245px');
 }
 
 function ques33() {
@@ -51,7 +48,6 @@ function ques33() {
 function ques4() {
     $('#quest4').css('display','none');
     $('#quest5').css('display','block');
-    $('#bio2').css('bottom','830px');
 }
 
 function ques44() {
@@ -62,7 +58,6 @@ function ques44() {
 function ques5() {
     $('#quest5').css('display','none');
     $('#quest6').css('display','block');
-    $('#bio2').css('bottom','1000px');
 }
 
 function ques55() {
@@ -71,20 +66,13 @@ function ques55() {
 }
 
 function ques6() {
-    $('#quest3').css('display','none');
+    $('#quest6').css('display','none');
     $('#quest7').css('display','block');
-    $('#bio2').css('bottom','995px');
 }
 
 function ques66() {
     $('#quest6').css('display','block');
     $('#quest7').css('display','none');
-}
-
-function ques7() {
-    $('#quest7').css('display','none');
-    $('#quest8').css('display','block');
-    $('#bio2').css('bottom','1235px');
 }
 
 function empty() {
@@ -93,7 +81,23 @@ function empty() {
 }
 
 function one_ini() {
-    location.href='./gesinterini_Adc.php';
+    location.href='./gestvini_Adc.php';
+}
+
+function one() {
+    location.href='./gestv_Adc.php';
+}
+
+function two() {
+    location.href='./gestv_Adc2.php';
+}
+
+function three() {
+    location.href='./gestv_Adc3.php';
+}
+
+function four() {
+    location.href='./gestv_Adc4.php';
 }
 
 function actualizarTexto() {
@@ -101,37 +105,7 @@ function actualizarTexto() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
-        "2": "Continua con el soporte realizar una configuración de tarjeta de red ",
-    };
-
-    const opcionSeleccionada = selectRespuesta.value;
-    textarea.value = textos[opcionSeleccionada];
-
-    console.log("Texto actualizado:", textarea.value);
-}
-
-function actualizarTexto2() {
-    const selectRespuesta = document.getElementById("respuesta2");
-    const textarea = document.getElementById("respuestaTexto");
-
-    const textos = {
-        "1": "Envía guion de encuesta",
-        "2": "Continua con el soporte",
-    };
-
-    const opcionSeleccionada = selectRespuesta.value;
-    textarea.value = textos[opcionSeleccionada];
-
-    console.log("Texto actualizado:", textarea.value);
-}
-
-function actualizarTexto3() {
-    const selectRespuesta = document.getElementById("respuesta3");
-    const textarea = document.getElementById("respuestaTexto");
-
-    const textos = {
-        "1": "Envía guion de encuesta",
+        "1": "Continua con el soporte\n\nAcércate a la parte trasera del decodificador allí vas a identificar un cable que se parece al de la línea telefónica puede ser de color gris o amarillo lo desconectas por 10 segundos lo conectas nuevamente y luego verificas que la otra punta de ese mismo cable este en el modem en el puerto de IPTV1 o IPTV2, asegúrate de que las dos puntas estén bien conectadas 📺🔌\n\nFiltros en plataforma\n\n•	Reiniciar los decodificadores y la ONT\n•	Verificar plan tv comercial\n•	Normalizar plataformas\n•	Validar si la potencia en la ONT es menor a -27 dBm",
         "2": "Envía visita técnica",
     };
 
@@ -140,3 +114,4 @@ function actualizarTexto3() {
 
     console.log("Texto actualizado:", textarea.value);
 }
+

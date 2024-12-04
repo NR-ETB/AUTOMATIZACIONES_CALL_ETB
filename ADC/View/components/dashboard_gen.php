@@ -19,13 +19,13 @@
                 <label for="">Gestion Telefonica</label>
             </div>
 
-            <div class="sid-t2">
+            <div class="sid-t2" onclick="net();">
                 <img src="../images/net.png" alt="">
                 <label for="">Gestion Internet</label>
             </div>
 
-            <div class="sid-t2">
-                <img src="../images/inc.png" alt="">
+            <div class="sid-t2" onclick="ott();">
+                <img src="../images/streaming.png" alt="">
                 <label for="">Gestion OTT</label>
             </div>  
             
@@ -35,8 +35,8 @@
         <div class="side-bar-bottom">
             <div class="accu">
                 <img src="../images/user2.png" alt="">
-                <p>Asesor: <br>
-                correo</p>
+                <p>Automatizador de<br>
+                Guiones de ETB</p>
             </div>
         </div>
 

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style_line.css">
+    <link rel="stylesheet" href="../css/style_inter.css">
     <link rel="stylesheet" href="../css/comp.css">
-    <title>Gestion Telefonica - ADC</title>
+    <title>Gestion Internet - ADC</title>
 </head>
 <body>
 
@@ -117,6 +117,7 @@
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
 <script src="../../Controller/inter/inter.js"></script>   
+<script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
     <!-- PREGUNTA SIETE -->
     <div class="cards" id="quest3">
 
-        <h1 id="cod">MAL CONECTADO EL DECO <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">MAL CONECTADO EL DECO</h1>
 
         <div class='body-card' id="great">
             <div class='question_1'>
@@ -54,7 +54,7 @@ Paso 2. Desconecta el decodificador directamente de la toma eléctrica por 10 se
     <!-- PREGUNTA OCHO -->
     <div class="cards" id="quest4" style="display: none;">
 
-        <h1 id="cod">MAL CONECTADO EL DECO <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">MAL CONECTADO EL DECO</h1>
 
         <div class='body-card'>
             <div class='question_1'>
@@ -80,7 +80,7 @@ Paso 2. Desconecta el decodificador directamente de la toma eléctrica por 10 se
     <!-- PREGUNTA NOVENA -->
     <div class="cards" id="quest5" style="display: none;">
 
-        <h1 id="cod">MAL CONECTADO EL DECO <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">MAL CONECTADO EL DECO</h1>
 
         <div class='body-card'>
             <div class='question_1'>
@@ -116,6 +116,12 @@ Paso 2. Desconecta el decodificador directamente de la toma eléctrica por 10 se
             <input type="text">
         </div>
 
+        <div class="actin">
+            <img id="actionn" src="../images/modal2.png" alt="">
+            <img src="../images/touch1.png" alt="">
+            <img id="actionn" src="../images/copy2.png" alt="">
+        </div>
+
         <!-- Aquí cargamos el mensaje en el textarea -->
         <div class="txt">
             <textarea name="respuestaTexto" id="respuestaTexto" disabled>
@@ -127,7 +133,8 @@ Paso 2. Desconecta el decodificador directamente de la toma eléctrica por 10 se
 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../Controller/tv3.js"></script>   
+<script src="../../Controller/tv/tv3.js"></script>   
+<script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </body>

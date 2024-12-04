@@ -40,6 +40,7 @@ body{
 .side-bar{
     position: absolute;
     margin-left: 65px;
+    z-index: 1;
 }
 .side-bar img{
     width: 42px;
@@ -52,6 +53,7 @@ body{
     position: relative;
     bottom: 14px;
     font-size: 18px;
+    cursor: pointer;
 }
 .sid-t{
     margin-top: 150px;

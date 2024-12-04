@@ -45,7 +45,7 @@ body{
 .cards{
     width: 700px;
     height: 100%;
-    background-color: #F36F31;
+    background-color: #E4E8F0;
     color: #fff;
     position: relative;
     left: 535px;
@@ -63,9 +63,9 @@ h1{
     margin-left: 40px;
 }
 .menu{
-    border: 2px solid var(--withe-etb);
+    border: 2px solid var(--bblue-etb);
     border-radius: 25px;
-    background-color: var(--bblue-etb);
+    background-color: var(--orange-etb);
     width: 250px;
     height: 250px;
     margin-left: 35px;
@@ -175,49 +175,47 @@ select{
 .cards_2{
     width: 700px;
     height: 100%;
-    background-color: #F36F31;
+    background-color: #E4E8F0;
     color: #fff;
 }
 .cards_22{
     width: 700px;
     height: 100%;
-    background-color: var(--b2gray-etb);
+    background-color: #E4E8F0;
     color: #fff;
 }
 .cards_2 h1{
     font-size: 24px;
 }
 .bio2{
-    display: flex;
+    display: grid;
     justify-content: space-around;
     position: relative;
     bottom: 1250px;
+}
+.bio2 img{
+    width: 340px;
+    height: 322px;
+    position: relative;
+    left: 550px;
+    top: 50px;
+}
+.bio2 p{
+    position: relative;
+    left: 850px;
+    bottom: 180px;
 }
 .data{
     display: grid;
     position: relative;
     bottom: 290px;
-    left: 1045px;
+    left: 895px;
 }
 .data2{
     display: grid;
     position: relative;
     bottom: 290px;
-    left: 655px;
-}
-.actin{
-    display: flex;
-    position: relative;
-    right: 250px;
-    bottom: 145px;
-}
-.actin img{
-    width: 33px;
-    height: 33px;
-    margin-left: 15px;
-}
-#actionn{
-    cursor: pointer;
+    left: 205px;
 }
 input{
     border: none;
@@ -234,7 +232,7 @@ input{
     text-align: justify;
     position: relative;
     width: 443px;
-    height: 470px;
+    height: 270px;
     right: 165px;
     bottom: 100px;
     border: none;
@@ -243,5 +241,14 @@ input{
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
+}
+.us{
+    position: relative;
+    bottom: 295px;
+    left: 240px;
+}
+.us img{
+    width: 45px;
+    height: 45px;
 }
 /* Configuraciones de la Interface del Dashboard */

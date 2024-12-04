@@ -104,6 +104,12 @@
             <input type="text">
         </div>
 
+        <div class="actin">
+            <img src="../images/modal.png" alt="">
+            <img src="../images/touch1.png" alt="">
+            <img src="../images/copy.png" alt="">
+        </div>
+
         <!-- Aquí cargamos el mensaje en el textarea -->
         <div class="txt">
             <textarea name="respuestaTexto" id="respuestaTexto" disabled>
@@ -115,7 +121,8 @@
 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../Controller/tv.js"></script>   
+<script src="../../Controller/tv/tv.js"></script>   
+<script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>

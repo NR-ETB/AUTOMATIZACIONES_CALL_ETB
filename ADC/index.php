@@ -6,9 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="View/css/login.css">
-    <title>Automatizador de Chats</title>
+    <title>Automatizador de Chats (ADC)</title>
 </head>
 <body>
+
     <?php include('View/components/login.php'); ?>
 
 <script src="View/bootstrap/jquery.js"></script>

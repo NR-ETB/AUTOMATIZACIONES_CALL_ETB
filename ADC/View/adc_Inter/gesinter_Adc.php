@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style_line.css">
+    <link rel="stylesheet" href="../css/style_inter.css">
     <link rel="stylesheet" href="../css/comp.css">
-    <title>Gestion Telefonica - ADC</title>
+    <title>Gestion Internet - ADC</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
     <!-- PREGUNTA SESIS -->
     <div class="cards" id="quest2">
 
-        <h1 id="cod">LED EN ROJO 🔴<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">LED EN ROJO 🔴</h1>
 
         <div class="body-card">
             <div class="question_1">
@@ -66,7 +66,8 @@
 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../Controller/inter/inter2.js"></script>   
+<script src="../../Controller/inter/inter2.js"></script> 
+<script src="../../Controller/main.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>

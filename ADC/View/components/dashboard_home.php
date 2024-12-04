@@ -4,28 +4,28 @@
         </div>
 
         <div class="side-bar">
-            <div class="sid-t">
+            <div class="sid-t" onclick="home();">
                 <img src="../images/home.png" alt="">
                 <label for="">Inicio</label>
             </div>
 
-            <div>
+            <div class="sid-t2" onclick="tv();">
                 <img src="../images/tv.png" alt="">
                 <label for="">Gestion TV</label>
             </div>
 
-            <div>
-                <img src="../images/inc.png" alt="">
+            <div class="sid-t2" onclick="phone();">
+                <img src="../images/pline.png" alt="">
                 <label for="">Gestion Telefonica</label>
             </div>
 
-            <div>
-                <img src="../images/inc.png" alt="">
+            <div class="sid-t2" onclick="net();">
+                <img src="../images/net.png" alt="">
                 <label for="">Gestion Internet</label>
             </div>
 
-            <div>
-                <img src="../images/inc.png" alt="">
+            <div class="sid-t2" onclick="ott();">
+                <img src="../images/streaming.png" alt="">
                 <label for="">Gestion OTT</label>
             </div>  
             
@@ -35,8 +35,8 @@
         <div class="side-bar-bottom">
             <div class="accu">
                 <img src="../images/user2.png" alt="">
-                <p>Asesor: <br>
-                correo</p>
+                <p>Automatizador de<br>
+                Guiones de ETB</p>
             </div>
         </div>
 
@@ -44,6 +44,7 @@
         </div>
 
         <div class="bio">
+
             <div class="callt">
                 <img src="../images/calltec2.png" alt="">
                 <img id="ca" src="../images/calltec.png" alt="">

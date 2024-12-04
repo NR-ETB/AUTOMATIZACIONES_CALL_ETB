@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style_line.css">
+    <link rel="stylesheet" href="../css/style_inter.css">
     <link rel="stylesheet" href="../css/comp.css">
-    <title>Gestion Telefonica - ADC</title>
+    <title>Gestion Internet - ADC</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
     <!-- PREGUNTA SESIS -->
     <div class="cards" id="quest2">
 
-        <h1 id="cod">CONECTA – NO NAVEGA: - WIFI- VARIOS DISPOSITIVOS<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">CONECTA – NO NAVEGA: - WIFI- VARIOS DISPOSITIVOS</h1>
 
         <div class="body-card" style="height: 230px;">
             <div class="question_1">
@@ -69,7 +69,7 @@ Gestión asesor: Sigue los siguientes pasos y valídalos, en SUMA
 
         <div class="container-menu">
 
-            <div class="menu" onclick="ques6();">
+            <div class="menu" onclick="ques9();">
                 <div>
                     <img src="../images/escen.png" alt="">
                     <p>FALLA REPETIDOR</p>
@@ -82,7 +82,7 @@ Gestión asesor: Sigue los siguientes pasos y valídalos, en SUMA
 
     <div class="cards" id="quest4" style="display: none;">
 
-        <h1 id="cod">FALLA EN UN SOLO DISPOSITIVO<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">FALLA EN UN SOLO DISPOSITIVO</h1>
 
         <div class="body-card" style="height: 260px;">
             <div class="question_1">
@@ -100,7 +100,7 @@ Gestión asesor: enviar a encuesta si no requiere que le colabore en otro requer
 
     <div class="cards" id="quest5" style="display: none;">
 
-        <h1 id="cod">NO NAVEGA A LA VELOCIDAD CONTRATADAO<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">NO NAVEGA A LA VELOCIDAD CONTRATADAO</h1>
 
         <div class="body-card" style="height: 310px;">
             <div class="question_1">
@@ -130,7 +130,7 @@ Gestión asesor: enviar a encuesta si no requiere que le colabore en otro requer
 
     <div class="cards" id="quest6" style="display: none;">
 
-        <h1 id="cod">NO NAVEGA A LA VELOCIDAD CONTRATADAO<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">NO NAVEGA A LA VELOCIDAD CONTRATADAO</h1>
 
         <div class="body-card" style="height: 400px;">
             <div class="question_1">
@@ -150,15 +150,13 @@ Gestión asesor: enviar a encuesta si no requiere que le colabore en otro requer
             </div>
         </div>
 
-        <div class="bot">
-            <button onclick="one_ini(),empty()"><< FINALIZAR GESTION >></button>
-        </div>
+        <button onclick="ques6(),empty();">Siguiente >></button>
 
     </div>
 
     <div class="cards" id="quest7" style="display: none;">
 
-        <h1 id="cod">TARJETA DE RED CON CAPACIDAD OK<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">TARJETA DE RED CON CAPACIDAD OK</h1>
 
         <div class="body-card">
             <div class="question_1">
@@ -181,7 +179,7 @@ Gestión asesor: enviar a encuesta si no requiere que le colabore en otro requer
 
     <div class="cards" id="quest8" style="display: none;">
 
-        <h1 id="cod">TARJETA DE RED SIN CAPACIDAD<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">TARJETA DE RED SIN CAPACIDAD</h1>
 
         <div class="body-card" style="height: 400px;">
             <div class="question_1">
@@ -214,6 +212,165 @@ Nota: verificar megas contratadas vista 360 vs realizando soporte si notas algun
 
     </div>
 
+    <div class="cards" id="quest9" style="display: none;">
+
+        <h1 id="cod">FALLA EN REPETIDOR</h1>
+
+        <div class="body-card" style="height: 320px;">
+            <div class="question_1">
+                <textarea id="que2" style="height: 340px;" disabled>Envíame foto del repetidor donde se evidencie los bombillos encendidos por favor 😊
+ 
+Vas a validar en la parte trasera del repetidor vas a identificar un cable conectado en un puerto llamado WAN lo desconectas y lo vuelves a conectar y verificas que ese mismo cable esta en datos 1 si no esta lo conectas en datos 1 por favor 😊</textarea>
+            </div>
+        </div>
+
+        <div class="body-card">
+            <div class="question_1">
+                <textarea id="que2" style="bottom: 0px;" disabled>¿Servicios ok?</textarea>
+            </div>
+        </div>
+
+            <div class="body-card">
+                <div class="question_2">
+                    <select name="respuesta" id="respuesta3" onchange="actualizarTexto3()"> <!-- Manejo con JavaScript -->
+                        <option value="0">Selecciona una Opción...</option> <!-- Opción vacía por defecto -->
+                        <option value="1">SI</option>
+                        <option value="2">NO</option>
+                    </select>
+                </div>
+            </div>
+
+         <button onclick="ques10(),empty();">Siguiente >></button>
+
+    </div>
+
+    <div class="cards" id="quest10" style="display: none;">
+
+        <h1 id="cod2">SELECCIONA LA GESTION A APLICAR...</h1>
+
+        <div class="container-menu">
+
+            <div class="menu" onclick="ques11();">
+                <div>
+                    <img src="../images/escen.png" alt="">
+                    <p>FALLA FIBERHOME</p>
+                </div>
+            </div>
+
+            <div class="menu" onclick="ques12();">
+                <div>
+                    <img src="../images/escen.png" alt="">
+                    <p>CAMBIO DE CLAVE REPETIDOR</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-menu">
+
+            <div class="menu" onclick="ques13();">
+                <div>
+                    <img src="../images/escen.png" alt="">
+                    <p>SOPORTE COBRE</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="cards" id="quest11" style="display: none;">
+
+        <h1 id="cod">FALLA FIBERHOME</h1>
+
+        <div class="body-card" style="height: 260px;">
+            <div class="question_1">
+                <textarea id="que2" style="height: 340px;" disabled>xxx ya para la configuración de tu repetidor de señal, lo debes realizar directamente tu por medio de nuestro aplicativo FIBERHOME📲, lo puedes descargar por medio de la APP STORE o PLAY STORE totalmente gratis, lo descargas te registras y de esta manera configuras tu red o tu repetidor de señal. ✔️</textarea>
+            </div>
+        </div>
+
+        <div class="bot">
+            <button onclick="one_ini(),empty()"><< FINALIZAR GESTION >></button>
+        </div>
+
+    </div>
+
+    <div class="cards" id="quest12" style="display: none;">
+
+        <h1 id="cod">CAMBIO DE CLAVE REPETIDOR</h1>
+
+        <div class="body-card" style="height: 430px;">
+            <div class="question_1">
+                <textarea id="que2" style="height: 370px;" disabled>Ingresa a la app, selecciona tu servicio, vas a dar click sobre la flecha azul, vas a dar click sobre la flecha azul en la opción modem, desde esta opción podrás hacer el cambio dando click en el lápiz, cuando ya hayas ingresado la nueva clave das click en guardar 😃
+ 
+xxx ya para la configuración de tu repetidor de señal, lo debes realizar directamente tu por medio de nuestro aplicativo FIBERHOME📲, lo puedes descargar por medio de la APP STORE o PLAY STORE totalmente gratis, lo descargas te registras y de esta manera configuras tu red o tu repetidor de señal. ✔️</textarea>
+            </div>
+        </div>
+
+        <div class="bot">
+            <button onclick="one_ini(),empty()"><< FINALIZAR GESTION >></button>
+        </div>
+
+    </div>
+
+    <div class="cards" id="quest13" style="display: none;">
+
+        <h1 id="cod">APERTURA DE PUERTOS</h1>
+
+        <div class="body-card">
+            <div class="question_1">
+                <textarea id="que2" style="bottom: 0;" disabled>Cliente cuenta con ip?</textarea>
+            </div>
+        </div>
+
+            <div class="body-card">
+                <div class="question_2">
+                    <select name="respuesta" id="respuesta4" onchange="actualizarTexto4()"> <!-- Manejo con JavaScript -->
+                        <option value="0">Selecciona una Opción...</option> <!-- Opción vacía por defecto -->
+                        <option value="1">SI</option>
+                        <option value="2">NO</option>
+                    </select>
+                </div>
+            </div>
+
+            <button onclick="ques14(),empty();">Siguiente >></button>
+
+    </div>
+
+    <div class="cards" id="quest14" style="display: none;">
+
+        <h1 id="cod">RECOMENDACIONES DE LAS REDES</h1>
+
+        <div class="body-card" style="height: 310px;">
+            <div class="question_1">
+                <textarea id="que2" style="height: 250px;" disabled>Sin embargo, te voy a comentar unos datos sobre las redes para que lo tengas en cuenta al momento de conectarte y así no te presente inconvenientes la red 2.4 te brinda mayor cobertura es decir que tiene más accesibilidad a ciertas partes del predio, pero no te brinda tanta velocidad muy diferente a la red 5G esta brinda mayor velocidad sin embargo no cuenta con la misma capacidad de cobertura que la 2.4 📱💻</textarea>
+            </div>
+        </div>
+
+        <div class="bot">
+            <button onclick="one_ini(),empty()"><< FINALIZAR GESTION >></button>
+        </div>
+
+    </div>
+
+    <div class="cards" id="quest15" style="display: none;">
+
+        <h1 id="cod">INTERNET- CABLE</h1>
+
+        <div class="body-card" style="height: 400px;">
+            <div class="question_1">
+                <textarea id="que2" style="height: 350px;" disabled>Vas identificar el cable que viene de la pared hacia el modem vas a identificar el microfiltro es una caja pequeña color blanco o beige vas a desconectar el cable y vas a limpiar la entrada y lo vuelves a conectar 🛠️ luego lo desconectas desde el tomacorriente 🔧y pasado 30 segundos vuelve a conectar, cuando los leds del modem estén encendidos me informas.
+
+Gestión asesor: verifica que en suma este de forma correcta los semáforos y todo este sincronizando correctamente.</textarea>
+            </div>
+        </div>
+
+        <div class="bot">
+            <button onclick="one_ini(),empty()"><< FINALIZAR GESTION >></button>
+        </div>
+
+    </div>
+
     <div class="bio2" id="bio2">
         <div class="data">
             <h3>Nombre:</h3>
@@ -236,6 +393,7 @@ Nota: verificar megas contratadas vista 360 vs realizando soporte si notas algun
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
 <script src="../../Controller/inter/inter4.js"></script>   
+<script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>

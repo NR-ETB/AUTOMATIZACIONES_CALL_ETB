@@ -71,7 +71,7 @@ function ques55() {
 }
 
 function ques6() {
-    $('#quest3').css('display','none');
+    $('#quest6').css('display','none');
     $('#quest7').css('display','block');
     $('#bio2').css('bottom','995px');
 }
@@ -85,6 +85,42 @@ function ques7() {
     $('#quest7').css('display','none');
     $('#quest8').css('display','block');
     $('#bio2').css('bottom','1235px');
+}
+
+function ques9() {
+    $('#quest3').css('display','none');
+    $('#quest9').css('display','block');
+    $('#bio2').css('bottom','1155px');
+}
+
+function ques10() {
+    $('#quest9').css('display','none');
+    $('#quest10').css('display','block');
+    $('#bio2').css('bottom','1155px');
+}
+
+function ques11() {
+    $('#quest10').css('display','none');
+    $('#quest11').css('display','block');
+    $('#bio2').css('bottom','830px');
+}
+
+function ques12() {
+    $('#quest10').css('display','none');
+    $('#quest12').css('display','block');
+    $('#bio2').css('bottom','1000px');
+}
+
+function ques13() {
+    $('#quest10').css('display','none');
+    $('#quest13').css('display','block');
+    $('#bio2').css('bottom','830px');
+}
+
+function ques14() {
+    $('#quest13').css('display','none');
+    $('#quest14').css('display','block');
+    $('#bio2').css('bottom','900px');
 }
 
 function empty() {
@@ -111,13 +147,13 @@ function actualizarTexto() {
     console.log("Texto actualizado:", textarea.value);
 }
 
-function actualizarTexto() {
-    const selectRespuesta = document.getElementById("respuesta");
+function actualizarTexto2() {
+    const selectRespuesta = document.getElementById("respuesta2");
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
         "1": "Envía guion de encuesta",
-        "2": "Continua con el soporte y valida el guion según la falla",
+        "2": "Envía visita técnica e instancia administrativa",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
@@ -126,13 +162,28 @@ function actualizarTexto() {
     console.log("Texto actualizado:", textarea.value);
 }
 
-function actualizarTexto2() {
-    const selectRespuesta = document.getElementById("respuesta2");
+function actualizarTexto3() {
+    const selectRespuesta = document.getElementById("respuesta3");
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
         "1": "Envía guion de encuesta",
-        "2": "Envía visita técnica e instancia administrativa",
+        "2": "Envía visita técnica e instancia administrativa Gestión asesor: Antes de enviar visita técnica valida la configuración en portal suma; semáforos, reaprovisionamiento del servicio en ap y cambio de contraseña sí aplica.",
+    };
+
+    const opcionSeleccionada = selectRespuesta.value;
+    textarea.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea.value);
+}
+
+function actualizarTexto4() {
+    const selectRespuesta = document.getElementById("respuesta4");
+    const textarea = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Señ@r xxxx por favor indicame la ip y puertos sobre los cuales necesitas realizar la apertura",
+        "2": "Señ@r en el computador conectado al modem en datos 1 , vas a ejecutar el comando Windows R, te va salir una ventana y vas a escribir CMD le das enter , te aparece una ventana en negro y vas a escribir ipconfig le das enter y me envías una foto de la ip🤗💻",
     };
 
     const opcionSeleccionada = selectRespuesta.value;

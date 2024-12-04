@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style_tv.css">
+    <link rel="stylesheet" href="../css/style_line.css">
     <link rel="stylesheet" href="../css/comp.css">
-    <title>Gestion TV - ADC</title>
+    <title>Gestion OTT - ADC</title>
 </head>
 <body>
 
@@ -14,24 +14,23 @@
     <!-- PREGUNTA SESIS -->
     <div class="cards" id="quest2">
 
-        <h1 id="cod">CODIGOS DE ERROR MAS COMUNES DE UN DECODIFICADOR</h1>
+        <h1 id="cod">CAMBIO DE CLAVE MIETB</h1>
 
-        <div class="body-card">
+        <div class="body-card" style="height: 420px;">
             <div class="question_1">
-                <textarea id="que2" disabled>El cable que se parece al de la línea telefónica que puede ser de color gris o amarillo ¿está en buen estado?</textarea>
+                <textarea id="que2" style="height: 370px;" disabled>Señ@r xxxxx Vamos a generar un cambio de clave de mi etb, y verificas nuevamente
+ 
+Tienes acceso al correo xxxx ?
+
+Valida el correo xxx te llego un mensaje para realizar el cambio de clave recuerda validar bandeja de entrada, correo no deseado y bandeja de spam, generas el cambio de clave. Recuerda no debe ser una clave que anteriormente hayas utilizado</textarea>
             </div>
         </div>
 
-        <!-- HTML para el formulario -->
-            <div class="body-card">
-                <div class="question_2">
-                    <select name="respuesta" id="respuesta" onchange="actualizarTexto()"> <!-- Manejo con JavaScript -->
-                        <option value="0">Selecciona una Opción...</option> <!-- Opción vacía por defecto -->
-                        <option value="1">SI</option>
-                        <option value="2">NO</option>
-                    </select>
-                </div>
+        <div class="body-card">
+            <div class="question_1">
+                <textarea id="que2" style="bottom: 0px;" disabled>¿Confírmame si ya te funciona la línea telefónica?</textarea>
             </div>
+        </div>
 
         <div class="bot">
             <button onclick="one_ini(),empty()"><< FINALIZAR GESTION >></button>
@@ -50,12 +49,6 @@
             <input type="text">
         </div>
 
-        <div class="actin">
-            <img id="actionn" src="../images/modal2.png" alt="">
-            <img src="../images/touch1.png" alt="">
-            <img id="actionn" src="../images/copy2.png" alt="">
-        </div>
-
         <!-- Aquí cargamos el mensaje en el textarea -->
         <div class="txt">
             <textarea name="respuestaTexto" id="respuestaTexto" disabled></textarea>
@@ -66,7 +59,7 @@
 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../Controller/tv/tv2.js"></script>   
+<script src="../../Controller/ott/ott2.js"></script>   
 <script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>

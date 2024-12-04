@@ -14,7 +14,7 @@
     <!-- PREGUNTA SESIS -->
     <div class="cards" id="quest2">
 
-        <h1 id="cod">VALIDA PLATAFORMAS SUMA <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">VALIDA PLATAFORMAS SUMA</h1>
 
         <div class="body-card" style="height: 420px;">
             <div class="question_1">
@@ -51,7 +51,7 @@ Vas a desconectar el cable de la línea del módem, luego vas a apagar el módem
 
     <div class="cards" id="quest3" style="display: none;">
 
-        <h1 id="cod">VALIDA PLATAFORMAS SUMA <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">VALIDA PLATAFORMAS SUMA</h1>
 
         <div class='body-card'>
             <div class='question_1'>
@@ -97,6 +97,7 @@ Vas a desconectar el cable de la línea del módem, luego vas a apagar el módem
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
 <script src="../../Controller/line/line.js"></script>   
+<script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>

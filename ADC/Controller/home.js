@@ -1,6 +1,9 @@
-function home() {
-    location.href='../adc_Home/geshome_Adc.php';
-}
+$(document).ready(function() {
+    // Cuando el valor del select cambia
+    $('#bio2').css('bottom','1280px');
+    $('#respuesta')
+
+});
 
 function tv() {
     location.href='../adc_Tv/gestvini_Adc.php';

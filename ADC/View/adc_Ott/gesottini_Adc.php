@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style_line.css">
+    <link rel="stylesheet" href="../css/style_ott.css">
     <link rel="stylesheet" href="../css/comp.css">
-    <title>Gestion Telefonica - ADC</title>
+    <title>Gestion OTT - ADC</title>
 </head>
 <body>
 
@@ -18,25 +18,25 @@
 
         <div class="body-card">
             <div class="question_1">
-                <textarea name="" id="que" disabled>¿Desde cuándo presentas falla en el teléfono? 📞❌</textarea>
+                <textarea name="" id="que" disabled>¿Cuentas con acceso a mi etb?</textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_2">
-                <textarea name="" id="que" disabled>¿Manejas alguna derivación? 📞</textarea>
+                <textarea name="" id="que" disabled>Vas desinstalar la app de xxxx la vuelves a instalar y validas el acceso nuevamente 📱💻</textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_3">
-                <textarea name="" id="que" disabled>Envíame foto de la conexión de la línea por favor 📞</textarea>
+                <textarea name="" id="que" disabled>Envíame foto del error que te genera por favor 📷📸</textarea>
             </div>
         </div>
 
         <div class="body-card">
             <div class="question_4">
-                <textarea name="" id="que" disabled>¿Has validado de manera interna el estado de las conexiones y con otro aparato telefónico? 🧐</textarea>
+                <textarea name="" id="que" disabled>Gestión asesor: Verifícate según la falla y plataforma en la matriz de soporte, sigue los flujos guiados y le vas informando al cliente con tacto y buena actitud</textarea>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
             <div class="menu" onclick="one();">
                 <div>
                     <img src="../images/escen.png" alt="">
-                    <p>LINEA FTTH</p>
+                    <p>CAMBIO DE CLAVE MIETB</p>
                 </div>
             </div>
 
@@ -71,14 +71,14 @@
             <div class="menu2" style="opacity: 0;">
                 <div>
                     <img src="../images/escen.png" alt="">
-                    <p id="au">AUSENCIA DE SEÑAL VARIOS DECODIFICADORES O TOTAL IMAGEN PIXELADA IMAGEN CONGELADA</p>
+                    <p>CONECTA NO NAVEGA: CABLE</p>
                 </div>
             </div>
 
-            <div class="menu" onclick="two();">
+            <div class="menu" onclick="four();">
                 <div>
                     <img src="../images/escen.png" alt="">
-                    <p>LINEA FTTC</p>
+                    <p>ELIMINAR REGISTRO MIETB</p>
                 </div>
             </div>
 
@@ -108,7 +108,7 @@
 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../Controller/line/line.js"></script>   
+<script src="../../Controller/ott/ott.js"></script>   
 <script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style_line.css">
+    <link rel="stylesheet" href="../css/style_inter.css">
     <link rel="stylesheet" href="../css/comp.css">
-    <title>Gestion Telefonica - ADC</title>
+    <title>Gestion Internet - ADC</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
     <!-- PREGUNTA SESIS -->
     <div class="cards" id="quest2">
 
-        <h1 id="cod">INTERMITENCIA Y LENTITUD - FTTH <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">INTERMITENCIA Y LENTITUD - FTTH</h1>
 
         <div class="body-card" style="height: 400px;">
             <div class="question_1">
@@ -49,7 +49,7 @@ Cambiar la visual de todos en verde por alguno en rojo</textarea>
 
     <div class="cards" id="quest3" style="display: none;">
 
-        <h1 id="cod">INTERMITENCIA Y LENTITUD - FTTH <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">INTERMITENCIA Y LENTITUD - FTTH</h1>
 
         <div class="body-card">
             <div class="question_1">
@@ -80,7 +80,7 @@ Cambiar la visual de todos en verde por alguno en rojo</textarea>
 
     <div class="cards" id="quest4" style="display: none;">
 
-        <h1 id="cod">INTERMITENCIA Y LENTITUD - FTTH <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">INTERMITENCIA Y LENTITUD - FTTH</h1>
 
         <div class="body-card" style="height: 260px;">
             <div class="question_1">
@@ -134,7 +134,7 @@ Nota: Hacer un PING hacia internet (Modulo de Internet - Botón Consultas – PI
 
     <div class="cards" id="quest6" style="display: none;">
 
-        <h1 id="cod">FALLA WIFI<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">FALLA WIF</h1>
 
         <div class="body-card" style="height: 190px;">
             <div class="question_1">
@@ -165,7 +165,7 @@ Nota: Hacer un PING hacia internet (Modulo de Internet - Botón Consultas – PI
 
     <div class="cards" id="quest7" style="display: none;">
 
-        <h1 id="cod">FALLA WIFI<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">FALLA WIF</h1>
 
         <div class="body-card" style="height: 220px;">
             <div class="question_1">
@@ -198,7 +198,7 @@ Realizamos el cambio de tu clave de forma exitosa, verifica por favor si con la 
 
     <div class="cards" id="quest8" style="display: none;">
 
-        <h1 id="cod">FALLA WIFI<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">FALLA WIF</h1>
 
         <div class="body-card" style="height: 160px;">
             <div class="question_1">
@@ -231,7 +231,7 @@ Realizamos el cambio de tu clave de forma exitosa, verifica por favor si con la 
 
     <div class="cards" id="quest9" style="display: none;">
 
-        <h1 id="cod">FALLA POR CLABLE<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">FALLA POR CLABL</h1>
 
         <div class="body-card" style="height: 220px;">
             <div class="question_1">
@@ -262,7 +262,7 @@ Realizamos el cambio de tu clave de forma exitosa, verifica por favor si con la 
 
     <div class="cards" id="quest10" style="display: none;">
 
-        <h1 id="cod">FALLA POR CLABLE<img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">FALLA POR CLABL</h1>
 
         <div class="body-card" style="height: 160px;">
             <div class="question_1">
@@ -315,6 +315,7 @@ Realizamos el cambio de tu clave de forma exitosa, verifica por favor si con la 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
 <script src="../../Controller/inter/inter2.js"></script>    
+<script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>

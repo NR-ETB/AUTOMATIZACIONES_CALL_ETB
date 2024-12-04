@@ -14,7 +14,7 @@
     <!-- PREGUNTA DECIMA -->
     <div class="cards" id="quest3">
 
-        <h1 id="cod3">AUSENCIA DE SEÑAL VARIOS DECODIFICADORES O TOTAL, IMAGEN PIXELADA, IMAGEN CONGELADA <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod3">AUSENCIA DE SEÑAL VARIOS DECODIFICADORES O TOTAL, IMAGEN PIXELADA, IMAGEN CONGELADA</h1>
 
         <div class='body-card'>
             <div class='question_1'>
@@ -39,7 +39,7 @@
     <!-- PREGUNTA ONCE -->
     <div class="cards" id="quest4" style="display: none;">
 
-        <h1 id="cod3">AUSENCIA DE SEÑAL VARIOS DECODIFICADORES O TOTAL, IMAGEN PIXELADA, IMAGEN CONGELADA <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod3">AUSENCIA DE SEÑAL VARIOS DECODIFICADORES O TOTAL, IMAGEN PIXELADA, IMAGEN CONGELADA</h1>
 
         <div class='body-card'>
             <div class='question_1'>
@@ -65,7 +65,7 @@
     <!-- PREGUNTA NOVENA -->
     <div class="cards" id="quest5" style="display: none;">
 
-        <h1 id="cod">CODIGOS DE ERROR MAS COMUNES DE UN DECODIFICADOR <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">CODIGOS DE ERROR MAS COMUNES DE UN DECODIFICADOR</h1>
 
         <div class='body-card'>
             <div class='question_1'>
@@ -101,6 +101,12 @@
             <input type="text">
         </div>
 
+        <div class="actin">
+            <img id="actionn" src="../images/modal2.png" alt="">
+            <img src="../images/touch1.png" alt="">
+            <img id="actionn" src="../images/copy2.png" alt="">
+        </div>
+
         <!-- Aquí cargamos el mensaje en el textarea -->
         <div class="txt">
             <textarea name="respuestaTexto" id="respuestaTexto" disabled>
@@ -112,7 +118,8 @@
 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../Controller/tv4.js"></script>   
+<script src="../../Controller/tv/tv4.js"></script>   
+<script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>

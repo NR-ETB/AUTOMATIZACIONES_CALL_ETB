@@ -1,8 +1,7 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
-    $('#bio2').css('bottom','1240px');
+    $('#bio2').css('bottom','1205px');
     $('#respuesta')
-
 });
 
 function ques() {
@@ -28,8 +27,6 @@ function ques11() {
 function ques2() {
     $('#quest2').css('display','none');
     $('#quest3').css('display','block');
-    $('#bio2').css('bottom','970px');
-    $('#que2').css('bottom','1px');
 }
 
 function ques22() {
@@ -39,8 +36,9 @@ function ques22() {
 
 function ques3() {
     $('#quest3').css('display','none');
+    $('#quest33').css('display','none');
     $('#quest4').css('display','block');
-    $('#bio2').css('bottom','1245px');
+    $('#bio2').css('bottom','840px');
 }
 
 function ques33() {
@@ -51,7 +49,6 @@ function ques33() {
 function ques4() {
     $('#quest4').css('display','none');
     $('#quest5').css('display','block');
-    $('#bio2').css('bottom','830px');
 }
 
 function ques44() {
@@ -62,7 +59,6 @@ function ques44() {
 function ques5() {
     $('#quest5').css('display','none');
     $('#quest6').css('display','block');
-    $('#bio2').css('bottom','1000px');
 }
 
 function ques55() {
@@ -71,20 +67,13 @@ function ques55() {
 }
 
 function ques6() {
-    $('#quest3').css('display','none');
+    $('#quest6').css('display','none');
     $('#quest7').css('display','block');
-    $('#bio2').css('bottom','995px');
 }
 
 function ques66() {
     $('#quest6').css('display','block');
     $('#quest7').css('display','none');
-}
-
-function ques7() {
-    $('#quest7').css('display','none');
-    $('#quest8').css('display','block');
-    $('#bio2').css('bottom','1235px');
 }
 
 function empty() {
@@ -93,7 +82,23 @@ function empty() {
 }
 
 function one_ini() {
-    location.href='./gesinterini_Adc.php';
+    location.href='./gestvini_Adc.php';
+}
+
+function one() {
+    location.href='./gestv_Adc.php';
+}
+
+function two() {
+    location.href='./gestv_Adc2.php';
+}
+
+function three() {
+    location.href='./gestv_Adc3.php';
+}
+
+function four() {
+    location.href='./gestv_Adc4.php';
 }
 
 function actualizarTexto() {
@@ -101,8 +106,8 @@ function actualizarTexto() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
-        "2": "Continua con el soporte realizar una configuración de tarjeta de red ",
+        "1": "Guion de finalización de chat",
+        "2": "Continuar con el soporte",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
@@ -112,31 +117,31 @@ function actualizarTexto() {
 }
 
 function actualizarTexto2() {
-    const selectRespuesta = document.getElementById("respuesta2");
-    const textarea = document.getElementById("respuestaTexto");
+    const selectRespuesta2 = document.getElementById("respuesta2");
+    const textarea2 = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
-        "2": "Continua con el soporte",
+        "1": "Por favor conecta el nuevo cable o decodificador señor@ xxxxx para validar la conexión",
+        "2": "Verificar en suma el estado de los semáforos y validar con el cliente el cable HDMI o cable AV (Asesor)\n\nNOTA: Si aun el cliente no cuenta con servicio continuar con el soporte\n\nPara ambos casos\n\nVas a identificar el cable HDMI que está entre el televisor y el decodificador vas a intercambiar las puntas por favor, la punta que está conectada en el decodificador la pones en el televisor y la del televisor en el decodificador, luego en la parte trasera del decodificador hay un botón de encendido y apagado lo vas a apagar lo vuelves a encender y válidas 🔌📺 😀\n\nLuego vas a ubicar en el control del televisor el botón denominado input vas a oprimirlo, este te va a mostrar varias opciones, ahí vas a seleccionar el puerto de HDMI en el cual anteriormente hayas conectado el cable🔌📺\n\n",
     };
 
-    const opcionSeleccionada = selectRespuesta.value;
-    textarea.value = textos[opcionSeleccionada];
+    const opcionSeleccionada = selectRespuesta2.value;
+    textarea2.value = textos[opcionSeleccionada];
 
-    console.log("Texto actualizado:", textarea.value);
+    console.log("Texto actualizado:", textarea2.value);
 }
 
 function actualizarTexto3() {
-    const selectRespuesta = document.getElementById("respuesta3");
-    const textarea = document.getElementById("respuestaTexto");
+    const selectRespuesta3 = document.getElementById("respuesta3");
+    const textarea3 = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
-        "2": "Envía visita técnica",
+        "1": "Guion de finalización de chat",
+        "2": "Enviar visita técnica",
     };
 
-    const opcionSeleccionada = selectRespuesta.value;
-    textarea.value = textos[opcionSeleccionada];
+    const opcionSeleccionada = selectRespuesta3.value;
+    textarea3.value = textos[opcionSeleccionada];
 
-    console.log("Texto actualizado:", textarea.value);
+    console.log("Texto actualizado:", textarea3.value);
 }

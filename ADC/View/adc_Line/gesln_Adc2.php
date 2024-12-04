@@ -14,7 +14,7 @@
     <!-- PREGUNTA SESIS -->
     <div class="cards" id="quest2">
 
-        <h1 id="cod">VALIDA PLATAFORMAS SUMA <img id="acti" src="../images/touch.png" alt=""></h1>
+        <h1 id="cod">VALIDA PLATAFORMAS SUMA</h1>
 
         <div class="body-card" style="height: 290px;">
             <div class="question_1">
@@ -70,6 +70,7 @@ Valida si el cable de la línea está conectado en un puerto que tiene el símbo
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
 <script src="../../Controller/line/line2.js"></script>   
+<script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
