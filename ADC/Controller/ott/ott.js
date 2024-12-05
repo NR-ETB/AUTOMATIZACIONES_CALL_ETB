@@ -1,8 +1,6 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
     $('#bio2').css('bottom','1250px');
-    $('#respuesta')
-
 });
 
 function ques() {

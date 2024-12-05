@@ -1,7 +1,21 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
     $('#bio2').css('bottom','1240px');
-    $('#respuesta')
+    $('#logg').css('bottom','276px');
+    $('#sid_img').css('position','relative');
+    $('#sid_img').css('bottom','30px');
+    $('#sid_img2').css('position','relative');
+    $('#sid_img2').css('bottom','30px');
+    $('#sid_img3').css('position','relative');
+    $('#sid_img3').css('bottom','30px');
+    $('#sid_img4').css('position','relative');
+    $('#sid_img4').css('bottom','30px');
+    $('#sid_img5').css('position','relative');
+    $('#sid_img5').css('bottom','30px');
+    $('#var').css('margin-top','40px');
+    $('#respuestaTexto').css('right','190px');
+    $('#actin').css('right','225px');
+    $('#data2').css('left','670px');
 
 });
 
@@ -28,7 +42,7 @@ function ques11() {
 function ques2() {
     $('#quest2').css('display','none');
     $('#quest3').css('display','block');
-    $('#bio2').css('bottom','1170px');
+    $('#bio2').css('bottom','970px');
     $('#que2').css('bottom','1px');
 }
 
@@ -40,7 +54,7 @@ function ques22() {
 function ques3() {
     $('#quest3').css('display','none');
     $('#quest4').css('display','block');
-    $('#bio2').css('bottom','845px');
+    $('#bio2').css('bottom','1240px ');
 }
 
 function ques33() {
@@ -49,9 +63,9 @@ function ques33() {
 }
 
 function ques4() {
-    $('#quest3').css('display','none');
+    $('#quest4').css('display','none');
     $('#quest5').css('display','block');
-    $('#bio2').css('bottom','1145px');
+    $('#bio2').css('bottom','830px');
 }
 
 function ques44() {
@@ -62,7 +76,7 @@ function ques44() {
 function ques5() {
     $('#quest5').css('display','none');
     $('#quest6').css('display','block');
-    $('#bio2').css('bottom','1115px');
+    $('#bio2').css('bottom','1000px');
 }
 
 function ques55() {
@@ -73,7 +87,7 @@ function ques55() {
 function ques6() {
     $('#quest6').css('display','none');
     $('#quest7').css('display','block');
-    $('#bio2').css('bottom','995px');
+    $('#bio2').css('bottom','1040px');
 }
 
 function ques66() {
@@ -84,43 +98,19 @@ function ques66() {
 function ques7() {
     $('#quest7').css('display','none');
     $('#quest8').css('display','block');
-    $('#bio2').css('bottom','1235px');
+    $('#bio2').css('bottom','1000px');
 }
 
 function ques9() {
-    $('#quest3').css('display','none');
+    $('#quest5').css('display','none');
     $('#quest9').css('display','block');
-    $('#bio2').css('bottom','1155px');
+    $('#bio2').css('bottom','1055px');
 }
 
 function ques10() {
     $('#quest9').css('display','none');
     $('#quest10').css('display','block');
-    $('#bio2').css('bottom','1155px');
-}
-
-function ques11() {
-    $('#quest10').css('display','none');
-    $('#quest11').css('display','block');
-    $('#bio2').css('bottom','830px');
-}
-
-function ques12() {
-    $('#quest10').css('display','none');
-    $('#quest12').css('display','block');
     $('#bio2').css('bottom','1000px');
-}
-
-function ques13() {
-    $('#quest10').css('display','none');
-    $('#quest13').css('display','block');
-    $('#bio2').css('bottom','830px');
-}
-
-function ques14() {
-    $('#quest13').css('display','none');
-    $('#quest14').css('display','block');
-    $('#bio2').css('bottom','900px');
 }
 
 function empty() {
@@ -138,7 +128,7 @@ function actualizarTexto() {
 
     const textos = {
         "1": "Envía guion de encuesta",
-        "2": "Continua con el soporte",
+        "2": "Continua con el soporte realizar una configuración de tarjeta de red ",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
@@ -153,7 +143,7 @@ function actualizarTexto2() {
 
     const textos = {
         "1": "Envía guion de encuesta",
-        "2": "Envía visita técnica e instancia administrativa",
+        "2": "Continua con el soporte",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
@@ -168,7 +158,7 @@ function actualizarTexto3() {
 
     const textos = {
         "1": "Envía guion de encuesta",
-        "2": "Envía visita técnica e instancia administrativa Gestión asesor: Antes de enviar visita técnica valida la configuración en portal suma; semáforos, reaprovisionamiento del servicio en ap y cambio de contraseña sí aplica.",
+        "2": "Envía visita técnica",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
@@ -177,17 +167,44 @@ function actualizarTexto3() {
     console.log("Texto actualizado:", textarea.value);
 }
 
-function actualizarTexto4() {
-    const selectRespuesta = document.getElementById("respuesta4");
-    const textarea = document.getElementById("respuestaTexto");
+function updateAllNames() {
+    // Obtener el valor del primer input
+    const name = document.getElementById('nameInput').value.trim();
 
-    const textos = {
-        "1": "Señ@r xxxx por favor indicame la ip y puertos sobre los cuales necesitas realizar la apertura",
-        "2": "Señ@r en el computador conectado al modem en datos 1 , vas a ejecutar el comando Windows R, te va salir una ventana y vas a escribir CMD le das enter , te aparece una ventana en negro y vas a escribir ipconfig le das enter y me envías una foto de la ip🤗💻",
-    };
+    // Asignar "xxxx" si el campo está vacío
+    const finalName = name === "" ? "xxxx" : name;
 
-    const opcionSeleccionada = selectRespuesta.value;
-    textarea.value = textos[opcionSeleccionada];
+    const textarea = document.getElementById('que2');
+    textarea.value = `¿La falla se presenta en todos los dispositivos o en algunos? 📱📲
 
-    console.log("Texto actualizado:", textarea.value);
+Falla en un solo dispositivo
+Valida con tu técnico de confianza
+
+Falla en varios dispositivos
+Señor / Señora ${finalName} Reinicia tu Modem 📲 valida la conexión en varios equipos por favor 📱📲💻
+
+Nota: Falla por cable: Descartar equipos conectados en red como router o switch (Diferentes a los entregados por ETB).
+
+Realice Ping a los DNS (200.75.51.132) o a una página y verificar respuesta. Si tiene perdidas
+
+Señor@ vamos a realizar un reaprovisionamiento en su servicio 3 minutos y ya vuelvo contigo ⏳😄
+
+Valida la potencia del modem y si en suma está bien los semáforos`;
+
+    // Actualizar el contenido del textarea
+    const textarea2 = document.getElementById('que3');
+    textarea2.value = `Señor@ ${finalName} vamos a realizar una configuración de tarjeta de red, por favor conecta tu equipo por medio de un cable de red directamente conectado al modem 🔌 y realizas los siguientes pasos 😄💻
+
+Cambiar como comunicarlo Por favor conecta tu equipo por medio de un cable de red directamente al modem.
+
+Configuración de tarjeta de red:
+1) Ingrese a la configuración de windows
+2)Buscas configuración
+3)Das click en Ethernet o red
+4) Ethernet configuración avanzada
+5) Opción cambiar configuración del adaptador 
+6) Ethernet seleccionas Propiedades
+7) Seleccionar protocolo de internet versión 4 (TCP/IPv4) Propiedades
+8) Seleccionar usar la siguiente dirección Ip colocar (192.168.0 y segmento a seleccionar de la 3 a la 255
+9) Seleccionar los DNS de ETB 200.75.51.132 en el prefijo y en el alternativo 200.75.51.133 y aceptar`;
 }

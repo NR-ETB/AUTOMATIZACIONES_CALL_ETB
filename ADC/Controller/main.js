@@ -17,3 +17,27 @@ function net() {
 function ott() {
     location.href='../adc_Ott/gesottini_Adc.php';
 }
+
+function mod() {
+    $('#modal-loading').modal('toggle')
+    setTimeout(() => {
+    $( document ).ready(function() {
+        $('#modal-loading').modal('hide')
+        $('#modal-indi').modal('toggle')
+    });
+    }, "4000");
+}
+
+function tou() {
+    $('#modal-loading').modal('toggle')
+    setTimeout(() => {
+    $( document ).ready(function() {
+        $('#modal-loading').modal('hide')
+        $('#modal-re').modal('toggle')
+    });
+    }, "4000");
+}
+
+function man() {
+    
+}

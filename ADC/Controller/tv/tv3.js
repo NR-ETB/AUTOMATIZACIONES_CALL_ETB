@@ -1,7 +1,22 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
     $('#bio2').css('bottom','1205px');
-    $('#respuesta')
+    $('#logg').css('bottom','276px');
+    $('#sid_img').css('position','relative');
+    $('#sid_img').css('bottom','30px');
+    $('#sid_img2').css('position','relative');
+    $('#sid_img2').css('bottom','30px');
+    $('#sid_img3').css('position','relative');
+    $('#sid_img3').css('bottom','30px');
+    $('#sid_img4').css('position','relative');
+    $('#sid_img4').css('bottom','30px');
+    $('#sid_img5').css('position','relative');
+    $('#sid_img5').css('bottom','30px');
+    $('#var').css('margin-top','40px');
+    $('#respuestaTexto').css('right','190px');
+    $('#actin').css('right','225px');
+    $('#data2').css('left','670px');
+
 });
 
 function ques() {
@@ -116,16 +131,31 @@ function actualizarTexto() {
     console.log("Texto actualizado:", textarea.value);
 }
 
+let finalName = "xxxx"; // Valor inicial compartido
+
+function updateAllNames() {
+    // Obtener el valor del input
+    const name = document.getElementById('nameInput').value.trim();
+
+    // Asignar "xxxx" si está vacío
+    finalName = name === "" ? "xxxx" : name;
+
+    // Llamar a actualizarTexto2 para asegurar que se actualice según la selección
+    actualizarTexto2();
+}
+
 function actualizarTexto2() {
     const selectRespuesta2 = document.getElementById("respuesta2");
     const textarea2 = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Por favor conecta el nuevo cable o decodificador señor@ xxxxx para validar la conexión",
-        "2": "Verificar en suma el estado de los semáforos y validar con el cliente el cable HDMI o cable AV (Asesor)\n\nNOTA: Si aun el cliente no cuenta con servicio continuar con el soporte\n\nPara ambos casos\n\nVas a identificar el cable HDMI que está entre el televisor y el decodificador vas a intercambiar las puntas por favor, la punta que está conectada en el decodificador la pones en el televisor y la del televisor en el decodificador, luego en la parte trasera del decodificador hay un botón de encendido y apagado lo vas a apagar lo vuelves a encender y válidas 🔌📺 😀\n\nLuego vas a ubicar en el control del televisor el botón denominado input vas a oprimirlo, este te va a mostrar varias opciones, ahí vas a seleccionar el puerto de HDMI en el cual anteriormente hayas conectado el cable🔌📺\n\n",
+        "1": `Por favor conecta el nuevo cable o decodificador Señor@ ${finalName} para validar la conexión`,
+        "2": `Verificar en suma el estado de los semáforos y validar con el cliente el cable HDMI o cable AV (Asesor)\n\nNOTA: Si aun el cliente no cuenta con servicio continuar con el soporte\n\nPara ambos casos\n\nVas a identificar el cable HDMI que está entre el televisor y el decodificador vas a intercambiar las puntas por favor, la punta que está conectada en el decodificador la pones en el televisor y la del televisor en el decodificador, luego en la parte trasera del decodificador hay un botón de encendido y apagado lo vas a apagar lo vuelves a encender y válidas 🔌📺 😀\n\nLuego vas a ubicar en el control del televisor el botón denominado input vas a oprimirlo, este te va a mostrar varias opciones, ahí vas a seleccionar el puerto de HDMI en el cual anteriormente hayas conectado el cable🔌📺\n\n`,
     };
 
     const opcionSeleccionada = selectRespuesta2.value;
+
+    // Actualizar el textarea con el texto correspondiente a la opción seleccionada
     textarea2.value = textos[opcionSeleccionada];
 
     console.log("Texto actualizado:", textarea2.value);

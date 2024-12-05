@@ -107,6 +107,7 @@
         <div class="actin">
             <img src="../images/modal.png" alt="">
             <img src="../images/touch1.png" alt="">
+            <img id="actionn" src="../images/pdf2.png" alt="" onclick="man();">
             <img src="../images/copy.png" alt="">
         </div>
 

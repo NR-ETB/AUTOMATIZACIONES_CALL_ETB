@@ -1,7 +1,22 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
     $('#bio2').css('bottom','850px');
-    $('#respuesta')
+    $('#logg').css('bottom','276px');
+    $('#sid_img').css('position','relative');
+    $('#sid_img').css('bottom','30px');
+    $('#sid_img2').css('position','relative');
+    $('#sid_img2').css('bottom','30px');
+    $('#sid_img3').css('position','relative');
+    $('#sid_img3').css('bottom','30px');
+    $('#sid_img4').css('position','relative');
+    $('#sid_img4').css('bottom','30px');
+    $('#sid_img5').css('position','relative');
+    $('#sid_img5').css('bottom','30px');
+    $('#var').css('margin-top','40px');
+    $('#respuestaTexto').css('right','190px');
+    $('#actin').css('right','225px');
+    $('#data2').css('left','670px');
+    
 });
 
 function ques() {
@@ -52,6 +67,7 @@ function ques4() {
     $('#quest5').css('display','block');
     $('#que2').css('bottom','32px');
     $('#que2').css('height','100px');
+    $('#bio2').css('bottom','900px');
 }
 
 function ques44() {
@@ -146,4 +162,18 @@ function actualizarTexto3() {
     textarea.value = textos[opcionSeleccionada];
 
     console.log("Texto actualizado:", textarea.value);
+}
+
+function updateAllNames() {
+    // Obtener el valor del primer input
+    const name = document.getElementById('nameInput').value.trim();
+
+    // Asignar "xxxx" si el campo está vacío
+    const finalName = name === "" ? "xxxx" : name;
+
+    const textarea = document.getElementById('que2');
+    textarea.value = `Señor@ ${finalName} ¿la ausencia de señal es en todos los decodificadores? (de 3 decodificadores en adelante)`;
+
+    const textarea2 = document.getElementById('que3');
+    textarea2.value = `Señ@r ${finalName} permíteme que estoy realizando un reaprovisionamiento desde plataforma 🛠️ ¿Te funciona correctamente el/los decodificadores? 📺🔌`;
 }

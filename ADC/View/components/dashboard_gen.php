@@ -1,31 +1,31 @@
    <div class="general-container">
         <div class="log">
-            <img src="../images/ETB.png" alt="">
+            <img id="logg" src="../images/ETB.png" alt="">
         </div>
 
-        <div class="side-bar">
+        <div class="side-bar" id="var">
             <div class="sid-t" onclick="home();">
-                <img src="../images/home.png" alt="">
+                <img id="sid_img" src="../images/home.png" alt="">
                 <label for="">Inicio</label>
             </div>
 
             <div class="sid-t2" onclick="tv();">
-                <img src="../images/tv.png" alt="">
+                <img id="sid_img2" src="../images/tv.png" alt="">
                 <label for="">Gestion TV</label>
             </div>
 
             <div class="sid-t2" onclick="phone();">
-                <img src="../images/pline.png" alt="">
+                <img id="sid_img3" src="../images/pline.png" alt="">
                 <label for="">Gestion Telefonica</label>
             </div>
 
             <div class="sid-t2" onclick="net();">
-                <img src="../images/net.png" alt="">
+                <img id="sid_img4" src="../images/net.png" alt="">
                 <label for="">Gestion Internet</label>
             </div>
 
             <div class="sid-t2" onclick="ott();">
-                <img src="../images/streaming.png" alt="">
+                <img id="sid_img5" src="../images/streaming.png" alt="">
                 <label for="">Gestion OTT</label>
             </div>  
             

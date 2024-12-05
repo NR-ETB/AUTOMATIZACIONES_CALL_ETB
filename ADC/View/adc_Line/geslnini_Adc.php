@@ -97,6 +97,13 @@
             <input type="text">
         </div>
 
+        <div class="actin">
+            <img src="../images/modal.png" alt="">
+            <img src="../images/touch1.png" alt="">
+            <img id="actionn" src="../images/pdf2.png" alt="" onclick="man();">
+            <img src="../images/copy.png" alt="">
+        </div>
+
         <!-- Aquí cargamos el mensaje en el textarea -->
         <div class="txt">
             <textarea name="respuestaTexto" id="respuestaTexto" disabled>

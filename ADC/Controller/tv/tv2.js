@@ -1,7 +1,21 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
     $('#bio2').css('bottom','875px');
-    $('#respuesta')
+    $('#logg').css('bottom','276px');
+    $('#sid_img').css('position','relative');
+    $('#sid_img').css('bottom','30px');
+    $('#sid_img2').css('position','relative');
+    $('#sid_img2').css('bottom','30px');
+    $('#sid_img3').css('position','relative');
+    $('#sid_img3').css('bottom','30px');
+    $('#sid_img4').css('position','relative');
+    $('#sid_img4').css('bottom','30px');
+    $('#sid_img5').css('position','relative');
+    $('#sid_img5').css('bottom','30px');
+    $('#var').css('margin-top','40px');
+    $('#respuestaTexto').css('right','190px');
+    $('#actin').css('right','225px');
+    $('#data2').css('left','670px');
 
 });
 

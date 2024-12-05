@@ -1,7 +1,21 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
-    $('#bio2').css('bottom','1170px');
-    $('#respuesta')
+    $('#bio2').css('bottom','1100px');
+    $('#logg').css('bottom','276px');
+    $('#sid_img').css('position','relative');
+    $('#sid_img').css('bottom','30px');
+    $('#sid_img2').css('position','relative');
+    $('#sid_img2').css('bottom','30px');
+    $('#sid_img3').css('position','relative');
+    $('#sid_img3').css('bottom','30px');
+    $('#sid_img4').css('position','relative');
+    $('#sid_img4').css('bottom','30px');
+    $('#sid_img5').css('position','relative');
+    $('#sid_img5').css('bottom','30px');
+    $('#var').css('margin-top','40px');
+    $('#respuestaTexto').css('right','190px');
+    $('#actin').css('right','225px');
+    $('#data2').css('left','670px');
 
 });
 
@@ -84,4 +98,23 @@ function empty() {
 
 function one_ini() {
     location.href='./gesottini_Adc.php';
+}
+
+function updateAllNames() {
+    // Obtener el valor del primer input
+    const name = document.getElementById('nameInput').value.trim();
+
+    const email = document.getElementById('emaInput').value.trim();
+
+    // Asignar "xxxx" si el campo está vacío
+    const finalName = name === "" ? "xxxx" : name;
+
+    const finalEma = email === "" ? "xxxx" : email;
+
+    const textarea = document.getElementById('que2');
+    textarea.value = `Señ@r ${finalName} Vamos a generar un cambio de clave de mi etb, y verificas nuevamente
+ 
+Tienes acceso al correo ${finalEma} ?
+
+Valida el correo ${finalEma} te llego un mensaje para realizar el cambio de clave recuerda validar bandeja de entrada, correo no deseado y bandeja de spam, generas el cambio de clave. Recuerda no debe ser una clave que anteriormente hayas utilizado`;
 }
