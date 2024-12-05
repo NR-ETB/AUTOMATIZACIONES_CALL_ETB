@@ -42,7 +42,7 @@ function ques11() {
 function ques2() {
     $('#quest2').css('display','none');
     $('#quest3').css('display','block');
-    $('#bio2').css('bottom','970px');
+    $('#bio2').css('bottom','1020px');
     $('#que2').css('bottom','1px');
 }
 
@@ -127,8 +127,8 @@ function actualizarTexto() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
-        "2": "Continua con el soporte realizar una configuración de tarjeta de red ",
+        "1": "Envía guion de encuesta\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera, antes de irte! 🤚Te quiero hacer una invitación😊. Por favor evalúa mi atención con la siguiente encuesta 🙏✍️ que me ayuda a continuar mejorando cada día y no te tomara más de un minuto, https://tinyurl.com/2kz62fde. Tu opinión es muy importante para nosotros. Ten en cuenta que a tu correo electrónico puede llegar otra encuesta donde tendrás la opción de calificar la atención recibida en este canal. 📲 A partir de este momento nuestra sesión ha finalizado. Los nuevos mensajes serán atendidos por nuestra agente virtual Luz. Gracias por escribirnos, hasta pronto.",
+        "2": "Continua con el soporte y valida el guion según la falla",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
@@ -142,7 +142,7 @@ function actualizarTexto2() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
+        "1": "Envía guion de encuesta\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera, antes de irte! 🤚Te quiero hacer una invitación😊. Por favor evalúa mi atención con la siguiente encuesta 🙏✍️ que me ayuda a continuar mejorando cada día y no te tomara más de un minuto, https://tinyurl.com/2kz62fde. Tu opinión es muy importante para nosotros. Ten en cuenta que a tu correo electrónico puede llegar otra encuesta donde tendrás la opción de calificar la atención recibida en este canal. 📲 A partir de este momento nuestra sesión ha finalizado. Los nuevos mensajes serán atendidos por nuestra agente virtual Luz. Gracias por escribirnos, hasta pronto.",
         "2": "Continua con el soporte",
     };
 
@@ -157,8 +157,68 @@ function actualizarTexto3() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
-        "2": "Envía visita técnica",
+        "1": "Envía guion de encuesta\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera, antes de irte! 🤚Te quiero hacer una invitación😊. Por favor evalúa mi atención con la siguiente encuesta 🙏✍️ que me ayuda a continuar mejorando cada día y no te tomara más de un minuto, https://tinyurl.com/2kz62fde. Tu opinión es muy importante para nosotros. Ten en cuenta que a tu correo electrónico puede llegar otra encuesta donde tendrás la opción de calificar la atención recibida en este canal. 📲 A partir de este momento nuestra sesión ha finalizado. Los nuevos mensajes serán atendidos por nuestra agente virtual Luz. Gracias por escribirnos, hasta pronto.",
+        "2": "Continua con el soporte y valida el guion según la falla",
+    };
+
+    const opcionSeleccionada = selectRespuesta.value;
+    textarea.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea.value);
+}
+
+function actualizarTexto4() {
+    const selectRespuesta = document.getElementById("respuesta4");
+    const textarea = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Envía guion de encuesta\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera, antes de irte! 🤚Te quiero hacer una invitación😊. Por favor evalúa mi atención con la siguiente encuesta 🙏✍️ que me ayuda a continuar mejorando cada día y no te tomara más de un minuto, https://tinyurl.com/2kz62fde. Tu opinión es muy importante para nosotros. Ten en cuenta que a tu correo electrónico puede llegar otra encuesta donde tendrás la opción de calificar la atención recibida en este canal. 📲 A partir de este momento nuestra sesión ha finalizado. Los nuevos mensajes serán atendidos por nuestra agente virtual Luz. Gracias por escribirnos, hasta pronto.",
+        "2": "Continua con el soporte y valida el guion según la falla",
+    };
+
+    const opcionSeleccionada = selectRespuesta.value;
+    textarea.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea.value);
+}
+
+function actualizarTexto5() {
+    const selectRespuesta = document.getElementById("respuesta5");
+    const textarea = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Envía guion de encuesta\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera, antes de irte! 🤚Te quiero hacer una invitación😊. Por favor evalúa mi atención con la siguiente encuesta 🙏✍️ que me ayuda a continuar mejorando cada día y no te tomara más de un minuto, https://tinyurl.com/2kz62fde. Tu opinión es muy importante para nosotros. Ten en cuenta que a tu correo electrónico puede llegar otra encuesta donde tendrás la opción de calificar la atención recibida en este canal. 📲 A partir de este momento nuestra sesión ha finalizado. Los nuevos mensajes serán atendidos por nuestra agente virtual Luz. Gracias por escribirnos, hasta pronto.",
+        "2": "Gestión asesor: valida de nuevo el flujo con el cliente ya que este error se da cuando no elimina por completo la red a la que está conectada",
+    };
+
+    const opcionSeleccionada = selectRespuesta.value;
+    textarea.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea.value);
+}
+
+function actualizarTexto6() {
+    const selectRespuesta = document.getElementById("respuesta6");
+    const textarea = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Realizar reaprovisionamiento desde portal suma",
+        "2": "Continua con el soporte y valida el guion según la falla",
+    };
+
+    const opcionSeleccionada = selectRespuesta.value;
+    textarea.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea.value);
+}
+
+function actualizarTexto7() {
+    const selectRespuesta = document.getElementById("respuesta7");
+    const textarea = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Envía guion de encuesta\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera, antes de irte! 🤚Te quiero hacer una invitación😊. Por favor evalúa mi atención con la siguiente encuesta 🙏✍️ que me ayuda a continuar mejorando cada día y no te tomara más de un minuto, https://tinyurl.com/2kz62fde. Tu opinión es muy importante para nosotros. Ten en cuenta que a tu correo electrónico puede llegar otra encuesta donde tendrás la opción de calificar la atención recibida en este canal. 📲 A partir de este momento nuestra sesión ha finalizado. Los nuevos mensajes serán atendidos por nuestra agente virtual Luz. Gracias por escribirnos, hasta pronto.",
+        "2": "Envía visita técnica. Guion instancia administrativa.\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera antes de irte! 🤚 te doy a conocer la instancia administrativa de acuerdo con el régimen de protección al usuario en el siguiente link https://etb.com/info-regulatoria/doc/modulo_e_procedimiento_y_tramite_de_pqr_.pdf",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
@@ -183,7 +243,9 @@ Cambiar la visual de todos en verde por alguno en rojo`;
 
     // Actualizar el contenido del textarea
     const textarea2 = document.getElementById('que3');
-    textarea2.value = `Señor@ ${finalName} la intermitencia es por cable o wifi?`;
+    textarea2.value = `Voy a realizar unos reaprovisionamientos en sistema, permíteme 3 minutos y ya vuelvo contigo ⏳😄
+                    
+Señ@r ${finalName} por favor verifique si ya tiene servicio 😄`;
 
     const textarea3 = document.getElementById('que4');
     textarea3.value = `Señor@ ${finalName} la intermitencia es por cable o wifi ?

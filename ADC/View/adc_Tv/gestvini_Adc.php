@@ -96,12 +96,12 @@
     <div class="bio2" id="bio2">
         <div class="data">
             <h3>Nombre:</h3>
-            <input type="text">
+            <input type="text" disabled>
         </div>
 
         <div class="data2">
             <h3>Dato:</h3>
-            <input type="text">
+            <input type="text" disabled>
         </div>
 
         <div class="actin">

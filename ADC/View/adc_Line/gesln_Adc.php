@@ -56,7 +56,7 @@ Vas a desconectar el cable de la línea del módem, luego vas a apagar el módem
 
         <div class='body-card'>
             <div class='question_1'>
-                <textarea id='que2' disabled>¿Puedes validar con otro aparato telefónico?</textarea>
+                <textarea id='que2' style="bottom: 0;" disabled>¿Puedes validar con otro aparato telefónico?</textarea>
             </div>
         </div>
 
@@ -77,14 +77,14 @@ Vas a desconectar el cable de la línea del módem, luego vas a apagar el módem
     </div>
 
     <div class="bio2" id="bio2">
-        <div class="data">
+        <div class="data" id="dat">
             <h3>Nombre:</h3>
-            <input type="text">
+            <input type="text" id="nameInput" disabled>
         </div>
 
-        <div class="data2">
+        <div class="data2" id="data2">
             <h3>Dato:</h3>
-            <input type="text">
+            <input type="text" disabled>
         </div>
 
         <div class="actin">
@@ -153,7 +153,7 @@ Vas a desconectar el cable de la línea del módem, luego vas a apagar el módem
 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../Controller/line/line.js"></script>   
+<script src="../../Controller/line/line2.js"></script>   
 <script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>

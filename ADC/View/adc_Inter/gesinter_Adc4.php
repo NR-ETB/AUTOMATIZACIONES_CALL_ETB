@@ -269,7 +269,7 @@ Vas a validar en la parte trasera del repetidor vas a identificar un cable conec
 
         <div class="container-menu">
 
-            <div class="menu" onclick="ques13();">
+            <div class="menu" onclick="ques14();">
                 <div>
                     <img src="../images/escen.png" alt="">
                     <p>SOPORTE COBRE</p>
@@ -286,7 +286,7 @@ Vas a validar en la parte trasera del repetidor vas a identificar un cable conec
 
         <div class="body-card" style="height: 260px;">
             <div class="question_1">
-                <textarea id="que2" style="height: 340px;" disabled>xxx ya para la configuración de tu repetidor de señal, lo debes realizar directamente tu por medio de nuestro aplicativo FIBERHOME📲, lo puedes descargar por medio de la APP STORE o PLAY STORE totalmente gratis, lo descargas te registras y de esta manera configuras tu red o tu repetidor de señal. ✔️</textarea>
+                <textarea id="que5" style="height: 340px;" disabled>xxx ya para la configuración de tu repetidor de señal, lo debes realizar directamente tu por medio de nuestro aplicativo FIBERHOME📲, lo puedes descargar por medio de la APP STORE o PLAY STORE totalmente gratis, lo descargas te registras y de esta manera configuras tu red o tu repetidor de señal. ✔️</textarea>
             </div>
         </div>
 
@@ -302,7 +302,7 @@ Vas a validar en la parte trasera del repetidor vas a identificar un cable conec
 
         <div class="body-card" style="height: 430px;">
             <div class="question_1">
-                <textarea id="que2" style="height: 370px;" disabled>Ingresa a la app, selecciona tu servicio, vas a dar click sobre la flecha azul, vas a dar click sobre la flecha azul en la opción modem, desde esta opción podrás hacer el cambio dando click en el lápiz, cuando ya hayas ingresado la nueva clave das click en guardar 😃
+                <textarea id="que6" style="height: 370px;" disabled>Ingresa a la app, selecciona tu servicio, vas a dar click sobre la flecha azul, vas a dar click sobre la flecha azul en la opción modem, desde esta opción podrás hacer el cambio dando click en el lápiz, cuando ya hayas ingresado la nueva clave das click en guardar 😃
  
 xxx ya para la configuración de tu repetidor de señal, lo debes realizar directamente tu por medio de nuestro aplicativo FIBERHOME📲, lo puedes descargar por medio de la APP STORE o PLAY STORE totalmente gratis, lo descargas te registras y de esta manera configuras tu red o tu repetidor de señal. ✔️</textarea>
             </div>
@@ -334,27 +334,13 @@ xxx ya para la configuración de tu repetidor de señal, lo debes realizar direc
                 </div>
             </div>
 
-            <button onclick="ques14(),empty();">Siguiente >></button>
+            <div class="bot">
+                <button onclick="one_ini(),empty()"><< FINALIZAR GESTION >></button>
+            </div>
 
     </div>
 
     <div class="cards" id="quest14" style="display: none;">
-
-        <h1 id="cod">RECOMENDACIONES DE LAS REDES</h1>
-
-        <div class="body-card" style="height: 310px;">
-            <div class="question_1">
-                <textarea id="que2" style="height: 250px;" disabled>Sin embargo, te voy a comentar unos datos sobre las redes para que lo tengas en cuenta al momento de conectarte y así no te presente inconvenientes la red 2.4 te brinda mayor cobertura es decir que tiene más accesibilidad a ciertas partes del predio, pero no te brinda tanta velocidad muy diferente a la red 5G esta brinda mayor velocidad sin embargo no cuenta con la misma capacidad de cobertura que la 2.4 📱💻</textarea>
-            </div>
-        </div>
-
-        <div class="bot">
-            <button onclick="one_ini(),empty()"><< FINALIZAR GESTION >></button>
-        </div>
-
-    </div>
-
-    <div class="cards" id="quest15" style="display: none;">
 
         <h1 id="cod">INTERNET- CABLE</h1>
 

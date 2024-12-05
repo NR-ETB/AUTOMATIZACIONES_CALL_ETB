@@ -79,7 +79,7 @@
             <div class="menu" onclick="three();">
                 <div>
                     <img src="../images/escen.png" alt="">
-                    <p>CONECTA NO NAVEGA: CABLE</p>
+                    <p>CONECTA NO NAVEGA: <br> CABLE</p>
                 </div>
             </div>
 

@@ -132,7 +132,7 @@ function ques13() {
 }
 
 function ques14() {
-    $('#quest13').css('display','none');
+    $('#quest10').css('display','none');
     $('#quest14').css('display','block');
     $('#bio2').css('bottom','900px');
 }
@@ -151,7 +151,7 @@ function actualizarTexto() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
+        "1": "Envía guion de encuesta\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera, antes de irte! 🤚Te quiero hacer una invitación😊. Por favor evalúa mi atención con la siguiente encuesta 🙏✍️ que me ayuda a continuar mejorando cada día y no te tomara más de un minuto, https://tinyurl.com/2kz62fde. Tu opinión es muy importante para nosotros. Ten en cuenta que a tu correo electrónico puede llegar otra encuesta donde tendrás la opción de calificar la atención recibida en este canal. 📲 A partir de este momento nuestra sesión ha finalizado. Los nuevos mensajes serán atendidos por nuestra agente virtual Luz. Gracias por escribirnos, hasta pronto.",
         "2": "Continua con el soporte",
     };
 
@@ -166,8 +166,8 @@ function actualizarTexto2() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
-        "2": "Envía visita técnica e instancia administrativa",
+        "1": "Envía guion de encuesta\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera, antes de irte! 🤚Te quiero hacer una invitación😊. Por favor evalúa mi atención con la siguiente encuesta 🙏✍️ que me ayuda a continuar mejorando cada día y no te tomara más de un minuto, https://tinyurl.com/2kz62fde. Tu opinión es muy importante para nosotros. Ten en cuenta que a tu correo electrónico puede llegar otra encuesta donde tendrás la opción de calificar la atención recibida en este canal. 📲 A partir de este momento nuestra sesión ha finalizado. Los nuevos mensajes serán atendidos por nuestra agente virtual Luz. Gracias por escribirnos, hasta pronto.",
+        "2": "Envía visita técnica e instancia administrativa\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera antes de irte! 🤚 te doy a conocer la instancia administrativa de acuerdo con el régimen de protección al usuario en el siguiente link https://etb.com/info-regulatoria/doc/modulo_e_procedimiento_y_tramite_de_pqr_.pdf",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
@@ -181,8 +181,23 @@ function actualizarTexto3() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Envía guion de encuesta",
-        "2": "Envía visita técnica e instancia administrativa Gestión asesor: Antes de enviar visita técnica valida la configuración en portal suma; semáforos, reaprovisionamiento del servicio en ap y cambio de contraseña sí aplica.",
+        "1": "Envía guion de encuesta\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera, antes de irte! 🤚Te quiero hacer una invitación😊. Por favor evalúa mi atención con la siguiente encuesta 🙏✍️ que me ayuda a continuar mejorando cada día y no te tomara más de un minuto, https://tinyurl.com/2kz62fde. Tu opinión es muy importante para nosotros. Ten en cuenta que a tu correo electrónico puede llegar otra encuesta donde tendrás la opción de calificar la atención recibida en este canal. 📲 A partir de este momento nuestra sesión ha finalizado. Los nuevos mensajes serán atendidos por nuestra agente virtual Luz. Gracias por escribirnos, hasta pronto.",
+        "2": "Envía visita técnica e instancia administrativa\n\nXXX, fue un gusto atenderte, espero que te sientas muy satisfecho con la atención que te brindé ✨te recuerdo el radicado de tu solicitud xxx asociado al cun xxx, pero espera antes de irte! 🤚 te doy a conocer la instancia administrativa de acuerdo con el régimen de protección al usuario en el siguiente link https://etb.com/info-regulatoria/doc/modulo_e_procedimiento_y_tramite_de_pqr_.pdf\n\n Gestión asesor: Antes de enviar visita técnica valida la configuración en portal suma; semáforos, reaprovisionamiento del servicio en ap y cambio de contraseña sí aplica.",
+    };
+
+    const opcionSeleccionada = selectRespuesta.value;
+    textarea.value = textos[opcionSeleccionada];
+
+    console.log("Texto actualizado:", textarea.value);
+}
+
+function actualizarTexto4() {
+    const selectRespuesta = document.getElementById("respuesta4");
+    const textarea = document.getElementById("respuestaTexto");
+
+    const textos = {
+        "1": "Señ@r por favor indicame la ip y puertos sobre los cuales necesitas realizar la apertura",
+        "2": "Señ@r en el computador conectado al modem en datos 1 , vas a ejecutar el comando Windows R, te va salir una ventana y vas a escribir CMD le das enter , te aparece una ventana en negro y vas a escribir ipconfig le das enter y me envías una foto de la ip🤗💻\n\n RECOMENDACIONES DE LAS REDES: Sin embargo, te voy a comentar unos datos sobre las redes para que lo tengas en cuenta al momento de conectarte y así no te presente inconvenientes la red 2.4 te brinda mayor cobertura es decir que tiene más accesibilidad a ciertas partes del predio, pero no te brinda tanta velocidad muy diferente a la red 5G esta brinda mayor velocidad sin embargo no cuenta con la misma capacidad de cobertura que la 2.4 📱💻",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
@@ -218,5 +233,13 @@ Gestión asesor: enviar a encuesta si no requiere que le colabore en otro requer
 
     const textarea3 = document.getElementById('que4');
     textarea3.value = `Señ@r ${finalName} vas a realizar una medición de velocidad con un computador conectado de manera directa al modem, no al extensor wifi, ni a la land switch, sin derivaciones, ni conexiones vpn 🧐 con un cable color amarillo utp de categoría (CAT 6) para velocidades superiores a 100 megas, lo vas a conectar en el puerto del modem (LAN 1 / DATOS 1). Lo puedes realizar por medio de este link https://etb.com/medidor/ 🔌💻`;
+
+    const textarea4 = document.getElementById('que5');
+    textarea4.value = `${finalName} ya para la configuración de tu repetidor de señal, lo debes realizar directamente tu por medio de nuestro aplicativo FIBERHOME📲, lo puedes descargar por medio de la APP STORE o PLAY STORE totalmente gratis, lo descargas te registras y de esta manera configuras tu red o tu repetidor de señal. ✔️`;
+
+    const textarea5 = document.getElementById('que6');
+    textarea5.value = `Ingresa a la app, selecciona tu servicio, vas a dar click sobre la flecha azul, vas a dar click sobre la flecha azul en la opción modem, desde esta opción podrás hacer el cambio dando click en el lápiz, cuando ya hayas ingresado la nueva clave das click en guardar 😃
+ 
+${finalName} ya para la configuración de tu repetidor de señal, lo debes realizar directamente tu por medio de nuestro aplicativo FIBERHOME📲, lo puedes descargar por medio de la APP STORE o PLAY STORE totalmente gratis, lo descargas te registras y de esta manera configuras tu red o tu repetidor de señal. ✔️`;
 }
 

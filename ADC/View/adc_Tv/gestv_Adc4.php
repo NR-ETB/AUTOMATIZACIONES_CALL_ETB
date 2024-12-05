@@ -47,7 +47,7 @@
 
         <div class="data2" id="data2">
             <h3>Dato:</h3>
-            <input type="text">
+            <input type="text" disabled>
         </div>
 
         <div class="actin">

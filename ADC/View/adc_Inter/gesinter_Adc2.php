@@ -44,7 +44,7 @@ Cambiar la visual de todos en verde por alguno en rojo</textarea>
                 </div>
             </div>
 
-        <button onclick="ques2(),nexts(),empty();">Siguiente >></button>
+        <button onclick="ques2(),empty();">Siguiente >></button>
 
     </div>
 
@@ -52,9 +52,11 @@ Cambiar la visual de todos en verde por alguno en rojo</textarea>
 
         <h1 id="cod">INTERMITENCIA Y LENTITUD - FTTH</h1>
 
-        <div class="body-card">
+        <div class="body-card" style="height: 200px;">
             <div class="question_1">
-                <textarea id="que3" style="bottom: 0;" disabled>Señ@r xxxx por favor verifique si ya tiene servicio 😄</textarea>
+                <textarea id="que3" style="height: 150px;" disabled>Voy a realizar unos reaprovisionamientos en sistema, permíteme 3 minutos y ya vuelvo contigo ⏳😄
+                    
+Señ@r xxxx por favor verifique si ya tiene servicio 😄</textarea>
             </div>
         </div>
 
@@ -75,7 +77,7 @@ Cambiar la visual de todos en verde por alguno en rojo</textarea>
                 </div>
             </div>
 
-        <button onclick="ques3(),nexts2(),empty();">Siguiente >></button>
+        <button onclick="ques3(),empty();">Siguiente >></button>
 
     </div>
 
@@ -216,7 +218,7 @@ Realizamos el cambio de tu clave de forma exitosa, verifica por favor si con la 
         <!-- HTML para el formulario -->
             <div class="body-card">
                 <div class="question_2">
-                    <select name="respuesta" id="respuesta6" onchange="actualizarTexto6()"> <!-- Manejo con JavaScript -->
+                    <select name="respuesta" id="respuesta6" onchange="actualizarTexto5()"> <!-- Manejo con JavaScript -->
                         <option value="0">Selecciona una Opción...</option> <!-- Opción vacía por defecto -->
                         <option value="1">SI</option>
                         <option value="2">NO</option>

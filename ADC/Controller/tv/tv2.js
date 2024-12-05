@@ -119,7 +119,7 @@ function actualizarTexto() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Continua con el soporte\n\nAcércate a la parte trasera del decodificador allí vas a identificar un cable que se parece al de la línea telefónica puede ser de color gris o amarillo lo desconectas por 10 segundos lo conectas nuevamente y luego verificas que la otra punta de ese mismo cable este en el modem en el puerto de IPTV1 o IPTV2, asegúrate de que las dos puntas estén bien conectadas 📺🔌\n\nFiltros en plataforma\n\n•	Reiniciar los decodificadores y la ONT\n•	Verificar plan tv comercial\n•	Normalizar plataformas\n•	Validar si la potencia en la ONT es menor a -27 dBm",
+        "1": "Continua con el soporte\n\nAcércate a la parte trasera del decodificador allí vas a identificar un cable que se parece al de la línea telefónica puede ser de color gris o amarillo lo desconectas por 10 segundos lo conectas nuevamente y luego verificas que la otra punta de ese mismo cable este en el modem en el puerto de IPTV1 o IPTV2, asegúrate de que las dos puntas estén bien conectadas 📺🔌",
         "2": "Envía visita técnica",
     };
 

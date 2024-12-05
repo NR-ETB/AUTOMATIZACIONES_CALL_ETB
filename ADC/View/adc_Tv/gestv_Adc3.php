@@ -99,7 +99,7 @@
 
         <div class="data2" id="data2">
             <h3>Dato:</h3>
-            <input type="text">
+            <input type="text" disabled>
         </div>
 
         <div class="actin">
@@ -142,7 +142,17 @@
                     <h5 class="modal-title" id="mas">INDICACIONES DE LA GESTION</h5>
                 </div>
                 <div class="modal-body" style="text-align: justify;">
-                    <p>Resume el procedimiento de gestión siguiendo las respuestas y argumentos proporcionados por el cliente. <br><br> Utiliza el material de ayuda disponible para guiarte en el proceso y asegúrate de estar atento a los guiones, ya que algunos están destinados solo al asesor y otros específicamente al cliente</p>
+                    <p>Resume el procedimiento de gestión siguiendo las respuestas y argumentos proporcionados por el cliente. <br><br> Utiliza el material de ayuda disponible para guiarte en el proceso y asegúrate de estar atento a los guiones, ya que algunos están destinados solo al asesor y otros específicamente al cliente. <br><br> (PUNTOS A TENER EN CUENTA) <br><br> Filtros en plataforma <br>
+                    <br>
+                    •	Reiniciar los decodificadores y la ONT
+                    <br>
+                    •	Verificar plan tv comercial
+                    <br>
+                    •	Normalizar plataformas
+                    <br>
+                    •	Validar si la potencia en la ONT es menor a -27 dBm 
+                    <br>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" style="left: 0;" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-modal-ps4error">ACEPTAR</button>

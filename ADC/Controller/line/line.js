@@ -91,33 +91,3 @@ function one() {
 function two() {
     location.href='./gesln_Adc2.php';
 }
-
-function actualizarTexto() {
-    const selectRespuesta = document.getElementById("respuesta");
-    const textarea = document.getElementById("respuestaTexto");
-
-    const textos = {
-        "1": "Guion de finalización del Chat",
-        "2": "Continua con el soporte",
-    };
-
-    const opcionSeleccionada = selectRespuesta.value;
-    textarea.value = textos[opcionSeleccionada];
-
-    console.log("Texto actualizado:", textarea.value);
-}
-
-function actualizarTexto2() {
-    const selectRespuesta2 = document.getElementById("respuesta2");
-    const textarea2 = document.getElementById("respuestaTexto");
-
-    const textos = {
-        "1": "Continua con el soporte, mismas verificaciones",
-        "2": "Valida plataformas SUMA antes de enviar visita técnica",
-    };
-
-    const opcionSeleccionada = selectRespuesta2.value;
-    textarea2.value = textos[opcionSeleccionada];
-
-    console.log("Texto actualizado:", textarea2.value);
-}

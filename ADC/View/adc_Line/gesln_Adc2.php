@@ -126,7 +126,7 @@ Valida si el cable de la línea está conectado en un puerto que tiene el símbo
 
 <script src="../bootstrap/jquery.js"></script>
 <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-<script src="../../Controller/line/line2.js"></script>   
+<script src="../../Controller/line/line3.js"></script>   
 <script src="../../Controller/main.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>

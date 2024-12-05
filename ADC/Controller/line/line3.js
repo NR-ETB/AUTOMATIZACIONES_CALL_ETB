@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
-    $('#bio2').css('bottom','1250px');
+    $('#bio2').css('bottom','1120px');
     $('#logg').css('bottom','276px');
     $('#sid_img').css('position','relative');
     $('#sid_img').css('bottom','30px');
@@ -16,6 +16,7 @@ $(document).ready(function() {
     $('#respuestaTexto').css('right','190px');
     $('#actin').css('right','225px');
     $('#data2').css('left','670px');
+
 });
 
 function ques() {
@@ -42,7 +43,7 @@ function ques2() {
     $('#quest2').css('display','none');
     $('#quest3').css('display','block');
     $('#bio2').css('bottom','845px');
-    $('#que2').css('bottom','2px');
+    $('#que2').css('bottom','1px');
 }
 
 function ques22() {
@@ -112,27 +113,12 @@ function actualizarTexto() {
     const textarea = document.getElementById("respuestaTexto");
 
     const textos = {
-        "1": "Guion de finalización del Chat",
-        "2": "Continua con el soporte",
+        "1": "Cambiar el Microfiltro (Validar) el cliente",
+        "2": "Visita Técnica",
     };
 
     const opcionSeleccionada = selectRespuesta.value;
     textarea.value = textos[opcionSeleccionada];
 
     console.log("Texto actualizado:", textarea.value);
-}
-
-function actualizarTexto2() {
-    const selectRespuesta2 = document.getElementById("respuesta2");
-    const textarea2 = document.getElementById("respuestaTexto");
-
-    const textos = {
-        "1": "Continua con el soporte, mismas verificaciones",
-        "2": "Valida plataformas SUMA antes de enviar visita técnica",
-    };
-
-    const opcionSeleccionada = selectRespuesta2.value;
-    textarea2.value = textos[opcionSeleccionada];
-
-    console.log("Texto actualizado:", textarea2.value);
 }
