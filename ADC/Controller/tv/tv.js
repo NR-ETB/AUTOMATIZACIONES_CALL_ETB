@@ -1,25 +1,8 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
-    $('#respuesta').change(function() {
-        var respuestaId = $(this).val(); // Obtener el valor seleccionado
-
-        if (respuestaId) {
-            // Enviar solicitud AJAX al servidor
-            $.ajax({
-                url: '', // La misma página
-                type: 'GET',
-                data: { respuesta: respuestaId }, // Enviar el parámetro 'respuesta'
-                success: function(data) {
-                    // Procesar la respuesta del servidor
-                    var respuestaTexto = $(data).find('#respuestaTexto').val(); // Buscar el nuevo texto
-                    $('#respuestaTexto').val(respuestaTexto); // Mostrarlo en el textarea
-                },
-                error: function() {
-                    alert("Ocurrió un error al procesar la solicitud.");
-                }
-            });
-        }
-    });
+    $('#respuestaTexto').css('right','175px');
+    $('#actin').css('right','225px');
+    $('#data2').css('left','680px');
 });
 
 function ques() {

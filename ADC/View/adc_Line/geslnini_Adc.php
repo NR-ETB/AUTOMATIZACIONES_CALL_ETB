@@ -87,12 +87,12 @@
     </div>
 
     <div class="bio2" id="bio2">
-        <div class="data">
+        <div class="data" id="dat">
             <h3>Nombre:</h3>
             <input type="text" disabled>
         </div>
 
-        <div class="data2">
+        <div class="data2" id="data2">
             <h3>Dato:</h3>
             <input type="text" disabled>
         </div>

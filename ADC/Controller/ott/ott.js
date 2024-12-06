@@ -1,6 +1,9 @@
 $(document).ready(function() {
     // Cuando el valor del select cambia
     $('#bio2').css('bottom','1250px');
+    $('#respuestaTexto').css('right','175px');
+    $('#actin').css('right','225px');
+    $('#data2').css('left','680px');
 });
 
 function ques() {

@@ -39,5 +39,32 @@ function tou() {
 }
 
 function man() {
-    
+    let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+    width=0,height=0,left=-1020,top=-1000`;
+    open('../../Model/documents/manADC.pdf', 'manual', params);
+}
+
+function copy() {
+    // Obtener el elemento del que se copiará el texto
+    const textElement = document.getElementById('respuestaTexto');
+
+    // Verificar si el elemento existe y tiene contenido
+    if (textElement && textElement.value.trim() !== "") {
+        // Crear un campo de texto temporal para copiar
+        const tempInput = document.createElement('textarea');
+        tempInput.value = textElement.value; // Usamos el valor del textarea
+        document.body.appendChild(tempInput);
+
+        // Seleccionar y copiar el texto
+        tempInput.select();
+        document.execCommand('copy');
+
+        // Eliminar el campo de texto temporal
+        document.body.removeChild(tempInput);
+
+        // Mensaje opcional para confirmar
+        alert('Texto copiado al portapapeles');
+    } else {
+        alert('No hay texto disponible para copiar.');
+    }
 }
